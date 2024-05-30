@@ -13,6 +13,12 @@ sqlalchemy-serializer = "*"
 flask-restful = "*"
 flask-cors = "*"
 faker = "*"
+importlib-resources = "5.10.0"
+jsonify = "0.5"
+gunicorn = "20.1.0"
+psycopg2-binary = "*"
+python-dotenv = "*"
+
 
 [requires]
 python_full_version = "3.8.13"
