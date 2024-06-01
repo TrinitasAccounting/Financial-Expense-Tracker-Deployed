@@ -35,15 +35,15 @@ const navigation = [
     // { name: 'Documents', href: '#', icon: DocumentDuplicateIcon, current: false },
     // { name: 'Reports', href: '#', icon: ChartPieIcon, current: false },
 ]
-const teams = [
-    // { id: 1, name: 'Heroicons', href: '#', initial: 'H', current: false },
-    // { id: 2, name: 'Tailwind Labs', href: '#', initial: 'T', current: false },
-    // { id: 3, name: 'Workcation', href: '#', initial: 'W', current: false },
-]
-const userNavigation = [
-    // { name: 'Your profile', href: '#' },
-    // { name: 'Sign out', href: '#' },
-]
+// const teams = [
+//     // { id: 1, name: 'Heroicons', href: '#', initial: 'H', current: false },
+//     // { id: 2, name: 'Tailwind Labs', href: '#', initial: 'T', current: false },
+//     // { id: 3, name: 'Workcation', href: '#', initial: 'W', current: false },
+// ]
+// const userNavigation = [
+//     // { name: 'Your profile', href: '#' },
+//     // { name: 'Sign out', href: '#' },
+// ]
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -114,9 +114,9 @@ export default function AppNavBar() {
                                             /> */}
                                         </div>
                                         <nav className="flex flex-1 flex-col">
-                                            <ul role="list" className="flex flex-1 flex-col gap-y-7">
+                                            <ul className="flex flex-1 flex-col gap-y-7">
                                                 <li>
-                                                    <ul role="list" className="-mx-2 space-y-1">
+                                                    <ul className="-mx-2 space-y-1">
                                                         {navigation.map((item) => (
                                                             <li key={item.name}>
                                                                 <a
@@ -199,9 +199,9 @@ export default function AppNavBar() {
                             /> */}
                         </div>
                         <nav className="flex flex-1 flex-col">
-                            <ul role="list" className="flex flex-1 flex-col gap-y-7">
+                            <ul className="flex flex-1 flex-col gap-y-7">
                                 <li>
-                                    <ul role="list" className="-mx-2 space-y-1">
+                                    <ul className="-mx-2 space-y-1">
                                         {navigation.map((item) => (
                                             <li key={item.name}>
                                                 <a
