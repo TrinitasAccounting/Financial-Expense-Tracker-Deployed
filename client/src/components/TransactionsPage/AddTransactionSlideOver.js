@@ -1,8 +1,14 @@
 
 import { useOutletContext } from 'react-router-dom'
 
+import DatePicker from "react-datepicker";
 
-import { useState } from 'react'
+import "react-datepicker/dist/react-datepicker.css";
+
+// import DateObject from "react-date-object";
+
+
+import React, { useState } from 'react'
 import { Dialog, DialogPanel, DialogTitle, Transition, TransitionChild } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 // import { LinkIcon, PlusIcon, QuestionMarkCircleIcon } from '@heroicons/react/20/solid'
@@ -48,7 +54,12 @@ import { XMarkIcon } from '@heroicons/react/24/outline'
 export default function AddTransactionSlideOver({ transactionSlideOverOpen, openCloseTransactionSlideOver }) {
     // const [open, setOpen] = useState(true)
 
+    // the state for the date selected when adding a new product
+    const [startDate, setStartDate] = useState(new Date());
 
+
+
+    // Adding a new transaction form states and onChange functions_____
     const { addNewTransaction } = useOutletContext();
 
     // console.log(addNewTransaction);
@@ -62,28 +73,26 @@ export default function AddTransactionSlideOver({ transactionSlideOverOpen, open
 
     // updating form state function
     function updateTransactionFormData(event) {
-        setTransactionFormData({ ...transactionFormData, [event.target.name]: event.target.value })
+        setTransactionFormData({ ...transactionFormData, date: startDate, [event.target.name]: event.target.value })
 
     }
-    // console.log(transactionFormData)
 
-    function handleAddOnlyTransactionSubmit(event) {
-        event.preventDefault()
-        addNewTransaction(transactionFormData)
+    // function handleAddOnlyTransactionSubmit(event) {
+    //     event.preventDefault()
+    //     addNewTransaction(transactionFormData)
 
-        setTransactionFormData({
-            date: "",
-            description: "",
-            amount: "",
-            category: ""
-        })
-    }
+    //     setTransactionFormData({
+    //         date: "",
+    //         description: "",
+    //         amount: "",
+    //         category: ""
+    //     })
+    // }
 
     function handleAddAndCloseTransactionSubmit(event) {
         event.preventDefault()
         addNewTransaction(transactionFormData)
 
-        // console.log(transactionFormData)
 
         setTransactionFormData({
             date: "",
@@ -93,8 +102,6 @@ export default function AddTransactionSlideOver({ transactionSlideOverOpen, open
         })
         openCloseTransactionSlideOver()
     }
-
-
 
 
 
@@ -161,18 +168,19 @@ export default function AddTransactionSlideOver({ transactionSlideOverOpen, open
                                                             htmlFor="date"
                                                             className="block text-sm font-medium leading-6 text-gray-900 sm:mt-1.5"
                                                         >
-                                                            Date
+                                                            Select Date
                                                         </label>
                                                     </div>
                                                     <div className="sm:col-span-2">
-                                                        <input
+                                                        {/* <input
                                                             onChange={updateTransactionFormData}
                                                             value={transactionFormData.date}
                                                             type="text"
                                                             name="date"
                                                             id="date"
                                                             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                                        />
+                                                        /> */}
+                                                        <DatePicker name="date" selected={startDate} onChange={(date) => setStartDate(date)} />
                                                     </div>
                                                 </div>
 
