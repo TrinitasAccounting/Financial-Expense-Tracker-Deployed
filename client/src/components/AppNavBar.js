@@ -49,6 +49,7 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
+
 export default function AppNavBar() {
     const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -57,6 +58,8 @@ export default function AppNavBar() {
 
 
     let categoryOptions = ['Gas & Fuel', 'Meal & Entertainment', 'Sales']
+
+
 
 
     // fetching all transactions
@@ -68,6 +71,37 @@ export default function AppNavBar() {
                 }
             })
     }, [])
+
+
+    // POST for new transaction
+    function addNewTransaction(newTransaction) {
+        fetch('/transactionslist', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(newTransaction)
+        })
+            .then(res => {
+                if (res.ok) {
+                    res.json().then(newTransactionData => {
+                        setTransactionsList([...transactionsList, newTransactionData])
+                        // console.log(newTransactionData)
+
+                    })
+                }
+                else if (res.status === 400) {
+                    res.json().then(errorData => alert(`Error: ${errorData.error}`))
+                }
+                else if (res.status === 401) {
+                    res.json().then(errorData => alert(`Error: ${errorData.error}`))
+                }
+                else {
+                    res.json().then(() => alert("Error: Something went wrong"))
+                }
+            })
+    }
 
 
 
@@ -86,14 +120,7 @@ export default function AppNavBar() {
 
     return (
         <>
-            {/*
-        This example requires updating your template:
 
-        ```
-        <html class="h-full bg-white">
-        <body class="h-full">
-        ```
-      */}
             <div>
                 <Transition show={sidebarOpen}>
                     <Dialog className="relative z-50 lg:hidden" onClose={setSidebarOpen}>
@@ -298,7 +325,7 @@ export default function AppNavBar() {
                     </div>
                 </div>
 
-                <div className="lg:pl-72">
+                <div className="lg:pl-72 h-full">
                     <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
                         <button type="button" className="-m-2.5 p-2.5 text-gray-700 lg:hidden" onClick={() => setSidebarOpen(true)}>
                             <span className="sr-only">Open sidebar</span>
@@ -387,7 +414,7 @@ export default function AppNavBar() {
 
 
                     {/* Put all outlets and content here ___________________________________________________________ */}
-                    <main className="py-10">
+                    <main className="py-10 bg-gray-100 h-full">
                         <div className="px-4 sm:px-6 lg:px-8">{/* Your content */}</div>
 
 
@@ -395,7 +422,8 @@ export default function AppNavBar() {
 
                         <Outlet context={{
                             transactionsList: transactionsList,
-                            categoryOptions: categoryOptions
+                            categoryOptions: categoryOptions,
+                            addNewTransaction: addNewTransaction
                         }}
                         />
 

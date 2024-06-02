@@ -10,7 +10,7 @@ function TransactionsMainPage() {
 
 
     return (
-        <div>
+        <div className="bg-gray-100">
             {/* <h1>Please Work</h1> */}
             <TransactionsList transactionsList={transactionsList} categoryOptions={categoryOptions} />
 
