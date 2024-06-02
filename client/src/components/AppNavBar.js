@@ -1,7 +1,7 @@
 
 
 // import { Fragment, useState } from 'react'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import {
     Dialog,
@@ -50,7 +50,39 @@ function classNames(...classes) {
 }
 
 export default function AppNavBar() {
-    const [sidebarOpen, setSidebarOpen] = useState(false)
+    const [sidebarOpen, setSidebarOpen] = useState(false);
+
+    const [transactionsList, setTransactionsList] = useState([]);
+
+
+
+    let categoryOptions = ['Gas & Fuel', 'Meal & Entertainment', 'Sales']
+
+
+    // fetching all transactions
+    useEffect(() => {
+        fetch('/transactionslist')
+            .then(res => {
+                if (res.ok) {
+                    res.json().then(data => setTransactionsList(data))
+                }
+            })
+    }, [])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     return (
         <>
@@ -361,7 +393,11 @@ export default function AppNavBar() {
 
 
 
-                        <Outlet />
+                        <Outlet context={{
+                            transactionsList: transactionsList,
+                            categoryOptions: categoryOptions
+                        }}
+                        />
 
                     </main>
                 </div>

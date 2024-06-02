@@ -43,7 +43,7 @@ class AllTransactions(Resource):
         return make_response(response_body, 200)
 
 
-api.add_resource(AllTransactions, '/transactions')
+api.add_resource(AllTransactions, '/transactionslist')
 
 
 
