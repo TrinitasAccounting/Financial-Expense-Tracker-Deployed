@@ -28,7 +28,7 @@ import {
 // import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 
 const navigation = [
-    { name: 'Dashboard', href: '/', icon: HomeIcon, current: true },
+    { name: 'Dashboard', href: '/', icon: HomeIcon, current: false },
     { name: 'Transaction Ledger', href: '/transactions', icon: UsersIcon, current: false },
     { name: 'Profile', href: '/', icon: FolderIcon, current: false },
     // { name: 'Calendar', href: '#', icon: CalendarIcon, current: false },
@@ -58,6 +58,20 @@ export default function AppNavBar() {
 
 
     let categoryOptions = ['Gas & Fuel', 'Meal & Entertainment', 'Sales']
+
+
+    // changing the current in the navigation object function
+    // function changeCurrent(trans) {
+    //     console.log('asdf')
+    //     console.log(trans)
+    //     // let now = trans['current']
+    //     trans['current'] = !trans['current']
+    // }
+
+    // function output(item) {
+    //     item.current = !item.current
+
+    // }
 
 
 
@@ -99,6 +113,25 @@ export default function AppNavBar() {
                 }
                 else {
                     res.json().then(() => alert("Error: Something went wrong"))
+                }
+            })
+    }
+
+    // Deleting a transaction
+    function deleteTransaction(id) {
+        fetch(`/server/transaction/${id}`, {
+            method: "DELETE"
+        })
+            .then(res => {
+                if (res.ok) {
+                    setTransactionsList(transactions => transactions.filter(transaction => {
+                        return transaction.id !== id
+                    })
+
+                    )
+                }
+                else if (res.status === 404) {
+                    res.json().then(errorData => alert(`Error: ${errorData.error}`))
                 }
             })
     }
@@ -177,9 +210,10 @@ export default function AppNavBar() {
                                                 <li>
                                                     <ul className="-mx-2 space-y-1">
                                                         {navigation.map((item) => (
-                                                            <li key={item.name}>
+                                                            <li key={item.name} >
                                                                 <a
                                                                     href={item.href}
+
                                                                     className={classNames(
                                                                         item.current
                                                                             ? 'bg-indigo-700 text-white'
@@ -188,6 +222,7 @@ export default function AppNavBar() {
                                                                     )}
                                                                 >
                                                                     <item.icon
+
                                                                         className={classNames(
                                                                             item.current ? 'text-white' : 'text-indigo-200 group-hover:text-white',
                                                                             'h-6 w-6 shrink-0'
@@ -262,9 +297,10 @@ export default function AppNavBar() {
                                 <li>
                                     <ul className="-mx-2 space-y-1">
                                         {navigation.map((item) => (
-                                            <li key={item.name}>
+                                            <li key={item.name} >
                                                 <a
                                                     href={item.href}
+
                                                     className={classNames(
                                                         item.current
                                                             ? 'bg-violet-700 text-white'
@@ -273,6 +309,7 @@ export default function AppNavBar() {
                                                     )}
                                                 >
                                                     <item.icon
+
                                                         className={classNames(
                                                             item.current ? 'text-white' : 'text-gray-900 group-hover:text-white',
                                                             'h-6 w-6 shrink-0'
@@ -423,7 +460,8 @@ export default function AppNavBar() {
                         <Outlet context={{
                             transactionsList: transactionsList,
                             categoryOptions: categoryOptions,
-                            addNewTransaction: addNewTransaction
+                            addNewTransaction: addNewTransaction,
+                            deleteTransaction: deleteTransaction
                         }}
                         />
 

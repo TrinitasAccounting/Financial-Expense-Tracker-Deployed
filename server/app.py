@@ -59,7 +59,33 @@ class AllTransactions(Resource):
 
 
 
+
+
 api.add_resource(AllTransactions, '/transactionslist')
+
+
+
+
+class TransactionById(Resource):
+
+    def delete(self,id):
+
+        transaction = db.session.get(Transactions, id)
+
+        if transaction:
+            db.session.delete(transaction)
+            db.session.commit()
+            response_body = {}
+            return make_response(response_body, 204)
+
+        else:
+            response_body = {
+                'error': 'Transaction Not Found'
+            }
+            return make_response(response_body, 404)
+
+
+api.add_resource(TransactionById, '/server/transaction/<int:id>')
 
 
 

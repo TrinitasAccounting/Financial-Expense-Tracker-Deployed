@@ -5,25 +5,58 @@ function DashboardPage() {
     return (
         <div>
             {/* Top Line boxes Div */}
+            <div className="m-4 grid grid-cols-1 gap-5 sm:grid-cols-12">
+
+                <div className="min-h-[150px] rounded-lg shadow bg-orange-500 sm:col-span-3">
+                    <h1>Box 1</h1>
+                </div>
+
+                <div className="min-h-[150px] rounded-lg shadow bg-teal-500 sm:col-span-3">
+                    <h1>Box 2</h1>
+                </div>
+
+                <div className="min-h-[150px] rounded-lg shadow bg-indigo-500 sm:col-span-3">
+                    <h1>Box 3</h1>
+                </div>
+
+                <div className="min-h-[150px] rounded-lg shadow bg-yellow-500 sm:col-span-3">
+                    <h1>Box 4</h1>
+                </div>
+
+            </div>
+
+
             <div className="m-4 grid grid-cols-1 gap-10 sm:grid-cols-12">
-
-                <div className="min-h-[150px] rounded-lg shadow bg-orange-500 sm:col-span-3"></div>
-                {/* <div className="min-h-[150px] rounded-lg shadow bg-red-700 col-span-1"></div> */}
-                <div className="min-h-[150px] rounded-lg shadow bg-teal-500 sm:col-span-3"></div>
-                {/* <div className="min-h-[150px] rounded-lg shadow bg-red-700 col-span-1"></div> */}
-                <div className="min-h-[150px] rounded-lg shadow bg-indigo-500 sm:col-span-3"></div>
-                {/* <div className="min-h-[150px] rounded-lg shadow bg-red-700 col-span-1"></div> */}
-                <div className="min-h-[150px] rounded-lg shadow bg-yellow-500 sm:col-span-3"></div>
-
-            </div>
-
-
-            <div>
-
+                <div className="min-h-[350px] rounded-lg shadow bg-red-500 sm:col-span-12">
+                    <h1>Box 5</h1>
+                </div>
 
 
             </div>
 
+
+            {/* Bottom right grid box */}
+            <div className="m-4 grid grid-cols-1 gap-5 sm:grid-cols-12">
+                <div className="min-h-[500px] rounded-lg shadow bg-yellow-500 sm:col-span-4">
+                    <h1>Box 6</h1>
+                </div>
+                {/* <div className="min-h-[150px] rounded-lg shadow bg-red-700 col-span-1"></div> */}
+                <div className="min-h-[500px] rounded-lg shadow bg-teal-100 sm:col-span-8 ">
+                    <div className="m-1 grid grid-cols-1 gap-5 sm:grid-cols-1">
+                        <div className="min-h-[250px] rounded-lg shadow bg-gray-400 sm:col-span-8">
+                            {/* Code inside of here _____________________________________________________*/}
+                            <h1>Box 7</h1>
+                        </div>
+                        {/* <div className="min-h-[150px] rounded-lg shadow bg-red-700 col-span-1"></div> */}
+                        <div className="min-h-[250px] rounded-lg shadow bg-purple-500 sm:col-span-8">
+                            {/* code inside of here _____________________________________________________*/}
+                            <h1>Box 8</h1>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
         </div>
     )
 }

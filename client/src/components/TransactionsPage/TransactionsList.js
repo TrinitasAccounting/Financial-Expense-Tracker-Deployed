@@ -1,11 +1,17 @@
 
 import { useState } from "react";
+import { useOutletContext } from "react-router-dom";
 import AddTransactionSlideOver from "./AddTransactionSlideOver";
+
+import DropdownCategory from "./DropDownMenu";
+import DeleteButton from "./ButtonForDelete";
 
 
 export default function TransactionsList({ transactionsList, categoryOptions }) {
 
     const [transactionSlideOverOpen, setTransactionSlideOverOpen] = useState(false)
+
+    const { deleteTransaction } = useOutletContext();
 
     //Changing the state to open or close the slide over for transaction add
     function openCloseTransactionSlideOver() {
@@ -16,7 +22,7 @@ export default function TransactionsList({ transactionsList, categoryOptions }) 
 
 
 
-    console.log(categoryOptions);
+    // console.log(categoryOptions);
 
     // const people = [
     //     { name: 'Lindsay Walton', title: 'Front-end Developer', email: 'lindsay.walton@example.com', role: 'Member' },
@@ -84,6 +90,9 @@ export default function TransactionsList({ transactionsList, categoryOptions }) 
                                         <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-6">
                                             <span className="sr-only">Edit</span>
                                         </th>
+                                        <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-6">
+                                            <span className="sr-only">Edit</span>
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-gray-200 bg-white">
@@ -93,8 +102,14 @@ export default function TransactionsList({ transactionsList, categoryOptions }) 
                                                 {trans.date}
                                             </td>
                                             <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{trans.description}</td>
-                                            <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{trans.category}</td>
+                                            <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><DropdownCategory /></td>
                                             <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{trans.amount}</td>
+                                            <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                                                {/* <a className="text-red-600 hover:text-red-900">
+                                                    Delete<span className="sr-only">, {trans.id}</span>
+                                                </a> */}
+                                                <DeleteButton deleteTransaction={deleteTransaction} trans={trans} />
+                                            </td>
                                             <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                                                 <a href="/" className="text-indigo-600 hover:text-indigo-900">
                                                     Edit<span className="sr-only">, {trans.id}</span>
