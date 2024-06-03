@@ -42,20 +42,20 @@ class AllTransactions(Resource):
         response_body = [transaction.to_dict() for transaction in transactions]
         return make_response(response_body, 200)
 
-    # def post(self):
-    #     try: 
-    #         new_transaction = Transactions(date=request.json.get('date'), description=request.json.get('description'), amount=request.json.get('amount'), category=request.json.get('category'))
-    #         db.session.add(new_transaction)
-    #         db.session.commit()
+    def post(self):
+        try: 
+            new_transaction = Transactions(date=request.json.get('date'), description=request.json.get('description'), amount=request.json.get('amount'), category=request.json.get('category'))
+            db.session.add(new_transaction)
+            db.session.commit()
 
-    #         response_body = new_transaction.to_dict()
-    #         return make_response(response_body, 201)
+            response_body = new_transaction.to_dict()
+            return make_response(response_body, 201)
 
-    #     except:
-    #         response_body = {
-    #             'error': 'Transaction must have a date, description, and amount'
-    #         }
-    #         return make_response(response_body, 400)
+        except:
+            response_body = {
+                'error': 'Transaction must have a date, description, and amount'
+            }
+            return make_response(response_body, 400)
 
 
 
