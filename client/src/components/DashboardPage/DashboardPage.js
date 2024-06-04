@@ -7,25 +7,50 @@ function DashboardPage() {
             {/* Top Line boxes Div */}
             <div className="m-4 grid grid-cols-1 gap-5 sm:grid-cols-12">
 
-                <div className="min-h-[150px] rounded-lg shadow bg-orange-500 sm:col-span-3">
-                    <h1>Box 1</h1>
+                <div className="min-h-[150px] rounded-[20px] shadow bg-white sm:col-span-3">
+                    <div className="min-h-[35px] rounded-lg shadow text-center font-semibold sm:text-3xl sm:col-span-3">
+                        <h1>Revenue YTD</h1>
+                    </div>
+                    <div className="h-[115px] rounded-lg shadow  sm:col-span-1 ">
+                        <div className="min-h-[20px] rounded-lg sm:col-span-1"></div>
+                        <h1 className="flex lg:text-6xl md:text-4xl text-5xl justify-center">$100,000</h1>
+                    </div>
                 </div>
 
-                <div className="min-h-[150px] rounded-lg shadow bg-teal-500 sm:col-span-3">
-                    <h1>Box 2</h1>
+                <div className="min-h-[150px] rounded-[20px] shadow bg-white sm:col-span-3">
+                    <div className="min-h-[35px] rounded-lg shadow font-semibold text-center sm:text-3xl sm:col-span-3">
+                        <h1>COGS</h1>
+                    </div>
+                    <div className="h-[115px] rounded-lg shadow  sm:col-span-1 ">
+                        <div className="min-h-[20px] rounded-lg sm:col-span-1"></div>
+                        <h1 className="flex lg:text-6xl md:text-4xl text-5xl justify-center">$50,000</h1>
+                    </div>
                 </div>
 
-                <div className="min-h-[150px] rounded-lg shadow bg-indigo-500 sm:col-span-3">
-                    <h1>Box 3</h1>
+                <div className="min-h-[150px] rounded-[20px] shadow bg-white sm:col-span-3">
+                    <div className="min-h-[35px] rounded-lg font-semibold shadow text-center sm:text-3xl sm:col-span-3">
+                        <h1>Operating Expenses</h1>
+                    </div>
+                    <div className="h-[115px] rounded-lg shadow  sm:col-span-1 ">
+                        <div className="min-h-[20px] rounded-lg sm:col-span-1"></div>
+                        <h1 className="flex lg:text-6xl md:text-4xl text-5xl justify-center">$20,000</h1>
+                    </div>
                 </div>
 
-                <div className="min-h-[150px] rounded-lg shadow bg-yellow-500 sm:col-span-3">
-                    <h1>Box 4</h1>
+                <div className="min-h-[150px] rounded-[20px] shadow bg-white sm:col-span-3">
+                    <div className="min-h-[35px] rounded-lg shadow font-semibold text-center sm:text-3xl sm:col-span-3">
+                        <h1>EBITDA</h1>
+                    </div>
+                    <div className="h-[115px] rounded-lg shadow  sm:col-span-1 ">
+                        <div className="min-h-[20px] rounded-lg sm:col-span-1"></div>
+                        <h1 className="flex lg:text-6xl md:text-4xl text-5xl justify-center">$30,000</h1>
+                    </div>
                 </div>
 
             </div>
 
 
+            {/* Middle of the page, full screen horizontal div */}
             <div className="m-4 grid grid-cols-1 gap-10 sm:grid-cols-12">
                 <div className="min-h-[350px] rounded-lg shadow bg-red-500 sm:col-span-12">
                     <h1>Box 5</h1>
