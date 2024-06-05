@@ -136,6 +136,19 @@ export default function AppNavBar() {
             })
     }
 
+    // Updating the transaction in the state
+    function onUpdateTransaction(updatedTransaction) {
+        const updatedTransactions = transactionsList.map(
+            transaction => {
+                if (transaction.id === updatedTransaction.id) {
+                    return updatedTransaction
+                }
+                else { return transaction }
+            }
+        )
+        setTransactionsList(updatedTransactions)
+    }
+
 
 
 
@@ -461,7 +474,8 @@ export default function AppNavBar() {
                             transactionsList: transactionsList,
                             categoryOptions: categoryOptions,
                             addNewTransaction: addNewTransaction,
-                            deleteTransaction: deleteTransaction
+                            deleteTransaction: deleteTransaction,
+                            onUpdateTransaction: onUpdateTransaction
                         }}
                         />
 

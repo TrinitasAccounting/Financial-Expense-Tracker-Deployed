@@ -5,19 +5,58 @@ import AddTransactionSlideOver from "./AddTransactionSlideOver";
 
 import DropdownCategory from "./DropDownMenu";
 import DeleteButton from "./ButtonForDelete";
+import EditTransactionPopUp from "./EditTransactionPopUp";
 
 
 export default function TransactionsList({ transactionsList, categoryOptions }) {
 
-    const [transactionSlideOverOpen, setTransactionSlideOverOpen] = useState(false)
+    const [transactionSlideOverOpen, setTransactionSlideOverOpen] = useState(false);
 
-    const { deleteTransaction } = useOutletContext();
+    const { deleteTransaction, onUpdateTransaction } = useOutletContext();
+
+
 
     //Changing the state to open or close the slide over for transaction add
     function openCloseTransactionSlideOver() {
         return (
             setTransactionSlideOverOpen(transactionSlideOverOpen => !transactionSlideOverOpen)
         )
+    }
+
+
+    // Edditing a Transaction__________________________________________________________
+    const [editTransaction, setEditTransaction] = useState(false);
+
+    const [editForm, setEditForm] = useState({
+        id: "",
+        date: "",
+        description: "",
+        category: "",
+        amount: ""
+    })
+
+
+    // To show or not show the edit transaction
+    function openCloseEditTransaction(transaction) {
+        if (transaction.id === editForm.id) {
+            setEditTransaction(editTransaction => !editTransaction)
+        }
+        else if (editTransaction === false) {
+            setEditTransaction(editTransaction => !editTransaction)
+        }
+        else { setEditTransaction(editTransaction => !editTransaction) }
+    }
+
+    // capture the transaction you wish to edit and set to state
+    function captureEdit(clickedTransaction) {
+        let filtered = transactionsList.filter(transaction => transaction.id === clickedTransaction.id)
+        setEditForm(filtered[0])
+    }
+
+    // handles the changes on the front end only
+    function handleTransactionUpdate(updatedTransaction) {
+        setEditForm(false)
+        onUpdateTransaction(updatedTransaction)
     }
 
 
@@ -68,6 +107,17 @@ export default function TransactionsList({ transactionsList, categoryOptions }) 
                 </>
             }
 
+            {openCloseEditTransaction ?
+                <div>
+                    <EditTransactionPopUp editTransaction={editTransaction} openCloseEditTransaction={openCloseEditTransaction} editForm={editForm} handleTransactionUpdate={handleTransactionUpdate} />
+                </div>
+                :
+
+                <>
+                </>
+
+            }
+
             <div className="mt-8 flow-root">
                 <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
@@ -111,9 +161,14 @@ export default function TransactionsList({ transactionsList, categoryOptions }) 
                                                 <DeleteButton deleteTransaction={deleteTransaction} trans={trans} />
                                             </td>
                                             <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                                <a href="/" className="text-indigo-600 hover:text-indigo-900">
+                                                <button
+                                                    className="text-indigo-600 hover:text-indigo-900"
+                                                    onClick={() => {
+                                                        captureEdit(trans)
+                                                        openCloseEditTransaction(trans)
+                                                    }}>
                                                     Edit<span className="sr-only">, {trans.id}</span>
-                                                </a>
+                                                </button>
                                             </td>
                                         </tr>
                                     ))}
