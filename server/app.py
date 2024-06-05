@@ -84,6 +84,33 @@ class TransactionById(Resource):
             }
             return make_response(response_body, 404)
 
+    def patch(self, id):
+
+        transaction = db.session.get(Transactions, id)
+
+        if transaction:
+            try:
+                for attr in request.json:
+                    setattr(transaction, attr, request.json[attr])
+
+                db.session.commit()
+                response_body = transaction.to_dict()
+                return make_response(response_body, 200)
+
+            except:
+                response_body = {
+                    'error': "Transaction must have a date, description, category, and amount"
+                }
+                return make_response(response_body, 400)
+
+        else:
+            response_body = {
+                'error': "Transaction Not Found"
+            }
+            return make_response(response_body, 404)
+
+
+
 
 api.add_resource(TransactionById, '/server/transaction/<int:id>')
 

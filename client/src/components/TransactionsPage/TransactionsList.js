@@ -35,7 +35,6 @@ export default function TransactionsList({ transactionsList, categoryOptions }) 
         amount: ""
     })
 
-
     // To show or not show the edit transaction
     function openCloseEditTransaction(transaction) {
         if (transaction.id === editForm.id) {
@@ -55,9 +54,18 @@ export default function TransactionsList({ transactionsList, categoryOptions }) 
 
     // handles the changes on the front end only
     function handleTransactionUpdate(updatedTransaction) {
-        setEditForm(false)
+        setEditTransaction(false)
         onUpdateTransaction(updatedTransaction)
     }
+
+    // capture user input in edit form inputs
+    function handleChange(event) {
+        setEditForm({
+            ...editForm, [event.target.name]: event.target.value
+        })
+    }
+
+    // ______________________________________________________________________________________
 
 
 
@@ -109,7 +117,7 @@ export default function TransactionsList({ transactionsList, categoryOptions }) 
 
             {openCloseEditTransaction ?
                 <div>
-                    <EditTransactionPopUp editTransaction={editTransaction} openCloseEditTransaction={openCloseEditTransaction} editForm={editForm} handleTransactionUpdate={handleTransactionUpdate} />
+                    <EditTransactionPopUp editTransaction={editTransaction} openCloseEditTransaction={openCloseEditTransaction} editForm={editForm} handleTransactionUpdate={handleTransactionUpdate} handleChange={handleChange} />
                 </div>
                 :
 

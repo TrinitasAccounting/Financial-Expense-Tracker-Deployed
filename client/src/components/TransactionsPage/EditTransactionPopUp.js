@@ -1,17 +1,36 @@
 
 
-import { Fragment, useState } from 'react'
+// import { Fragment, useState } from 'react'
 import { Dialog, DialogPanel, DialogTitle, Transition, TransitionChild } from '@headlessui/react'
-import { ExclamationTriangleIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { XMarkIcon } from '@heroicons/react/24/outline'
 
-export default function EditTransactionPopUp({ editTransaction, openCloseEditTransaction, editForm, handleTransactionUpdate }) {
-    const [open, setOpen] = useState(true)
+export default function EditTransactionPopUp({ editTransaction, openCloseEditTransaction, editForm, handleTransactionUpdate, handleChange }) {
 
-    // console.log(editForm.description)
+
+
+
+    // edit form PATCH
+    function handleEditForm(event) {
+        event.preventDefault()
+        fetch(`/server/transaction/${editForm.id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(editForm)
+        })
+            .then(res => res.json())
+            .then(updatedTransaction => handleTransactionUpdate(updatedTransaction))
+    }
+
+
+
+
+
 
     return (
         <Transition show={editTransaction}>
-            <Dialog className="relative z-10" onClose={openCloseEditTransaction}>
+            <Dialog className="relative z-10 " onClose={openCloseEditTransaction}>
                 <TransitionChild
                     enter="ease-out duration-300"
                     enterFrom="opacity-0"
@@ -23,8 +42,8 @@ export default function EditTransactionPopUp({ editTransaction, openCloseEditTra
                     <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
                 </TransitionChild>
 
-                <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-                    <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                <div className="fixed inset-10 z-10 w-screen overflow-y-auto">
+                    <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center  sm:p-0">
                         <TransitionChild
                             enter="ease-out duration-300"
                             enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
@@ -44,33 +63,114 @@ export default function EditTransactionPopUp({ editTransaction, openCloseEditTra
                                         <XMarkIcon className="h-6 w-6" aria-hidden="true" />
                                     </button>
                                 </div>
-                                <div className="sm:flex sm:items-start">
-                                    <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
-                                        <ExclamationTriangleIcon className="h-6 w-6 text-red-600" aria-hidden="true" />
-                                    </div>
+                                <div className="sm:flex sm:items-start sm:grid-cols-12">
+
                                     <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
                                         <DialogTitle as="h3" className="text-base font-semibold leading-6 text-gray-900">
-                                            {editForm.description}
+                                            Edit Transaction
                                         </DialogTitle>
-                                        <div className="mt-2">
-                                            <p className="text-sm text-gray-500">
-                                                Are you sure you want to deactivate your account? All of your data will be permanently removed
-                                                from our servers forever. This action cannot be undone.
-                                            </p>
+
+                                        <div className="space-y-2 px-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:space-y-0 sm:px-6 sm:py-5">
+                                            <div>
+                                                <label
+                                                    htmlFor="description"
+                                                    className="block text-sm font-medium leading-6 text-gray-900 sm:mt-1.5"
+                                                >
+                                                    Date
+                                                </label>
+                                            </div>
+                                            <div className="sm:col-span-2">
+                                                <textarea
+                                                    value={editForm.date}
+                                                    onChange={handleChange}
+                                                    id="description"
+                                                    name="date"
+                                                    rows={1}
+                                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                    defaultValue={''}
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="space-y-2 px-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:space-y-0 sm:px-6 sm:py-5">
+                                            <div>
+                                                <label
+                                                    htmlFor="description"
+                                                    className="block text-sm font-medium leading-6 text-gray-900 sm:mt-1.5"
+                                                >
+                                                    Description
+                                                </label>
+                                            </div>
+                                            <div className="sm:col-span-2">
+                                                <textarea
+                                                    value={editForm.description}
+                                                    onChange={handleChange}
+
+                                                    id="description"
+                                                    name="description"
+                                                    rows={1}
+                                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                    defaultValue={''}
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="space-y-2 px-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:space-y-0 sm:px-6 sm:py-5">
+                                            <div>
+                                                <label
+                                                    htmlFor="description"
+                                                    className="block text-sm font-medium leading-6 text-gray-900 sm:mt-1.5"
+                                                >
+                                                    Category
+                                                </label>
+                                            </div>
+                                            <div className="sm:col-span-2">
+                                                <textarea
+                                                    value={editForm.category}
+                                                    onChange={handleChange}
+
+                                                    id="category"
+                                                    name="category"
+                                                    rows={1}
+                                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                    defaultValue={''}
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="space-y-2 px-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:space-y-0 sm:px-6 sm:py-5">
+                                            <div>
+                                                <label
+                                                    htmlFor="description"
+                                                    className="block text-sm font-medium leading-6 text-gray-900 sm:mt-1.5"
+                                                >
+                                                    Amount
+                                                </label>
+                                            </div>
+                                            <div className="sm:col-span-2">
+                                                <textarea
+                                                    value={editForm.amount}
+                                                    onChange={handleChange}
+
+                                                    id="amount"
+                                                    name="amount"
+                                                    rows={1}
+                                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                    defaultValue={''}
+                                                />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
                                     <button
+                                        onClick={handleEditForm}
                                         type="button"
-                                        className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
-                                        onClick={() => setOpen(false)}
+                                        className="inline-flex w-full justify-center rounded-md bg-violet-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-violet-900 sm:ml-3 sm:w-auto"
+
                                     >
-                                        Deactivate
+                                        Make Changes
                                     </button>
                                     <button
                                         type="button"
-                                        className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+                                        className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 hover:text-red-600 sm:mt-0 sm:w-auto"
                                         onClick={openCloseEditTransaction}
                                     >
                                         Cancel
