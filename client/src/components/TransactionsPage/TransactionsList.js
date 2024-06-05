@@ -3,14 +3,33 @@ import { useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import AddTransactionSlideOver from "./AddTransactionSlideOver";
 
-import DropdownCategory from "./DropDownMenu";
 import DeleteButton from "./ButtonForDelete";
 import EditTransactionPopUp from "./EditTransactionPopUp";
 
+const people = [
+    // { id: 1, name: 'Sales' },
+    // { id: 2, name: 'Advertising & Marketing' },
+    // { id: 3, name: 'Office Expenses' },
+    // { id: 4, name: 'Meals & Entertainment' },
+    // { id: 5, name: 'Job Supplies' },
+    // { id: 6, name: 'Travel Expenses' },
+    // { id: 7, name: 'Labor Expense' },
+    // { id: 8, name: 'Rent & Lease' },
+    // { id: 9, name: 'Insurance' },
+    // { id: 10, name: 'Software & Subscriptions' },
+    // { id: 11, name: 'Gas & Fuel' },
+    { id: 12, date: "", description: "", category: 'Gas & Fuel', amount: "" },
+    { id: 12, date: "", description: "", category: 'Sales', amount: "" },
+    { id: 12, date: "", description: "", category: 'Meals & Entertainment', amount: "" },
+    { id: 12, date: "", description: "", category: 'Insurance', amount: "" },
+]
 
 export default function TransactionsList({ transactionsList, categoryOptions }) {
 
     const [transactionSlideOverOpen, setTransactionSlideOverOpen] = useState(false);
+
+    const [selected, setSelected] = useState(people[0])
+
 
     const { deleteTransaction, onUpdateTransaction } = useOutletContext();
 
@@ -68,6 +87,18 @@ export default function TransactionsList({ transactionsList, categoryOptions }) 
     // ______________________________________________________________________________________
 
 
+    // Setting the dropdown menu initial state on click of edit
+    function clickOfEditSelected(editFormData) {
+
+        setSelected({ id: editFormData.id, date: editFormData.date, description: editFormData.description, category: editFormData.category, amount: editFormData.amount })
+    }
+
+
+
+
+
+
+
 
     // console.log(categoryOptions);
 
@@ -117,7 +148,7 @@ export default function TransactionsList({ transactionsList, categoryOptions }) 
 
             {openCloseEditTransaction ?
                 <div>
-                    <EditTransactionPopUp editTransaction={editTransaction} openCloseEditTransaction={openCloseEditTransaction} editForm={editForm} handleTransactionUpdate={handleTransactionUpdate} handleChange={handleChange} />
+                    <EditTransactionPopUp editTransaction={editTransaction} openCloseEditTransaction={openCloseEditTransaction} editForm={editForm} handleTransactionUpdate={handleTransactionUpdate} handleChange={handleChange} selected={selected} setSelected={setSelected} people={people} />
                 </div>
                 :
 
@@ -160,7 +191,9 @@ export default function TransactionsList({ transactionsList, categoryOptions }) 
                                                 {trans.date}
                                             </td>
                                             <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{trans.description}</td>
-                                            <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><DropdownCategory /></td>
+                                            <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                                {trans.category}
+                                            </td>
                                             <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{trans.amount}</td>
                                             <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                                                 {/* <a className="text-red-600 hover:text-red-900">
@@ -174,6 +207,7 @@ export default function TransactionsList({ transactionsList, categoryOptions }) 
                                                     onClick={() => {
                                                         captureEdit(trans)
                                                         openCloseEditTransaction(trans)
+                                                        clickOfEditSelected(trans)
                                                     }}>
                                                     Edit<span className="sr-only">, {trans.id}</span>
                                                 </button>

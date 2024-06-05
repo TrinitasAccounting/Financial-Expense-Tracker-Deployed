@@ -1,10 +1,20 @@
 
 
 // import { Fragment, useState } from 'react'
+import { useState } from 'react'
 import { Dialog, DialogPanel, DialogTitle, Transition, TransitionChild } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 
-export default function EditTransactionPopUp({ editTransaction, openCloseEditTransaction, editForm, handleTransactionUpdate, handleChange }) {
+import DropdownMenu from './DropDownMenuForEditTransaction'
+
+export default function EditTransactionPopUp({ editTransaction, openCloseEditTransaction, editForm, handleTransactionUpdate, handleChange, selected, setSelected, people }) {
+
+
+    // State is being initially set in when the edit button is clicked on the "TransactionsList" page
+
+
+
+
 
 
 
@@ -24,6 +34,7 @@ export default function EditTransactionPopUp({ editTransaction, openCloseEditTra
     }
 
 
+    // console.log(selected);
 
 
 
@@ -87,7 +98,7 @@ export default function EditTransactionPopUp({ editTransaction, openCloseEditTra
                                                     name="date"
                                                     rows={1}
                                                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                                    defaultValue={''}
+
                                                 />
                                             </div>
                                         </div>
@@ -109,7 +120,7 @@ export default function EditTransactionPopUp({ editTransaction, openCloseEditTra
                                                     name="description"
                                                     rows={1}
                                                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                                    defaultValue={''}
+
                                                 />
                                             </div>
                                         </div>
@@ -123,7 +134,7 @@ export default function EditTransactionPopUp({ editTransaction, openCloseEditTra
                                                 </label>
                                             </div>
                                             <div className="sm:col-span-2">
-                                                <textarea
+                                                {/* <textarea
                                                     value={editForm.category}
                                                     onChange={handleChange}
 
@@ -132,7 +143,8 @@ export default function EditTransactionPopUp({ editTransaction, openCloseEditTra
                                                     rows={1}
                                                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                                     defaultValue={''}
-                                                />
+                                                /> */}
+                                                <DropdownMenu selected={selected} setSelected={setSelected} people={people} />
                                             </div>
                                         </div>
                                         <div className="space-y-2 px-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:space-y-0 sm:px-6 sm:py-5">
@@ -153,7 +165,7 @@ export default function EditTransactionPopUp({ editTransaction, openCloseEditTra
                                                     name="amount"
                                                     rows={1}
                                                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                                    defaultValue={''}
+
                                                 />
                                             </div>
                                         </div>

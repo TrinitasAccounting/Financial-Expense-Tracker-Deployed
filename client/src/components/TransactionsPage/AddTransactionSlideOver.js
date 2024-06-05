@@ -5,7 +5,8 @@ import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 
-// import DateObject from "react-date-object";
+
+import DropdownMenu from './DropDownMenuForEditTransaction';
 
 
 import React, { useState } from 'react'
@@ -239,7 +240,7 @@ export default function AddTransactionSlideOver({ transactionSlideOverOpen, open
                                                         </label>
                                                     </div>
                                                     <div className="sm:col-span-2">
-                                                        <textarea
+                                                        {/* <textarea
                                                             onChange={updateTransactionFormData}
                                                             value={transactionFormData.category}
                                                             id="category"
@@ -247,7 +248,8 @@ export default function AddTransactionSlideOver({ transactionSlideOverOpen, open
                                                             rows={1}
                                                             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                                             defaultValue={''}
-                                                        />
+                                                        /> */}
+                                                        <DropdownMenu />
                                                     </div>
                                                 </div>
 
