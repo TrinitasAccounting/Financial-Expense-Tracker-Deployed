@@ -21,8 +21,17 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-export default function DropdownMenu({ selected, setSelected, people }) {
+export default function DropdownMenu({ selected, setSelected, people, editForm }) {
     // const [selected, setSelected] = useState(people[0])
+
+
+    // console.log(selected);
+
+    // function handleChangeTest() {
+    //     editForm['category'] = selected
+    // }
+
+
 
 
 
@@ -78,6 +87,6 @@ export default function DropdownMenu({ selected, setSelected, people }) {
                     </div>
                 </>
             )}
-        </Listbox>
+        </Listbox >
     )
 }

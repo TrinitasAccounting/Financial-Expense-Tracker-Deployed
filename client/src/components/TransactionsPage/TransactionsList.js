@@ -18,10 +18,10 @@ const people = [
     // { id: 9, name: 'Insurance' },
     // { id: 10, name: 'Software & Subscriptions' },
     // { id: 11, name: 'Gas & Fuel' },
-    { id: 12, date: "", description: "", category: 'Gas & Fuel', amount: "" },
-    { id: 12, date: "", description: "", category: 'Sales', amount: "" },
-    { id: 12, date: "", description: "", category: 'Meals & Entertainment', amount: "" },
-    { id: 12, date: "", description: "", category: 'Insurance', amount: "" },
+    { id: 1, date: "", description: "", category: 'Gas & Fuel', amount: "" },
+    { id: 2, date: "", description: "", category: 'Sales', amount: "" },
+    { id: 3, date: "", description: "", category: 'Meals & Entertainment', amount: "" },
+    { id: 4, date: "", description: "", category: 'Insurance', amount: "" },
 ]
 
 export default function TransactionsList({ transactionsList, categoryOptions }) {
@@ -77,12 +77,26 @@ export default function TransactionsList({ transactionsList, categoryOptions }) 
         onUpdateTransaction(updatedTransaction)
     }
 
+
+
+
+
     // capture user input in edit form inputs
     function handleChange(event) {
+
         setEditForm({
             ...editForm, [event.target.name]: event.target.value
         })
     }
+
+
+
+    // handling the dropdown menu change
+    // let newSelectedCategory = { ...editForm }
+    // function handleDropDownChange() {
+    //     // newSelectedCategory.category = selected.category
+    //     // setEditForm(newSelectedCategory)
+    // }
 
     // ______________________________________________________________________________________
 
@@ -137,7 +151,7 @@ export default function TransactionsList({ transactionsList, categoryOptions }) 
             {/* This is what shows when the "Add Transactions" button is clicked. Slide over component is passed props here */}
             {transactionSlideOverOpen ?
                 <div>
-                    <AddTransactionSlideOver transactionSlideOverOpen={transactionSlideOverOpen} openCloseTransactionSlideOver={openCloseTransactionSlideOver} />
+                    <AddTransactionSlideOver transactionSlideOverOpen={transactionSlideOverOpen} openCloseTransactionSlideOver={openCloseTransactionSlideOver} people={people} />
                 </div>
 
                 :

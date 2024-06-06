@@ -52,7 +52,7 @@ import { XMarkIcon } from '@heroicons/react/24/outline'
 //     },
 // ]
 
-export default function AddTransactionSlideOver({ transactionSlideOverOpen, openCloseTransactionSlideOver }) {
+export default function AddTransactionSlideOver({ transactionSlideOverOpen, openCloseTransactionSlideOver, people }) {
     // const [open, setOpen] = useState(true)
 
     // the state for the date selected when adding a new product
@@ -103,6 +103,9 @@ export default function AddTransactionSlideOver({ transactionSlideOverOpen, open
         })
         openCloseTransactionSlideOver()
     }
+
+
+
 
 
 
@@ -208,6 +211,36 @@ export default function AddTransactionSlideOver({ transactionSlideOverOpen, open
                                                     </div>
                                                 </div>
 
+
+                                                <div className="space-y-2 px-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:space-y-0 sm:px-6 sm:py-5">
+                                                    <div>
+                                                        <label
+                                                            htmlFor="description"
+                                                            className="block text-sm font-medium leading-6 text-gray-900 sm:mt-1.5"
+                                                        >
+                                                            Category
+                                                        </label>
+                                                    </div>
+                                                    <div className="sm:col-span-2 mt-2" >
+
+                                                        <select
+                                                            // onChange={handleChange}
+                                                            onChange={updateTransactionFormData}
+                                                            id="category"
+                                                            name="category"
+
+                                                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                                                        >
+                                                            {people.map((trans) => {
+                                                                return (
+                                                                    <option value={trans.category}>{trans.category}</option>
+                                                                )
+
+                                                            })}
+                                                        </select>
+                                                    </div>
+                                                </div>
+
                                                 <div className="space-y-2 px-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:space-y-0 sm:px-6 sm:py-5">
                                                     <div>
                                                         <label
@@ -229,30 +262,6 @@ export default function AddTransactionSlideOver({ transactionSlideOverOpen, open
                                                         />
                                                     </div>
                                                 </div>
-
-                                                <div className="space-y-2 px-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:space-y-0 sm:px-6 sm:py-5">
-                                                    <div>
-                                                        <label
-                                                            htmlFor="category"
-                                                            className="block text-sm font-medium leading-6 text-gray-900 sm:mt-1.5"
-                                                        >
-                                                            Category
-                                                        </label>
-                                                    </div>
-                                                    <div className="sm:col-span-2">
-                                                        {/* <textarea
-                                                            onChange={updateTransactionFormData}
-                                                            value={transactionFormData.category}
-                                                            id="category"
-                                                            name="category"
-                                                            rows={1}
-                                                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                                            defaultValue={''}
-                                                        /> */}
-                                                        <DropdownMenu />
-                                                    </div>
-                                                </div>
-
                                             </div>
                                         </div>
 
