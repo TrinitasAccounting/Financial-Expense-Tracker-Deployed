@@ -30,8 +30,8 @@ import {
 const navigation = [
     { name: 'Dashboard', href: '/', icon: HomeIcon, current: false },
     { name: 'Transaction Ledger', href: '/transactions', icon: UsersIcon, current: false },
-    { name: 'Profile', href: '/', icon: FolderIcon, current: false },
-    { name: 'Settings', href: '/settings', icon: FolderIcon, current: false },
+    { name: 'Profile', href: '/profile', icon: FolderIcon, current: false },
+    { name: 'Chart of Accounts', href: '/chartofaccounts', icon: FolderIcon, current: false },
     // { name: 'Calendar', href: '#', icon: CalendarIcon, current: false },
     // { name: 'Documents', href: '#', icon: DocumentDuplicateIcon, current: false },
     // { name: 'Reports', href: '#', icon: ChartPieIcon, current: false },
@@ -55,6 +55,8 @@ export default function AppNavBar() {
     const [sidebarOpen, setSidebarOpen] = useState(false);
 
     const [transactionsList, setTransactionsList] = useState([]);
+
+    const [chartOfAccountsList, setChartOfAccountsList] = useState([]);
 
 
 
@@ -149,6 +151,19 @@ export default function AppNavBar() {
         )
         setTransactionsList(updatedTransactions)
     }
+
+
+
+
+    // All fetches for the Chart of Accounts_______
+    useEffect(() => {
+        fetch('/server/chartofaccounts')
+            .then(res => {
+                if (res.ok) {
+                    res.json().then(data => setChartOfAccountsList(data))
+                }
+            })
+    }, [])
 
 
 
@@ -476,7 +491,9 @@ export default function AppNavBar() {
                             categoryOptions: categoryOptions,
                             addNewTransaction: addNewTransaction,
                             deleteTransaction: deleteTransaction,
-                            onUpdateTransaction: onUpdateTransaction
+                            onUpdateTransaction: onUpdateTransaction,
+                            chartOfAccountsList: chartOfAccountsList,
+                            setChartOfAccountsList: setChartOfAccountsList
                         }}
                         />
 

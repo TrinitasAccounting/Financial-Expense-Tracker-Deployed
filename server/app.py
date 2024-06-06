@@ -9,7 +9,7 @@ from flask_restful import Resource
 # Local imports
 from config import app, db, api
 # Add your model imports
-from models import Transactions, Profile
+from models import Transactions, Profile, Chart_Of_Accounts
 
 import os
 from dotenv import load_dotenv
@@ -26,6 +26,14 @@ def index(id=0):
 
 @app.route('/transactions')
 def show_transactions():
+    return render_template("index.html")
+
+@app.route('/profile')
+def show_profile():
+    return render_template("index.html")
+
+@app.route('/chartofaccounts')
+def show_chartofaccounts():
     return render_template("index.html")
 
 
@@ -115,6 +123,40 @@ class TransactionById(Resource):
 
 
 api.add_resource(TransactionById, '/server/transaction/<int:id>')
+
+
+
+
+
+class AllChartOfAccounts(Resource):
+
+    def get(self):
+
+        accounts = Chart_Of_Accounts.query.all()
+
+        response_body = [account.to_dict() for account in accounts]
+        return make_response(response_body, 200)
+
+    def post(self):
+        try: 
+            new_account = Chart_Of_Accounts(name=request.json.get('name'), account_type=request.json.get('account_type'))
+            db.session.add(new_account)
+            db.session.commit()
+
+            response_body = new_account.to_dict()
+            return make_response(response_body, 201)
+
+        except:
+            response_body = {
+                'error': 'Accounts must have a name and an account type'
+            }
+            return make_response(response_body, 400)
+
+
+
+
+
+api.add_resource(AllChartOfAccounts, '/server/chartofaccounts')
 
 
 

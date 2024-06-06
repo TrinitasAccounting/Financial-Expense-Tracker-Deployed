@@ -18,9 +18,10 @@ if __name__ == '__main__':
         # Delete data from the tables first
         Transactions.query.delete()
         Profile.query.delete()
+        Chart_Of_Accounts.query.delete()
         db.session.commit()
 
-        profile1 = Profile(name="Clay Mangum", job_type="Software Engineer", state="New Jersey", age='30')
+        profile1 = Profile(name="Clay Mangum", job_type="Software Engineer", state="New Jersey", age='30', email='clay@software.com')
         db.session.add_all([profile1])
         db.session.commit()
 
