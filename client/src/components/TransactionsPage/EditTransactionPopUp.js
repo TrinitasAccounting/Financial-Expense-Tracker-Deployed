@@ -147,11 +147,11 @@ export default function EditTransactionPopUp({ editTransaction, openCloseEditTra
 
                                                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                                                     >
-                                                        <option value={editForm.category}>{editForm.category}</option>
+                                                        <option key={editForm.id} value={editForm.category}>{editForm.category}</option>
                                                         {people.map((trans) => {
                                                             if (trans.category !== editForm.category) {
                                                                 return (
-                                                                    <option value={trans.category}>{trans.category}</option>
+                                                                    <option key={trans.id} value={trans.category}>{trans.category}</option>
                                                                 )
                                                             }
                                                         })}

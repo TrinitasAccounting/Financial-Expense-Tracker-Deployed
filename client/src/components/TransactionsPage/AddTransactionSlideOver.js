@@ -206,7 +206,7 @@ export default function AddTransactionSlideOver({ transactionSlideOverOpen, open
                                                             name="description"
                                                             rows={1}
                                                             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                                            defaultValue={''}
+
                                                         />
                                                     </div>
                                                 </div>
@@ -233,7 +233,7 @@ export default function AddTransactionSlideOver({ transactionSlideOverOpen, open
                                                         >
                                                             {people.map((trans) => {
                                                                 return (
-                                                                    <option value={trans.category}>{trans.category}</option>
+                                                                    <option key={trans.id} value={trans.category}>{trans.category}</option>
                                                                 )
 
                                                             })}
@@ -258,7 +258,7 @@ export default function AddTransactionSlideOver({ transactionSlideOverOpen, open
                                                             name="amount"
                                                             rows={1}
                                                             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                                            defaultValue={''}
+
                                                         />
                                                     </div>
                                                 </div>

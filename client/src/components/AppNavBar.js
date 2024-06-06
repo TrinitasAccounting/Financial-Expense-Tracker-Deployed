@@ -31,6 +31,7 @@ const navigation = [
     { name: 'Dashboard', href: '/', icon: HomeIcon, current: false },
     { name: 'Transaction Ledger', href: '/transactions', icon: UsersIcon, current: false },
     { name: 'Profile', href: '/', icon: FolderIcon, current: false },
+    { name: 'Settings', href: '/settings', icon: FolderIcon, current: false },
     // { name: 'Calendar', href: '#', icon: CalendarIcon, current: false },
     // { name: 'Documents', href: '#', icon: DocumentDuplicateIcon, current: false },
     // { name: 'Reports', href: '#', icon: ChartPieIcon, current: false },

@@ -8,6 +8,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AppNavBar from "./components/AppNavBar";
 import TransactionsMainPage from "./components/TransactionsPage/TransactionsMainPage";
 import DashboardPage from "./components/DashboardPage/DashboardPage";
+import SettingsMainPage from "./components/SettingsPage/SettingsMainPage";
 
 
 const router = createBrowserRouter([
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <DashboardPage />
+            },
+            {
+                path: '/settings',
+                element: <SettingsMainPage />
             },
         ]
     }

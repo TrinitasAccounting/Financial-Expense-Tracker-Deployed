@@ -8,7 +8,7 @@ from faker import Faker
 
 # Local imports
 from app import app
-from models import db, Transactions, Profile
+from models import db, Transactions, Profile, Chart_Of_Accounts
 
 if __name__ == '__main__':
     fake = Faker()
@@ -34,6 +34,27 @@ if __name__ == '__main__':
         t4 = Transactions(date='2/4/2024', description='Shell', amount='210.33', category='Gas & Fuel')
 
         db.session.add_all([t1, t2, t3, t4])
+        db.session.commit()
+
+
+        a1 = Chart_Of_Accounts(name='Sales', account_type='Income')
+        a2 = Chart_Of_Accounts(name='Product Income', account_type='Income')
+        a3 = Chart_Of_Accounts(name='Advertising & Marketing', account_type='Operating Expense')
+        a4 = Chart_Of_Accounts(name='Meals & Entertainment', account_type='Operating Expense')
+        a5 = Chart_Of_Accounts(name='Office Expenses', account_type='Operating Expense')
+        a6 = Chart_Of_Accounts(name='Legal & Professional', account_type='Operating Expense')
+        a7 = Chart_Of_Accounts(name='Rent & Lease', account_type='Operating Expense')
+        a8 = Chart_Of_Accounts(name='Gas & Fuel', account_type='Operating Expense')
+        a9 = Chart_Of_Accounts(name='Insurance', account_type='Operating Expense')
+        a10 = Chart_Of_Accounts(name='Job Supplies', account_type='Operating Expense')
+        a11 = Chart_Of_Accounts(name='Travel Expenses', account_type='Operating Expense')
+        a12 = Chart_Of_Accounts(name='Contractors', account_type='Operating Expense')
+        a13 = Chart_Of_Accounts(name='Software & Subscriptions', account_type='Operating Expense')
+        a14 = Chart_Of_Accounts(name='Material Cost', account_type='Cost of Goods Sold')
+        a15 = Chart_Of_Accounts(name='Direct Labor Cost', account_type='Cost of Goods Sold')
+        a16 = Chart_Of_Accounts(name='Direct COGS', account_type='Cost of Goods Sold')
+
+        db.session.add_all([a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16])
         db.session.commit()
 
 
