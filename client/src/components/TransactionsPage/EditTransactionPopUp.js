@@ -5,7 +5,7 @@
 import { Dialog, DialogPanel, DialogTitle, Transition, TransitionChild } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 
-import DropdownMenu from './DropDownMenuForEditTransaction'
+// import DropdownMenu from './DropDownMenuForEditTransaction'
 
 export default function EditTransactionPopUp({ editTransaction, openCloseEditTransaction, editForm, handleTransactionUpdate, handleChange, selected, setSelected, people }) {
 
