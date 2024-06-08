@@ -36,9 +36,9 @@ import ChartOfAccountsTable from './ChartOfAccountsTable'
 //     { name: 'Team members', href: '#', icon: UsersIcon, current: false },
 // ]
 
-function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
-}
+// function classNames(...classes) {
+//     return classes.filter(Boolean).join(' ')
+// }
 
 export default function ChartOfAccountsMain() {
     // const [mobileMenuOpen, setMobileMenuOpen] = useState(false)

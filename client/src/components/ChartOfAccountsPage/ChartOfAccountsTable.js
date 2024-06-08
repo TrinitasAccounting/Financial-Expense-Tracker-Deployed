@@ -68,7 +68,6 @@ export default function ChartOfAccountsTable({ chartOfAccountsList, setChartOfAc
 
     return (
         <ul
-            role="list"
             className="divide-y divide-gray-100 overflow-hidden bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl"
         >
             {chartOfAccountsList.map((account) => (
@@ -77,13 +76,13 @@ export default function ChartOfAccountsTable({ chartOfAccountsList, setChartOfAc
                         {/* <img className="h-12 w-12 flex-none rounded-full bg-gray-50" src={person.imageUrl} alt="" /> */}
                         <div className="min-w-0 flex-auto">
                             <p className="text-xl font-semibold leading-6 text-gray-900">
-                                <a>
+                                <a href='/'>
                                     <span className="absolute inset-x-0 -top-px bottom-0" />
                                     {account.name}
                                 </a>
                             </p>
                             <p className="mt-1 flex text-xs leading-5 text-gray-500">
-                                <a className="relative truncate hover:underline">
+                                <a href='/' className="relative truncate hover:underline">
                                     {account.account_type}
 
                                 </a>

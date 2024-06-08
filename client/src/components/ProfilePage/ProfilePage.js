@@ -1,6 +1,6 @@
 
 
-import { useState } from 'react'
+// import { useState } from 'react'
 // import { Dialog, DialogPanel, Field, Label, Switch } from '@headlessui/react'
 // import { Bars3Icon } from '@heroicons/react/20/solid'
 // import {
@@ -28,9 +28,9 @@ import { useState } from 'react'
 //     { name: 'Team members', href: '#', icon: UsersIcon, current: false },
 // ]
 
-function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
-}
+// function classNames(...classes) {
+//     return classes.filter(Boolean).join(' ')
+// }
 
 export default function ProfilePage() {
     // const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -112,7 +112,7 @@ export default function ProfilePage() {
                             <h2 className="text-base font-semibold leading-7 text-gray-900">Integrations</h2>
                             <p className="mt-1 text-sm leading-6 text-gray-500">Connect applications to your account.</p>
 
-                            <ul role="list" className="mt-6 divide-y divide-gray-100 border-t border-gray-200 text-sm leading-6">
+                            <ul className="mt-6 divide-y divide-gray-100 border-t border-gray-200 text-sm leading-6">
                                 <li className="flex justify-between gap-x-6 py-6">
                                     <div className="font-medium text-gray-900">QuickBooks</div>
                                     <button type="button" className="font-semibold text-indigo-600 hover:text-indigo-500">

@@ -2,9 +2,13 @@
 import { useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import AddTransactionSlideOver from "./AddTransactionSlideOver";
+import DromoUploader from "dromo-uploader-react"
+
 
 import DeleteButton from "./ButtonForDelete";
 import EditTransactionPopUp from "./EditTransactionPopUp";
+// import CSVImporter from "./CSVImport";
+
 
 const people = [
     // { id: 1, name: 'Sales' },
@@ -31,7 +35,7 @@ export default function TransactionsList({ transactionsList, categoryOptions }) 
     const [selected, setSelected] = useState(people[0])
 
 
-    const { deleteTransaction, onUpdateTransaction } = useOutletContext();
+    const { deleteTransaction, onUpdateTransaction, addNewTransaction } = useOutletContext();
 
 
 
@@ -108,6 +112,14 @@ export default function TransactionsList({ transactionsList, categoryOptions }) 
     }
 
 
+    const dromo = new DromoUploader("3badce43-0fc9-4440-8f9d-840f2de07713", "2205df5e-4fde-41d1-8fb7-5401be84b7a6");
+    // function openDromo() {
+    //     return (
+    //         dromo.open()
+    //     )
+    // }
+
+
 
 
 
@@ -135,6 +147,104 @@ export default function TransactionsList({ transactionsList, categoryOptions }) 
                     </p> */}
                 </div>
                 <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
+
+                    {/* <CSVImporter /> */}
+                    {/* <DromoUploader
+                        licenseKey="3badce43-0fc9-4440-8f9d-840f2de07713"
+                        fields={[
+                            {
+                                label: "Date",
+                                key: "date",
+                            },
+                            {
+                                label: "Description",
+                                key: "description",
+                            },
+                            // {
+                            //     label: "Amount",
+                            //     key: "amount",
+
+                            // },
+                            // {
+                            //     label: "Category",
+                            //     key: "category",
+                            // },
+                        ]}
+                        settings={{
+                            importIdentifier: "Contacts",
+                            developmentMode: true,
+                        }}
+                        user={{
+                            id: "1",
+                            name: "Jane Doe",
+                            email: "jane@dromo.io",
+                            companyId: "Dromo",
+                            companyName: "12345",
+                        }}
+                        onResults={(response, metadata) =>
+                            console.log(response, metadata)
+
+                        }
+                    >
+                        Import from CSV File
+                    </DromoUploader> */}
+
+                    {/* <script
+                        type="text/javascript"
+                        src="https://cdn.jsdelivr.net/npm/dromo-uploader-js/dist/DromoUploader.js"
+                    ></script> */}
+
+                    {/* <script type="text/javascript">
+                        const dromo = new DromoUploader("3badce43-0fc9-4440-8f9d-840f2de07713", "2205df5e-4fde-41d1-8fb7-5401be84b7a6");
+                    </script> */}
+
+                    {/* <div id="root">
+                        <button onClick={dromo.open()}>Open Dromo</button>
+                    </div> */}
+
+                    {/* <DromoUploader
+                    <script
+                        type="text/javascript"
+                        src="https://cdn.jsdelivr.net/npm/dromo-uploader-js/dist/DromoUploader.js"
+                    ></script>
+
+                    <script type="text/javascript">
+                        const dromo = new DromoUploader("3badce43-0fc9-4440-8f9d-840f2de07713", "016eacea-2792-497b-995a-d6f70eb1d01c");
+                    </script>
+
+                    <div id="root">
+                        <button onclick="dromo.open()">Open Dromo</button>
+                    </div> 
+
+
+                    >
+                </DromoUploader> */}
+
+                    <DromoUploader
+                        className="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                        licenseKey='3badce43-0fc9-4440-8f9d-840f2de07713'
+                        schemaName='Import Transactions'
+                        user={{ id: 'jimUser' }}
+                        developmentMode={true}
+
+                    // onResults={(response, metadata) =>
+                    //     // Connect to our database
+                    //     console.log(response, metadata)
+                    // }
+                    >
+                        Import from CSV
+                    </DromoUploader>
+
+
+
+
+
+
+
+                </div>
+
+                <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
+
                     <button
                         type="button"
                         className="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
@@ -149,25 +259,27 @@ export default function TransactionsList({ transactionsList, categoryOptions }) 
 
 
             {/* This is what shows when the "Add Transactions" button is clicked. Slide over component is passed props here */}
-            {transactionSlideOverOpen ?
-                <div>
-                    <AddTransactionSlideOver transactionSlideOverOpen={transactionSlideOverOpen} openCloseTransactionSlideOver={openCloseTransactionSlideOver} people={people} />
-                </div>
+            {
+                transactionSlideOverOpen ?
+                    <div>
+                        <AddTransactionSlideOver transactionSlideOverOpen={transactionSlideOverOpen} openCloseTransactionSlideOver={openCloseTransactionSlideOver} people={people} />
+                    </div>
 
-                :
+                    :
 
-                <>
-                </>
+                    <>
+                    </>
             }
 
-            {openCloseEditTransaction ?
-                <div>
-                    <EditTransactionPopUp editTransaction={editTransaction} openCloseEditTransaction={openCloseEditTransaction} editForm={editForm} handleTransactionUpdate={handleTransactionUpdate} handleChange={handleChange} selected={selected} setSelected={setSelected} people={people} />
-                </div>
-                :
+            {
+                openCloseEditTransaction ?
+                    <div>
+                        <EditTransactionPopUp editTransaction={editTransaction} openCloseEditTransaction={openCloseEditTransaction} editForm={editForm} handleTransactionUpdate={handleTransactionUpdate} handleChange={handleChange} selected={selected} setSelected={setSelected} people={people} />
+                    </div>
+                    :
 
-                <>
-                </>
+                    <>
+                    </>
 
             }
 
@@ -241,6 +353,6 @@ export default function TransactionsList({ transactionsList, categoryOptions }) 
 
 
 
-        </div>
+        </div >
     )
 }

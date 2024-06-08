@@ -1,5 +1,14 @@
 
 
+import ProfitByMonth from "./ProfitByMonth";
+import ExpensesBarChart from "./ExpensesBarChart";
+import COGSMonthChart from "./COGSMonthChart";
+import ExpensesDonutChart from "./ExpensesDonutChart";
+import TaxLineChart from "./TaxLineChart";
+
+
+
+
 
 function DashboardPage() {
     return (
@@ -52,8 +61,15 @@ function DashboardPage() {
 
             {/* Middle of the page, full screen horizontal div */}
             <div className="m-4 grid grid-cols-1 gap-10 sm:grid-cols-12">
-                <div className="min-h-[350px] rounded-lg shadow bg-red-500 sm:col-span-12">
-                    <h1>Box 5</h1>
+                <div className="min-h-[350px] rounded-lg shadow bg-white sm:col-span-12">
+                    <div className="min-h-[35px] rounded-lg shadow font-semibold text-center sm:text-3xl sm:col-span-3">
+                        <h1>Net Profit</h1>
+                    </div>
+                    {/* <h1>Income - Expenses</h1> */}
+                    <div >
+
+                        <ProfitByMonth />
+                    </div>
                 </div>
 
 
@@ -63,19 +79,31 @@ function DashboardPage() {
             {/* Bottom right grid box */}
             <div className="m-4 grid grid-cols-1 gap-5 sm:grid-cols-12">
                 <div className="min-h-[500px] rounded-lg shadow bg-yellow-500 sm:col-span-4">
-                    <h1>Box 6</h1>
+                    <h1>Top 15 Expenses</h1>
+                    <ExpensesBarChart />
                 </div>
                 {/* <div className="min-h-[150px] rounded-lg shadow bg-red-700 col-span-1"></div> */}
                 <div className="min-h-[500px] rounded-lg shadow bg-teal-100 sm:col-span-8 ">
                     <div className="m-1 grid grid-cols-1 gap-5 sm:grid-cols-1">
-                        <div className="min-h-[250px] rounded-lg shadow bg-gray-400 sm:col-span-8">
-                            {/* Code inside of here _____________________________________________________*/}
-                            <h1>Box 7</h1>
+                        <div className="min-h-[250px] rounded-lg grid grid-cols-2 gap-5 shadow sm:col-span-8">
+                            <div className="bg-indigo-400 sm:col-span-1 rounded-lg">
+                                <h1>Estimated Tax Liabiltiy line chart (Coporate Tax Rate && Personal Tax Rate)</h1>
+                                <TaxLineChart />
+                            </div>
+                            <div className="bg-indigo-200 sm:col-span-1 rounded-lg">
+                                <h1>Expense Donut (All Expenses)</h1>
+                                <ExpensesDonutChart />
+                            </div>
+                            {/* <div className="m-1 grid grid-cols-1 gap-5 sm:grid-cols-1">
+                            </div> */}
+                            {/* Code inside of here _____________________________________________________Donut Chart & Estimate Tax Liabiltiy*/}
+                            {/* <h1>Box 7</h1> */}
                         </div>
                         {/* <div className="min-h-[150px] rounded-lg shadow bg-red-700 col-span-1"></div> */}
                         <div className="min-h-[250px] rounded-lg shadow bg-purple-500 sm:col-span-8">
-                            {/* code inside of here _____________________________________________________*/}
-                            <h1>Box 8</h1>
+                            {/* code inside of here _____________________________________________________ COGS Monthly Bar chart*/}
+                            <h1>COGS Monthly Bar Chart</h1>
+                            <COGSMonthChart />
                         </div>
 
                     </div>

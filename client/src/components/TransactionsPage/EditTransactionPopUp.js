@@ -154,6 +154,12 @@ export default function EditTransactionPopUp({ editTransaction, openCloseEditTra
                                                                     <option key={trans.id} value={trans.category}>{trans.category}</option>
                                                                 )
                                                             }
+                                                            else {
+                                                                return (
+                                                                    <>
+                                                                    </>
+                                                                )
+                                                            }
                                                         })}
                                                     </select>
                                                 </div>
