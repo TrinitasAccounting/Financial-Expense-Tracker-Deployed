@@ -22,7 +22,7 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-export default function YearFilter({ selected, setSelected, yearsList }) {
+export default function YearFilter({ selected, setSelected, yearsList, updateMonthlyRevenue }) {
     // const [selected, setSelected] = useState(people[3])
 
     return (
@@ -43,6 +43,7 @@ export default function YearFilter({ selected, setSelected, yearsList }) {
                                 {yearsList.map((year) => (
                                     <ListboxOption
                                         key={year.id}
+                                        // onChange={updateMonthlyRevenue}
                                         className={({ focus }) =>
                                             classNames(
                                                 focus ? 'bg-indigo-600 text-white' : '',

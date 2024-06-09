@@ -27,8 +27,6 @@ for (let i = currentYear; i >= 2022; i--) {
     yearsList.push({ id: j, year: i })
 }
 
-// console.log(yearsList)
-
 
 
 
@@ -40,18 +38,18 @@ function DashboardPage() {
 
     const [selected, setSelected] = useState(yearsList[0])
 
+
+
     // Filtering the transactions list by the year
     let filteredTransactionsList = transactionsList.filter((trans) => {
         return (trans.date.slice(0, 4) === String(selected.year))
     })
 
-    // let test = transactionsList[0].date.slice(0, 4);
-
-    // console.log(filteredTransactionsList);
 
 
 
-    // Dashboard display top box value calculations__________________________________________
+
+    // Dashboard display top box value calculations__________________________________________________
     // Calculating the Revenue for the display
     let revenueTransactions = filteredTransactionsList.filter((trans) => {
         return (revenueCategories.includes(trans.category))
@@ -79,13 +77,111 @@ function DashboardPage() {
     // Calculating EBITDA for the display
     let totalEBITDA = totalRevenue - totalCOGS - totalOPEX;
 
+    // ________________________________________________________________________________________________
+
+
+
+    // Finding the amounts by month
+    let janRevenue = 0
+    let febRevenue = 0
+    let marRevenue = 0
+    let aprRevenue = 0
+    let mayRevenue = 0
+    let junRevenue = 0
+    let julRevenue = 0
+    let augRevenue = 0
+    let sepRevenue = 0
+    let octRevenue = 0
+    let novRevenue = 0
+    let decRevenue = 0
+
+
+
+    function updateMonthlyRevenue(filteredTransactionsList) {
+
+
+        if (filteredTransactionsList.length === 0) {
+            janRevenue = 0
+            febRevenue = 0
+            marRevenue = 0
+            aprRevenue = 0
+            mayRevenue = 0
+            junRevenue = 0
+            julRevenue = 0
+            augRevenue = 0
+            sepRevenue = 0
+            octRevenue = 0
+            novRevenue = 0
+            decRevenue = 0
+            return ('test')
+        }
+        else (filteredTransactionsList.map((trans) => {
+            if (String(trans.date.slice(5, 7)) === '01' && revenueCategories.includes(trans.category)) {
+                janRevenue = janRevenue + trans.amount
+                return (janRevenue)
+            }
+            else if (String(trans.date.slice(5, 7)) === '02' && revenueCategories.includes(trans.category)) {
+                febRevenue = febRevenue + trans.amount
+                return (febRevenue)
+            }
+            else if (String(trans.date.slice(5, 7)) === '03' && revenueCategories.includes(trans.category)) {
+                marRevenue = marRevenue + trans.amount
+                return (marRevenue)
+            }
+            else if (String(trans.date.slice(5, 7)) === '04' && revenueCategories.includes(trans.category)) {
+                aprRevenue = aprRevenue + trans.amount
+                return (aprRevenue)
+            }
+            else if (String(trans.date.slice(5, 7)) === '05' && revenueCategories.includes(trans.category)) {
+                mayRevenue = mayRevenue + trans.amount
+                return (mayRevenue)
+            }
+            else if (String(trans.date.slice(5, 7)) === '06' && revenueCategories.includes(trans.category)) {
+                junRevenue = junRevenue + trans.amount
+                return (junRevenue)
+            }
+            else if (String(trans.date.slice(5, 7)) === '07' && revenueCategories.includes(trans.category)) {
+                julRevenue = julRevenue + trans.amount
+                return (julRevenue)
+            }
+            else if (String(trans.date.slice(5, 7)) === '08' && revenueCategories.includes(trans.category)) {
+                augRevenue = augRevenue + trans.amount
+                return (augRevenue)
+            }
+            else if (String(trans.date.slice(5, 7)) === '09' && revenueCategories.includes(trans.category)) {
+                sepRevenue = sepRevenue + trans.amount
+                return (sepRevenue)
+            }
+            else if (String(trans.date.slice(5, 7)) === '10' && revenueCategories.includes(trans.category)) {
+                octRevenue = octRevenue + trans.amount
+                return (octRevenue)
+            }
+            else if (String(trans.date.slice(5, 7)) === '11' && revenueCategories.includes(trans.category)) {
+                novRevenue = novRevenue + trans.amount
+                return (novRevenue)
+            }
+            else if (String(trans.date.slice(5, 7)) === '12' && revenueCategories.includes(trans.category)) {
+                decRevenue = decRevenue + trans.amount
+                return (decRevenue)
+            }
+        }))
+    }
+    // else { console.log(filteredTransactionsList[0].date.slice(5, 7)) }
+
+    console.log(janRevenue);
+    // console.log(febRevenue);
+    // console.log(marRevenue);
+    // console.log(aprRevenue);
+
+
+
 
 
 
     return (
         <div>
             <div className="w-[200px]" >
-                <YearFilter selected={selected} setSelected={setSelected} yearsList={yearsList} />
+                <YearFilter selected={selected} setSelected={setSelected} yearsList={yearsList} updateMonthlyRevenue={updateMonthlyRevenue} />
             </div>
             <div className="m-4 grid grid-cols-1 gap-5 sm:grid-cols-12">
 
@@ -140,7 +236,7 @@ function DashboardPage() {
                     </div>
                     {/* <h1>Income - Expenses</h1> */}
                     <div >
-                        <ProfitByMonth />
+                        <ProfitByMonth filteredTransactionsList={filteredTransactionsList} />
                     </div>
                 </div>
 
