@@ -36,8 +36,9 @@ export default function ProfitByMonth() {
                     data: dataY,
                 },
             ]}
-            width={2090}
+            // width={2090}
             height={300}
+
         />
     );
 }

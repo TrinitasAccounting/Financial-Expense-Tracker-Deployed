@@ -7,19 +7,11 @@ import { XMarkIcon } from '@heroicons/react/24/outline'
 
 // import DropdownMenu from './DropDownMenuForEditTransaction'
 
-export default function EditTransactionPopUp({ editTransaction, openCloseEditTransaction, editForm, handleTransactionUpdate, handleChange, selected, setSelected, people }) {
+export default function EditTransactionPopUp({ editTransaction, openCloseEditTransaction, editForm, handleTransactionUpdate, handleChange, selected, setSelected, categoryAccountsList, people }) {
 
 
     // State is being initially set in when the edit button is clicked on the "TransactionsList" page
 
-
-    // function iterationForSelections() {
-    //     people.map((trans) => {
-    //         return (
-    //             <option value={trans.category}>{trans.category}</option>
-    //         )
-    //     })
-    // }
 
 
 
@@ -148,7 +140,7 @@ export default function EditTransactionPopUp({ editTransaction, openCloseEditTra
                                                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                                                     >
                                                         <option key={editForm.id} value={editForm.category}>{editForm.category}</option>
-                                                        {people.map((trans) => {
+                                                        {categoryAccountsList.map((trans) => {
                                                             if (trans.category !== editForm.category) {
                                                                 return (
                                                                     <option key={trans.id} value={trans.category}>{trans.category}</option>

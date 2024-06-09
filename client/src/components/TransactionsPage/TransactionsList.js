@@ -22,11 +22,12 @@ const people = [
     // { id: 9, name: 'Insurance' },
     // { id: 10, name: 'Software & Subscriptions' },
     // { id: 11, name: 'Gas & Fuel' },
-    { id: 1, date: "", description: "", category: 'Gas & Fuel', amount: "" },
-    { id: 2, date: "", description: "", category: 'Sales', amount: "" },
-    { id: 3, date: "", description: "", category: 'Meals & Entertainment', amount: "" },
-    { id: 4, date: "", description: "", category: 'Insurance', amount: "" },
+    { id: 1, category: 'Gas & Fuel' },
+    { id: 2, category: 'Sales' },
+    { id: 3, category: 'Meals & Entertainment' },
+    { id: 4, category: 'Insurance' },
 ]
+
 
 export default function TransactionsList({ transactionsList, categoryOptions }) {
 
@@ -35,7 +36,7 @@ export default function TransactionsList({ transactionsList, categoryOptions }) 
     const [selected, setSelected] = useState(people[0])
 
 
-    const { deleteTransaction, onUpdateTransaction, addNewTransaction } = useOutletContext();
+    const { deleteTransaction, onUpdateTransaction, addNewTransaction, chartOfAccountsList } = useOutletContext();
 
 
 
@@ -113,11 +114,14 @@ export default function TransactionsList({ transactionsList, categoryOptions }) 
 
 
     const dromo = new DromoUploader("3badce43-0fc9-4440-8f9d-840f2de07713", "2205df5e-4fde-41d1-8fb7-5401be84b7a6");
-    // function openDromo() {
-    //     return (
-    //         dromo.open()
-    //     )
-    // }
+
+
+
+    // Stting up the category dropdown list from the chart of accounts table model________________
+    let categoryAccountsList = chartOfAccountsList.map((trans) => {
+        return ({ id: trans.id, category: trans.name, account_type: trans.account_type })
+    })
+    // console.log(categoryAccountsList);
 
 
 
@@ -125,17 +129,6 @@ export default function TransactionsList({ transactionsList, categoryOptions }) 
 
 
 
-
-    // console.log(categoryOptions);
-
-    // const people = [
-    //     { name: 'Lindsay Walton', title: 'Front-end Developer', email: 'lindsay.walton@example.com', role: 'Member' },
-    //     { name: 'Lindsay Walton', title: 'Front-end Developer', email: 'lindsay.walton@example.com', role: 'Member' },
-    //     { name: 'Lindsay Walton', title: 'Front-end Developer', email: 'lindsay.walton@example.com', role: 'Member' },
-    //     { name: 'Lindsay Walton', title: 'Front-end Developer', email: 'lindsay.walton@example.com', role: 'Member' },
-    //     { name: 'Lindsay Walton', title: 'Front-end Developer', email: 'lindsay.walton@example.com', role: 'Member' },
-    //     // More people...
-    // ]
 
     return (
         <div className="px-4 sm:px-6 lg:px-8">
@@ -149,76 +142,8 @@ export default function TransactionsList({ transactionsList, categoryOptions }) 
                 <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
 
                     {/* <CSVImporter /> */}
-                    {/* <DromoUploader
-                        licenseKey="3badce43-0fc9-4440-8f9d-840f2de07713"
-                        fields={[
-                            {
-                                label: "Date",
-                                key: "date",
-                            },
-                            {
-                                label: "Description",
-                                key: "description",
-                            },
-                            // {
-                            //     label: "Amount",
-                            //     key: "amount",
-
-                            // },
-                            // {
-                            //     label: "Category",
-                            //     key: "category",
-                            // },
-                        ]}
-                        settings={{
-                            importIdentifier: "Contacts",
-                            developmentMode: true,
-                        }}
-                        user={{
-                            id: "1",
-                            name: "Jane Doe",
-                            email: "jane@dromo.io",
-                            companyId: "Dromo",
-                            companyName: "12345",
-                        }}
-                        onResults={(response, metadata) =>
-                            console.log(response, metadata)
-
-                        }
-                    >
-                        Import from CSV File
-                    </DromoUploader> */}
-
-                    {/* <script
-                        type="text/javascript"
-                        src="https://cdn.jsdelivr.net/npm/dromo-uploader-js/dist/DromoUploader.js"
-                    ></script> */}
-
-                    {/* <script type="text/javascript">
-                        const dromo = new DromoUploader("3badce43-0fc9-4440-8f9d-840f2de07713", "2205df5e-4fde-41d1-8fb7-5401be84b7a6");
-                    </script> */}
-
-                    {/* <div id="root">
-                        <button onClick={dromo.open()}>Open Dromo</button>
-                    </div> */}
-
-                    {/* <DromoUploader
-                    <script
-                        type="text/javascript"
-                        src="https://cdn.jsdelivr.net/npm/dromo-uploader-js/dist/DromoUploader.js"
-                    ></script>
-
-                    <script type="text/javascript">
-                        const dromo = new DromoUploader("3badce43-0fc9-4440-8f9d-840f2de07713", "016eacea-2792-497b-995a-d6f70eb1d01c");
-                    </script>
-
-                    <div id="root">
-                        <button onclick="dromo.open()">Open Dromo</button>
-                    </div> 
 
 
-                    >
-                </DromoUploader> */}
 
                     <DromoUploader
                         className="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
@@ -234,11 +159,6 @@ export default function TransactionsList({ transactionsList, categoryOptions }) 
                     >
                         Import from CSV
                     </DromoUploader>
-
-
-
-
-
 
 
                 </div>
@@ -262,7 +182,7 @@ export default function TransactionsList({ transactionsList, categoryOptions }) 
             {
                 transactionSlideOverOpen ?
                     <div>
-                        <AddTransactionSlideOver transactionSlideOverOpen={transactionSlideOverOpen} openCloseTransactionSlideOver={openCloseTransactionSlideOver} people={people} />
+                        <AddTransactionSlideOver transactionSlideOverOpen={transactionSlideOverOpen} openCloseTransactionSlideOver={openCloseTransactionSlideOver} categoryAccountsList={categoryAccountsList} people={people} />
                     </div>
 
                     :
@@ -271,10 +191,12 @@ export default function TransactionsList({ transactionsList, categoryOptions }) 
                     </>
             }
 
+
+            {/* Edit a transactiong component and passed props */}
             {
                 openCloseEditTransaction ?
                     <div>
-                        <EditTransactionPopUp editTransaction={editTransaction} openCloseEditTransaction={openCloseEditTransaction} editForm={editForm} handleTransactionUpdate={handleTransactionUpdate} handleChange={handleChange} selected={selected} setSelected={setSelected} people={people} />
+                        <EditTransactionPopUp editTransaction={editTransaction} openCloseEditTransaction={openCloseEditTransaction} editForm={editForm} handleTransactionUpdate={handleTransactionUpdate} handleChange={handleChange} selected={selected} setSelected={setSelected} categoryAccountsList={categoryAccountsList} people={people} />
                     </div>
                     :
 

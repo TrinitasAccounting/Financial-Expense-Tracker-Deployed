@@ -4,19 +4,26 @@ import * as React from 'react';
 import { PieChart } from '@mui/x-charts/PieChart';
 
 export default function ExpensesDonutChart() {
+
+    let dataArray = [
+        { value: 200, label: 'Meals & Entertainment' },
+        { value: 50, label: 'Job Supplies' },
+        { value: 125, label: 'Office Expenses' },
+        { value: 400, label: 'Insurance' },
+
+    ]
+
+
+
     return (
         <PieChart
             series={[
                 {
-                    data: [
-                        { id: 0, value: 10, label: 'series A' },
-                        { id: 1, value: 15, label: 'series B' },
-                        { id: 2, value: 20, label: 'series C' },
-                    ],
+                    data: dataArray
                 },
             ]}
-            width={400}
-            height={200}
+            // width={700}
+            height={300}
         />
     );
 }

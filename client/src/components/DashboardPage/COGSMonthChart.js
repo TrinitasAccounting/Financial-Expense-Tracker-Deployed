@@ -4,12 +4,20 @@ import * as React from 'react';
 import { BarChart } from '@mui/x-charts/BarChart';
 
 export default function COGSMonthChart() {
+
+    let dataX = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+
+    let dataY = [200, 100, 50, 92, 65, 75, 25, 175, 48, 115, 200, 37]
+
+
+
+
     return (
         <BarChart
-            xAxis={[{ scaleType: 'band', data: ['group A', 'group B', 'group C'] }]}
-            series={[{ data: [4, 3, 5] }, { data: [1, 6, 3] }, { data: [2, 5, 6] }]}
-            width={500}
-            height={300}
+            xAxis={[{ scaleType: 'band', data: dataX }]}
+            series={[{ data: dataY }]}
+            // width={500}
+            height={400}
         />
     );
 }

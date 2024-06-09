@@ -93,8 +93,8 @@ export default function TaxLineChart() {
                     showMark: false,
                 },
             ]}
-            width={600}
-            height={400}
+            // width={600}
+            height={360}
             margin={{ left: 70 }}
         />
     );

@@ -99,15 +99,42 @@ const dataset = [
     },
 ];
 
+let dataX = ['Job Supplies', 'M&E', 'Insurance', 'Travel', 'Office Expense', 'Rent & Lease', 'E1', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+let dataY = [12, 5, 2, 7, 8, 2, 8, 19, 4, 1, 5, 2]
+
+
+
+
+
 const valueFormatter = (value) => `${value}mm`;
 
 export default function ExpensesBarChart() {
     return (
         <BarChart
             dataset={dataset}
-            yAxis={[{ scaleType: 'band', dataKey: 'month' }]}
-            series={[{ dataKey: 'seoul', label: 'Seoul rainfall', valueFormatter }]}
+            yAxis={[
+                {
+                    scaleType: 'band',
+                    dataKey: 'month',
+                    data: dataX,
+                    categoryGapRatio: 0.3,
+                    barGapRatio: 0.4
+                }
+            ]}
+            // series={[{ dataKey: 'seoul', label: 'Seoul rainfall', valueFormatter }]}
+            series={[
+                {
+                    data: dataY,
+                },
+            ]}
             layout="horizontal"
+            margin={{
+                left: 120,
+                // right: 80,
+                // top: 80,
+                // bottom: 80,
+            }}
             grid={{ vertical: true }}
             {...chartSetting}
         />

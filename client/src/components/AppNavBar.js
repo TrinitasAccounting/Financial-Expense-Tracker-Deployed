@@ -170,6 +170,33 @@ export default function AppNavBar() {
 
 
 
+    // Defining the category arrays that are dynamic
+    // REVENUE CATEGORIES
+    let revenueCategories = []
+    chartOfAccountsList.map((account) => {
+        if (account.account_type === 'Income') {
+            revenueCategories.push(account.name)
+        }
+    })
+
+    // COGS CATEGORIES
+    let COGSCategories = []
+    chartOfAccountsList.map((account) => {
+        if (account.account_type === 'Cost of Goods Sold') {
+            COGSCategories.push(account.name)
+        }
+    })
+
+    // OPERATING EXPENSES CATEGORIES
+    let opexCategories = []
+    chartOfAccountsList.map((account) => {
+        if (account.account_type === 'Operating Expense') {
+            opexCategories.push(account.name)
+        }
+    })
+
+
+
 
 
 
@@ -493,7 +520,10 @@ export default function AppNavBar() {
                             deleteTransaction: deleteTransaction,
                             onUpdateTransaction: onUpdateTransaction,
                             chartOfAccountsList: chartOfAccountsList,
-                            setChartOfAccountsList: setChartOfAccountsList
+                            setChartOfAccountsList: setChartOfAccountsList,
+                            revenueCategories: revenueCategories,
+                            COGSCategories: COGSCategories,
+                            opexCategories: opexCategories
                         }}
                         />
 
