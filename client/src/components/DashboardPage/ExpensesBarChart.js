@@ -104,7 +104,7 @@ const dataset = [
 
 
 
-const valueFormatter = (value) => `${value}mm`;
+// const valueFormatter = (value) => `${value}mm`;
 
 export default function ExpensesBarChart({ sortedOperatingExpensesObject }) {
 

@@ -172,10 +172,14 @@ export default function AppNavBar() {
 
     // Defining the category arrays that are dynamic
     // REVENUE CATEGORIES
+    let notUsedCategories = []
     let revenueCategories = []
     chartOfAccountsList.map((account) => {
         if (account.account_type === 'Income') {
             revenueCategories.push(account.name)
+        }
+        else {
+            return (notUsedCategories.push(account.account_type))
         }
     })
 
@@ -185,6 +189,9 @@ export default function AppNavBar() {
         if (account.account_type === 'Cost of Goods Sold') {
             COGSCategories.push(account.name)
         }
+        else {
+            return (notUsedCategories.push(account.account_type))
+        }
     })
 
     // OPERATING EXPENSES CATEGORIES
@@ -192,6 +199,9 @@ export default function AppNavBar() {
     chartOfAccountsList.map((account) => {
         if (account.account_type === 'Operating Expense') {
             opexCategories.push(account.name)
+        }
+        else {
+            return (notUsedCategories.push(account.account_type))
         }
     })
 

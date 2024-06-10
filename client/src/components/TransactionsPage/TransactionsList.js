@@ -38,7 +38,7 @@ export default function TransactionsList({ transactionsList, categoryOptions }) 
     const [selected, setSelected] = useState(people[0])
 
 
-    const { deleteTransaction, onUpdateTransaction, addNewTransaction, chartOfAccountsList } = useOutletContext();
+    const { deleteTransaction, onUpdateTransaction, chartOfAccountsList } = useOutletContext();
 
 
 
@@ -115,7 +115,7 @@ export default function TransactionsList({ transactionsList, categoryOptions }) 
     }
 
 
-    const dromo = new DromoUploader("3badce43-0fc9-4440-8f9d-840f2de07713", "2205df5e-4fde-41d1-8fb7-5401be84b7a6");
+    // const dromo = new DromoUploader("3badce43-0fc9-4440-8f9d-840f2de07713", "2205df5e-4fde-41d1-8fb7-5401be84b7a6");
 
 
 

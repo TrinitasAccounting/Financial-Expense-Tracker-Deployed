@@ -15,7 +15,7 @@ import TaxLineChart from "./TaxLineChart";
 let currentDate = new Date()
 
 let currentYear = currentDate.getFullYear()
-let currentMonth = currentDate.getMonth() + 1
+// let currentMonth = currentDate.getMonth() + 1
 
 // console.log(currentMonth)
 
@@ -345,16 +345,16 @@ function DashboardPage() {
 
     // Iterating through to .reduce up the operating expenses by category 
     let summedCategoriesObject = {}
-    let summed = categories.map((item) => {
+    categories.map((item) => {
         return (
             summedCategoriesObject[item] = opexTransactions.filter((trans) => {
                 return (trans.category === item)
             })
                 .reduce((acc, obj) => { return acc + obj.amount }, 0)
-
-
         )
     })
+
+
 
     // console.log(summedCategoriesObject)
 
@@ -396,7 +396,7 @@ function DashboardPage() {
 
     // Iterating through to .reduce up all of the expenses by category 
     let allExpensesSummedByCategoriesObject = []
-    let summedAllExpenses = allExpenseCategories.map((item) => {
+    allExpenseCategories.map((item) => {
         return (
 
             allExpensesSummedByCategoriesObject[item] = filteredTransactionsList.filter((trans) => {
