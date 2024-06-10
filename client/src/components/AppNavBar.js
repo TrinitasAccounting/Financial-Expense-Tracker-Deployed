@@ -176,7 +176,7 @@ export default function AppNavBar() {
     let revenueCategories = []
     chartOfAccountsList.map((account) => {
         if (account.account_type === 'Income') {
-            revenueCategories.push(account.name)
+            return (revenueCategories.push(account.name))
         }
         else {
             return (notUsedCategories.push(account.account_type))
@@ -187,7 +187,7 @@ export default function AppNavBar() {
     let COGSCategories = []
     chartOfAccountsList.map((account) => {
         if (account.account_type === 'Cost of Goods Sold') {
-            COGSCategories.push(account.name)
+            return (COGSCategories.push(account.name))
         }
         else {
             return (notUsedCategories.push(account.account_type))
@@ -198,7 +198,7 @@ export default function AppNavBar() {
     let opexCategories = []
     chartOfAccountsList.map((account) => {
         if (account.account_type === 'Operating Expense') {
-            opexCategories.push(account.name)
+            return (opexCategories.push(account.name))
         }
         else {
             return (notUsedCategories.push(account.account_type))
