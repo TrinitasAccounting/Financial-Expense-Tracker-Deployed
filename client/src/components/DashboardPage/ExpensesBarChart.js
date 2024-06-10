@@ -99,9 +99,6 @@ const dataset = [
     },
 ];
 
-let dataX = ['Job Supplies', 'M&E', 'Insurance', 'Travel', 'Office Expense', 'Rent & Lease', 'E1', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-
-let dataY = [12, 5, 2, 7, 8, 2, 8, 19, 4, 1, 5, 2]
 
 
 
@@ -109,7 +106,27 @@ let dataY = [12, 5, 2, 7, 8, 2, 8, 19, 4, 1, 5, 2]
 
 const valueFormatter = (value) => `${value}mm`;
 
-export default function ExpensesBarChart() {
+export default function ExpensesBarChart({ sortedOperatingExpensesObject }) {
+
+
+
+    // let dataX = ['Job Supplies', 'M&E', 'Insurance', 'Travel', 'Office Expense', 'Rent & Lease', 'E1', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+    // let dataY = [12, 5, 2, 7, 8, 2, 8, 19, 4, 1, 5, 2]
+
+    let dataX = Object.keys(sortedOperatingExpensesObject)
+    console.log(dataX)
+
+    let dataY = Object.values(sortedOperatingExpensesObject)
+    console.log(dataY)
+
+
+
+
+
+
+
+
     return (
         <BarChart
             dataset={dataset}
@@ -130,7 +147,7 @@ export default function ExpensesBarChart() {
             ]}
             layout="horizontal"
             margin={{
-                left: 120,
+                left: 150,
                 // right: 80,
                 // top: 80,
                 // bottom: 80,

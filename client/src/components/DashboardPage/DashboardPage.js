@@ -325,6 +325,62 @@ function DashboardPage() {
 
 
 
+    // Calculating the Total operating Expenses and ranking by category_________________________________________________________
+
+    // adding all of the used operating expense categories to an array so we can map through that array and .reduce for each category
+    let categories = []
+    function findAllOPEXCategories() {
+        for (let i = 0; i < opexTransactions.length; i++) {
+            if (categories.includes(opexTransactions[i].category)) {
+                continue
+            }
+            else {
+                categories.push(opexTransactions[i].category)
+            }
+        }
+        // console.log(categories);
+    }
+
+    findAllOPEXCategories()
+
+    // Iterating through to .reduce up the operating expenses by category 
+    let summedCategoriesObject = {}
+    let summed = categories.map((item) => {
+        return (
+            summedCategoriesObject[item] = opexTransactions.filter((trans) => {
+                return (trans.category === item)
+            })
+                .reduce((acc, obj) => { return acc + obj.amount }, 0)
+
+
+        )
+    })
+
+    // console.log(summedCategoriesObject)
+
+    // Sorting the object from largest to smallest expense category
+    const sortedOperatingExpensesObject = Object.fromEntries(
+        Object.entries(summedCategoriesObject).sort(([, a], [, b]) => b - a)
+    );
+
+    // console.log(sortedOperatingExpensesObject);
+
+    // _____________________________________________________________________________________________________________________
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     return (
@@ -439,9 +495,9 @@ function DashboardPage() {
                 <div className="min-h-[500px] rounded-lg shadow bg-white sm:col-span-4">
                     {/* <h1>Top 15 Expenses</h1> */}
                     <div className="min-h-[25px] rounded-lg shadow font-semibold text-center sm:text-2xl sm:col-span-3">
-                        <h1>Top 15 Expenses</h1>
+                        <h1>Top Expenses</h1>
                     </div>
-                    <ExpensesBarChart />
+                    <ExpensesBarChart sortedOperatingExpensesObject={sortedOperatingExpensesObject} />
                 </div>
                 {/* <div className="min-h-[150px] rounded-lg shadow bg-red-700 col-span-1"></div> */}
                 <div className="min-h-[500px] rounded-lg shadow bg-teal-100 sm:col-span-8 ">
