@@ -17,6 +17,7 @@ export default function ProfitByMonth({
     octRevenue,
     novRevenue,
     decRevenue,
+
     janCOGS,
     febCOGS,
     marCOGS,

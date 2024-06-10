@@ -368,9 +368,48 @@ function DashboardPage() {
     // _____________________________________________________________________________________________________________________
 
 
+    // Finding all categories COGS and OPEX_________________________________________________________________________________
 
+    let allExpenseTransactionsList = [...COGSTransactions, ...opexTransactions]
 
+    console.log(allExpenseTransactionsList);
 
+    let allExpenseCategories = [];
+
+    function testFunction() {
+        for (let item of allExpenseTransactionsList) {
+            if (allExpenseCategories.includes(item.category)) {
+                continue
+            }
+            else if (revenueCategories.includes(item.category)) {
+                continue
+            }
+            else {
+                allExpenseCategories.push(item.category)
+            }
+
+        }
+    }
+    testFunction();
+
+    // console.log(allExpenseCategories)
+
+    // Iterating through to .reduce up all of the expenses by category 
+    let allExpensesSummedByCategoriesObject = []
+    let summedAllExpenses = allExpenseCategories.map((item) => {
+        return (
+
+            allExpensesSummedByCategoriesObject[item] = filteredTransactionsList.filter((trans) => {
+                return (trans.category === item)
+            })
+                .reduce((acc, obj) => { return acc + obj.amount }, 0)
+        )
+    })
+
+    // This is one gigantic array that needs to be split up some how!!!*****************************************************
+    console.log(allExpensesSummedByCategoriesObject);
+
+    // _______________________________________________________________________________________________
 
 
 
@@ -500,16 +539,25 @@ function DashboardPage() {
                     <ExpensesBarChart sortedOperatingExpensesObject={sortedOperatingExpensesObject} />
                 </div>
                 {/* <div className="min-h-[150px] rounded-lg shadow bg-red-700 col-span-1"></div> */}
-                <div className="min-h-[500px] rounded-lg shadow bg-teal-100 sm:col-span-8 ">
+                <div className="min-h-[500px] rounded-lg  bg-gray-100 sm:col-span-8 ">
                     <div className="m-1 grid grid-cols-1 gap-5 sm:grid-cols-1">
                         <div className="min-h-[300px] rounded-lg grid grid-cols-2 gap-5 shadow sm:col-span-8">
-                            <div className="bg-indigo-400 sm:col-span-1 rounded-lg">
-                                <h1>Estimated Tax Liabiltiy line chart (Coporate Tax Rate && Personal Tax Rate)</h1>
+                            <div className="bg-white sm:col-span-1 rounded-lg">
+                                {/* <h1>Estimated Tax Liabiltiy Across the Year</h1> */}
+                                <div className="min-h-[25px] rounded-lg shadow font-semibold text-center sm:text-2xl sm:col-span-3">
+                                    <h1>Estimated Tax Liabiltiy Across the Year</h1>
+                                </div>
                                 <TaxLineChart />
                             </div>
                             <div className="bg-white sm:col-span-1 rounded-lg">
-                                <h1>Expense Donut (All Expenses)</h1>
-                                <ExpensesDonutChart />
+                                {/* <h1>Expense Donut (All Expenses)</h1> */}
+                                <div className="min-h-[25px] rounded-lg shadow font-semibold text-center sm:text-2xl sm:col-span-3">
+                                    <h1>Expense Donut (All Expenses)</h1>
+                                </div>
+                                <ExpensesDonutChart
+                                    allExpensesSummedByCategoriesObject={allExpensesSummedByCategoriesObject}
+
+                                />
                             </div>
                             {/* <div className="m-1 grid grid-cols-1 gap-5 sm:grid-cols-1">
                             </div> */}
@@ -517,9 +565,12 @@ function DashboardPage() {
                             {/* <h1>Box 7</h1> */}
                         </div>
                         {/* <div className="min-h-[150px] rounded-lg shadow bg-red-700 col-span-1"></div> */}
-                        <div className="min-h-[400px] rounded-lg shadow bg-purple-500 sm:col-span-8">
+                        <div className="min-h-[400px] rounded-lg shadow bg-white sm:col-span-8">
                             {/* code inside of here _____________________________________________________ COGS Monthly Bar chart*/}
-                            <h1>COGS Monthly Bar Chart</h1>
+                            {/* <h1>COGS Monthly Bar Chart</h1> */}
+                            <div className="min-h-[25px] rounded-lg shadow font-semibold text-center sm:text-2xl sm:col-span-3">
+                                <h1>COGS Monthly Bar Chart</h1>
+                            </div>
                             <COGSMonthChart />
                         </div>
 

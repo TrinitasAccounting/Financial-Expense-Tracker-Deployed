@@ -115,10 +115,10 @@ export default function ExpensesBarChart({ sortedOperatingExpensesObject }) {
     // let dataY = [12, 5, 2, 7, 8, 2, 8, 19, 4, 1, 5, 2]
 
     let dataX = Object.keys(sortedOperatingExpensesObject)
-    console.log(dataX)
+
 
     let dataY = Object.values(sortedOperatingExpensesObject)
-    console.log(dataY)
+
 
 
 
