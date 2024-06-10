@@ -29,6 +29,8 @@ const people = [
 ]
 
 
+
+
 export default function TransactionsList({ transactionsList, categoryOptions }) {
 
     const [transactionSlideOverOpen, setTransactionSlideOverOpen] = useState(false);
@@ -121,7 +123,12 @@ export default function TransactionsList({ transactionsList, categoryOptions }) 
     let categoryAccountsList = chartOfAccountsList.map((trans) => {
         return ({ id: trans.id, category: trans.name, account_type: trans.account_type })
     })
-    // console.log(categoryAccountsList);
+
+
+    // Sorting TransactionList but have it commented out as to save memory space on the computer. It is run at the same time that the map function is iterating
+    // let sortedTransactionList = transactionsList.sort((a, b) => new Date(a.date.slice(0, 10)) - new Date(b.date.slice(0, 10)))
+
+
 
 
 
@@ -233,7 +240,9 @@ export default function TransactionsList({ transactionsList, categoryOptions }) 
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-gray-200 bg-white">
-                                    {transactionsList.map((trans) => (
+
+
+                                    {transactionsList.sort((a, b) => new Date(a.date.slice(0, 10)) - new Date(b.date.slice(0, 10))).map((trans) => (
                                         <tr key={trans.id}>
                                             <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                                                 {trans.date}

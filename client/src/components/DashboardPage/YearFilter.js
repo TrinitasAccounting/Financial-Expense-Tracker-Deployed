@@ -22,7 +22,7 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-export default function YearFilter({ selected, setSelected, yearsList, updateMonthlyRevenue }) {
+export default function YearFilter({ selected, setSelected, yearsList }) {
     // const [selected, setSelected] = useState(people[3])
 
     return (

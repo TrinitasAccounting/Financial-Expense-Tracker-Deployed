@@ -81,97 +81,246 @@ function DashboardPage() {
 
 
 
-    // Finding the amounts by month
-    let janRevenue = 0
-    let febRevenue = 0
-    let marRevenue = 0
-    let aprRevenue = 0
-    let mayRevenue = 0
-    let junRevenue = 0
-    let julRevenue = 0
-    let augRevenue = 0
-    let sepRevenue = 0
-    let octRevenue = 0
-    let novRevenue = 0
-    let decRevenue = 0
+    // Finding the Revenue amounts by month____________________________________________________________________
+
+    // Revenue Calculations (trying to save memory by having them .reduce in the same line instead of storing another array in memory)
+    let janRevenue = filteredTransactionsList.filter((trans) => {
+        return (String(trans.date.slice(5, 7)) === '01' && revenueCategories.includes(trans.category))
+    })
+        .reduce((acc, obj) => { return acc + obj.amount }, 0)
+
+    let febRevenue = filteredTransactionsList.filter((trans) => {
+        return (String(trans.date.slice(5, 7)) === '02' && revenueCategories.includes(trans.category))
+    })
+        .reduce((acc, obj) => { return acc + obj.amount }, 0)
+
+    let marRevenue = filteredTransactionsList.filter((trans) => {
+        return (String(trans.date.slice(5, 7)) === '03' && revenueCategories.includes(trans.category))
+    })
+        .reduce((acc, obj) => { return acc + obj.amount }, 0)
+
+    let aprRevenue = filteredTransactionsList.filter((trans) => {
+        return (String(trans.date.slice(5, 7)) === '04' && revenueCategories.includes(trans.category))
+    })
+        .reduce((acc, obj) => { return acc + obj.amount }, 0)
+
+    let mayRevenue = filteredTransactionsList.filter((trans) => {
+        return (String(trans.date.slice(5, 7)) === '05' && revenueCategories.includes(trans.category))
+    })
+        .reduce((acc, obj) => { return acc + obj.amount }, 0)
+
+    let junRevenue = filteredTransactionsList.filter((trans) => {
+        return (String(trans.date.slice(5, 7)) === '06' && revenueCategories.includes(trans.category))
+    })
+        .reduce((acc, obj) => { return acc + obj.amount }, 0)
+
+    let julRevenue = filteredTransactionsList.filter((trans) => {
+        return (String(trans.date.slice(5, 7)) === '07' && revenueCategories.includes(trans.category))
+    })
+        .reduce((acc, obj) => { return acc + obj.amount }, 0)
+
+    let augRevenue = filteredTransactionsList.filter((trans) => {
+        return (String(trans.date.slice(5, 7)) === '08' && revenueCategories.includes(trans.category))
+    })
+        .reduce((acc, obj) => { return acc + obj.amount }, 0)
+
+    let sepRevenue = filteredTransactionsList.filter((trans) => {
+        return (String(trans.date.slice(5, 7)) === '09' && revenueCategories.includes(trans.category))
+    })
+        .reduce((acc, obj) => { return acc + obj.amount }, 0)
+
+    let octRevenue = filteredTransactionsList.filter((trans) => {
+        return (String(trans.date.slice(5, 7)) === '10' && revenueCategories.includes(trans.category))
+    })
+        .reduce((acc, obj) => { return acc + obj.amount }, 0)
+
+    let novRevenue = filteredTransactionsList.filter((trans) => {
+        return (String(trans.date.slice(5, 7)) === '11' && revenueCategories.includes(trans.category))
+    })
+        .reduce((acc, obj) => { return acc + obj.amount }, 0)
+
+    let decRevenue = filteredTransactionsList.filter((trans) => {
+        return (String(trans.date.slice(5, 7)) === '12' && revenueCategories.includes(trans.category))
+    })
+        .reduce((acc, obj) => { return acc + obj.amount }, 0)
 
 
+    // ___________________________________________________________________________________________________________
 
-    function updateMonthlyRevenue(filteredTransactionsList) {
 
-
-        if (filteredTransactionsList.length === 0) {
-            janRevenue = 0
-            febRevenue = 0
-            marRevenue = 0
-            aprRevenue = 0
-            mayRevenue = 0
-            junRevenue = 0
-            julRevenue = 0
-            augRevenue = 0
-            sepRevenue = 0
-            octRevenue = 0
-            novRevenue = 0
-            decRevenue = 0
-            return ('test')
-        }
-        else (filteredTransactionsList.map((trans) => {
-            if (String(trans.date.slice(5, 7)) === '01' && revenueCategories.includes(trans.category)) {
-                janRevenue = janRevenue + trans.amount
-                return (janRevenue)
-            }
-            else if (String(trans.date.slice(5, 7)) === '02' && revenueCategories.includes(trans.category)) {
-                febRevenue = febRevenue + trans.amount
-                return (febRevenue)
-            }
-            else if (String(trans.date.slice(5, 7)) === '03' && revenueCategories.includes(trans.category)) {
-                marRevenue = marRevenue + trans.amount
-                return (marRevenue)
-            }
-            else if (String(trans.date.slice(5, 7)) === '04' && revenueCategories.includes(trans.category)) {
-                aprRevenue = aprRevenue + trans.amount
-                return (aprRevenue)
-            }
-            else if (String(trans.date.slice(5, 7)) === '05' && revenueCategories.includes(trans.category)) {
-                mayRevenue = mayRevenue + trans.amount
-                return (mayRevenue)
-            }
-            else if (String(trans.date.slice(5, 7)) === '06' && revenueCategories.includes(trans.category)) {
-                junRevenue = junRevenue + trans.amount
-                return (junRevenue)
-            }
-            else if (String(trans.date.slice(5, 7)) === '07' && revenueCategories.includes(trans.category)) {
-                julRevenue = julRevenue + trans.amount
-                return (julRevenue)
-            }
-            else if (String(trans.date.slice(5, 7)) === '08' && revenueCategories.includes(trans.category)) {
-                augRevenue = augRevenue + trans.amount
-                return (augRevenue)
-            }
-            else if (String(trans.date.slice(5, 7)) === '09' && revenueCategories.includes(trans.category)) {
-                sepRevenue = sepRevenue + trans.amount
-                return (sepRevenue)
-            }
-            else if (String(trans.date.slice(5, 7)) === '10' && revenueCategories.includes(trans.category)) {
-                octRevenue = octRevenue + trans.amount
-                return (octRevenue)
-            }
-            else if (String(trans.date.slice(5, 7)) === '11' && revenueCategories.includes(trans.category)) {
-                novRevenue = novRevenue + trans.amount
-                return (novRevenue)
-            }
-            else if (String(trans.date.slice(5, 7)) === '12' && revenueCategories.includes(trans.category)) {
-                decRevenue = decRevenue + trans.amount
-                return (decRevenue)
-            }
-        }))
-    }
-    // else { console.log(filteredTransactionsList[0].date.slice(5, 7)) }
-
-    console.log(janRevenue);
+    // console.log(janRevenue);
     // console.log(febRevenue);
     // console.log(marRevenue);
     // console.log(aprRevenue);
+    // console.log(mayRevenue);
+    // console.log(junRevenue);
+    // console.log(julRevenue);
+    // console.log(augRevenue);
+    // console.log(sepRevenue);
+    // console.log(octRevenue);
+    // console.log(novRevenue);
+    // console.log(decRevenue);
+
+    // Finding the COGS amounts by month____________________________________________________________________
+
+    // COGS Calculations (trying to save memory by having them .reduce in the same line instead of storing another array in memory)
+    let janCOGS = filteredTransactionsList.filter((trans) => {
+        return (String(trans.date.slice(5, 7)) === '01' && COGSCategories.includes(trans.category))
+    })
+        .reduce((acc, obj) => { return acc + obj.amount }, 0)
+
+    let febCOGS = filteredTransactionsList.filter((trans) => {
+        return (String(trans.date.slice(5, 7)) === '02' && COGSCategories.includes(trans.category))
+    })
+        .reduce((acc, obj) => { return acc + obj.amount }, 0)
+
+    let marCOGS = filteredTransactionsList.filter((trans) => {
+        return (String(trans.date.slice(5, 7)) === '03' && COGSCategories.includes(trans.category))
+    })
+        .reduce((acc, obj) => { return acc + obj.amount }, 0)
+
+    let aprCOGS = filteredTransactionsList.filter((trans) => {
+        return (String(trans.date.slice(5, 7)) === '04' && COGSCategories.includes(trans.category))
+    })
+        .reduce((acc, obj) => { return acc + obj.amount }, 0)
+
+    let mayCOGS = filteredTransactionsList.filter((trans) => {
+        return (String(trans.date.slice(5, 7)) === '05' && COGSCategories.includes(trans.category))
+    })
+        .reduce((acc, obj) => { return acc + obj.amount }, 0)
+
+    let junCOGS = filteredTransactionsList.filter((trans) => {
+        return (String(trans.date.slice(5, 7)) === '06' && COGSCategories.includes(trans.category))
+    })
+        .reduce((acc, obj) => { return acc + obj.amount }, 0)
+
+    let julCOGS = filteredTransactionsList.filter((trans) => {
+        return (String(trans.date.slice(5, 7)) === '07' && COGSCategories.includes(trans.category))
+    })
+        .reduce((acc, obj) => { return acc + obj.amount }, 0)
+
+    let augCOGS = filteredTransactionsList.filter((trans) => {
+        return (String(trans.date.slice(5, 7)) === '08' && COGSCategories.includes(trans.category))
+    })
+        .reduce((acc, obj) => { return acc + obj.amount }, 0)
+
+    let sepCOGS = filteredTransactionsList.filter((trans) => {
+        return (String(trans.date.slice(5, 7)) === '09' && COGSCategories.includes(trans.category))
+    })
+        .reduce((acc, obj) => { return acc + obj.amount }, 0)
+
+    let octCOGS = filteredTransactionsList.filter((trans) => {
+        return (String(trans.date.slice(5, 7)) === '10' && COGSCategories.includes(trans.category))
+    })
+        .reduce((acc, obj) => { return acc + obj.amount }, 0)
+
+    let novCOGS = filteredTransactionsList.filter((trans) => {
+        return (String(trans.date.slice(5, 7)) === '11' && COGSCategories.includes(trans.category))
+    })
+        .reduce((acc, obj) => { return acc + obj.amount }, 0)
+
+    let decCOGS = filteredTransactionsList.filter((trans) => {
+        return (String(trans.date.slice(5, 7)) === '12' && COGSCategories.includes(trans.category))
+    })
+        .reduce((acc, obj) => { return acc + obj.amount }, 0)
+
+
+    // console.log(janCOGS);
+    // console.log(febCOGS);
+    // console.log(marCOGS);
+    // console.log(aprCOGS);
+    // console.log(mayCOGS);
+    // console.log(junCOGS);
+    // console.log(julCOGS);
+    // console.log(augCOGS);
+    // console.log(sepCOGS);
+    // console.log(octCOGS);
+    // console.log(novCOGS);
+    // console.log(decCOGS);
+
+
+    // ___________________________________________________________________________________________________________
+
+
+    // Finding the Operating Expenses (OPEX) amounts by month____________________________________________________________________
+
+    // OPEX Calculations (trying to save memory by having them .reduce in the same line instead of storing another array in memory)
+    let janOPEX = filteredTransactionsList.filter((trans) => {
+        return (String(trans.date.slice(5, 7)) === '01' && opexCategories.includes(trans.category))
+    })
+        .reduce((acc, obj) => { return acc + obj.amount }, 0)
+
+    let febOPEX = filteredTransactionsList.filter((trans) => {
+        return (String(trans.date.slice(5, 7)) === '02' && opexCategories.includes(trans.category))
+    })
+        .reduce((acc, obj) => { return acc + obj.amount }, 0)
+
+    let marOPEX = filteredTransactionsList.filter((trans) => {
+        return (String(trans.date.slice(5, 7)) === '03' && opexCategories.includes(trans.category))
+    })
+        .reduce((acc, obj) => { return acc + obj.amount }, 0)
+
+    let aprOPEX = filteredTransactionsList.filter((trans) => {
+        return (String(trans.date.slice(5, 7)) === '04' && opexCategories.includes(trans.category))
+    })
+        .reduce((acc, obj) => { return acc + obj.amount }, 0)
+
+    let mayOPEX = filteredTransactionsList.filter((trans) => {
+        return (String(trans.date.slice(5, 7)) === '05' && opexCategories.includes(trans.category))
+    })
+        .reduce((acc, obj) => { return acc + obj.amount }, 0)
+
+    let junOPEX = filteredTransactionsList.filter((trans) => {
+        return (String(trans.date.slice(5, 7)) === '06' && opexCategories.includes(trans.category))
+    })
+        .reduce((acc, obj) => { return acc + obj.amount }, 0)
+
+    let julOPEX = filteredTransactionsList.filter((trans) => {
+        return (String(trans.date.slice(5, 7)) === '07' && opexCategories.includes(trans.category))
+    })
+        .reduce((acc, obj) => { return acc + obj.amount }, 0)
+
+    let augOPEX = filteredTransactionsList.filter((trans) => {
+        return (String(trans.date.slice(5, 7)) === '08' && opexCategories.includes(trans.category))
+    })
+        .reduce((acc, obj) => { return acc + obj.amount }, 0)
+
+    let sepOPEX = filteredTransactionsList.filter((trans) => {
+        return (String(trans.date.slice(5, 7)) === '09' && opexCategories.includes(trans.category))
+    })
+        .reduce((acc, obj) => { return acc + obj.amount }, 0)
+
+    let octOPEX = filteredTransactionsList.filter((trans) => {
+        return (String(trans.date.slice(5, 7)) === '10' && opexCategories.includes(trans.category))
+    })
+        .reduce((acc, obj) => { return acc + obj.amount }, 0)
+
+    let novOPEX = filteredTransactionsList.filter((trans) => {
+        return (String(trans.date.slice(5, 7)) === '11' && opexCategories.includes(trans.category))
+    })
+        .reduce((acc, obj) => { return acc + obj.amount }, 0)
+
+    let decOPEX = filteredTransactionsList.filter((trans) => {
+        return (String(trans.date.slice(5, 7)) === '12' && opexCategories.includes(trans.category))
+    })
+        .reduce((acc, obj) => { return acc + obj.amount }, 0)
+
+
+    // console.log(janOPEX);
+    // console.log(febOPEX);
+    // console.log(marOPEX);
+    // console.log(aprOPEX);
+    // console.log(mayOPEX);
+    // console.log(junOPEX);
+    // console.log(julOPEX);
+    // console.log(augOPEX);
+    // console.log(sepOPEX);
+    // console.log(octOPEX);
+    // console.log(novOPEX);
+    // console.log(decOPEX);
+
+
+    // ___________________________________________________________________________________________________________
 
 
 
@@ -181,7 +330,7 @@ function DashboardPage() {
     return (
         <div>
             <div className="w-[200px]" >
-                <YearFilter selected={selected} setSelected={setSelected} yearsList={yearsList} updateMonthlyRevenue={updateMonthlyRevenue} />
+                <YearFilter selected={selected} setSelected={setSelected} yearsList={yearsList} />
             </div>
             <div className="m-4 grid grid-cols-1 gap-5 sm:grid-cols-12">
 
@@ -236,7 +385,48 @@ function DashboardPage() {
                     </div>
                     {/* <h1>Income - Expenses</h1> */}
                     <div >
-                        <ProfitByMonth filteredTransactionsList={filteredTransactionsList} />
+                        <ProfitByMonth
+                            filteredTransactionsList={filteredTransactionsList}
+                            janRevenue={janRevenue}
+                            febRevenue={febRevenue}
+                            marRevenue={marRevenue}
+                            aprRevenue={aprRevenue}
+                            mayRevenue={mayRevenue}
+                            junRevenue={junRevenue}
+                            julRevenue={julRevenue}
+                            augRevenue={augRevenue}
+                            sepRevenue={sepRevenue}
+                            octRevenue={octRevenue}
+                            novRevenue={novRevenue}
+                            decRevenue={decRevenue}
+
+                            janCOGS={janCOGS}
+                            febCOGS={febCOGS}
+                            marCOGS={marCOGS}
+                            aprCOGS={aprCOGS}
+                            mayCOGS={mayCOGS}
+                            junCOGS={junCOGS}
+                            julCOGS={julCOGS}
+                            augCOGS={augCOGS}
+                            sepCOGS={sepCOGS}
+                            octCOGS={octCOGS}
+                            novCOGS={novCOGS}
+                            decCOGS={decCOGS}
+
+                            janOPEX={janOPEX}
+                            febOPEX={febOPEX}
+                            marOPEX={marOPEX}
+                            aprOPEX={aprOPEX}
+                            mayOPEX={mayOPEX}
+                            junOPEX={junOPEX}
+                            julOPEX={julOPEX}
+                            augOPEX={augOPEX}
+                            sepOPEX={sepOPEX}
+                            octOPEX={octOPEX}
+                            novOPEX={novOPEX}
+                            decOPEX={decOPEX}
+
+                        />
                     </div>
                 </div>
 

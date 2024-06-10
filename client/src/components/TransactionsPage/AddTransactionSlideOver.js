@@ -32,15 +32,18 @@ export default function AddTransactionSlideOver({ transactionSlideOverOpen, open
         date: "",
         description: "",
         amount: "",
-        category: ""
+        category: categoryAccountsList[0].category
     })
 
     // updating form state function
     function updateTransactionFormData(event) {
+        // console.log(event.target.name)
+        // console.log(event.target.value)
         setTransactionFormData({ ...transactionFormData, date: startDate, [event.target.name]: event.target.value })
 
     }
 
+    console.log(transactionFormData);
     // function handleAddOnlyTransactionSubmit(event) {
     //     event.preventDefault()
     //     addNewTransaction(transactionFormData)
@@ -68,6 +71,7 @@ export default function AddTransactionSlideOver({ transactionSlideOverOpen, open
     }
 
 
+    console.log(categoryAccountsList);
 
 
 
@@ -191,7 +195,6 @@ export default function AddTransactionSlideOver({ transactionSlideOverOpen, open
                                                             onChange={updateTransactionFormData}
                                                             id="category"
                                                             name="category"
-
                                                             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                                                         >
                                                             {categoryAccountsList.map((trans) => {
