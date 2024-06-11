@@ -368,11 +368,11 @@ function DashboardPage() {
     // _____________________________________________________________________________________________________________________
 
 
-    // Finding all categories COGS and OPEX_________________________________________________________________________________
+    // Finding all categories COGS and OPEX for Expenses Donut chart________________________________________________________
 
     let allExpenseTransactionsList = [...COGSTransactions, ...opexTransactions]
 
-    console.log(allExpenseTransactionsList);
+    // console.log(allExpenseTransactionsList);
 
     let allExpenseCategories = [];
 
@@ -395,7 +395,7 @@ function DashboardPage() {
     // console.log(allExpenseCategories)
 
     // Iterating through to .reduce up all of the expenses by category 
-    let allExpensesSummedByCategoriesObject = []
+    let allExpensesSummedByCategoriesObject = {}
     allExpenseCategories.map((item) => {
         return (
 
@@ -547,7 +547,46 @@ function DashboardPage() {
                                 <div className="min-h-[25px] rounded-lg shadow font-semibold text-center sm:text-2xl sm:col-span-3">
                                     <h1>Estimated Tax Liabiltiy Across the Year</h1>
                                 </div>
-                                <TaxLineChart />
+                                <TaxLineChart
+                                    janRevenue={janRevenue}
+                                    febRevenue={febRevenue}
+                                    marRevenue={marRevenue}
+                                    aprRevenue={aprRevenue}
+                                    mayRevenue={mayRevenue}
+                                    junRevenue={junRevenue}
+                                    julRevenue={julRevenue}
+                                    augRevenue={augRevenue}
+                                    sepRevenue={sepRevenue}
+                                    octRevenue={octRevenue}
+                                    novRevenue={novRevenue}
+                                    decRevenue={decRevenue}
+
+                                    janCOGS={janCOGS}
+                                    febCOGS={febCOGS}
+                                    marCOGS={marCOGS}
+                                    aprCOGS={aprCOGS}
+                                    mayCOGS={mayCOGS}
+                                    junCOGS={junCOGS}
+                                    julCOGS={julCOGS}
+                                    augCOGS={augCOGS}
+                                    sepCOGS={sepCOGS}
+                                    octCOGS={octCOGS}
+                                    novCOGS={novCOGS}
+                                    decCOGS={decCOGS}
+
+                                    janOPEX={janOPEX}
+                                    febOPEX={febOPEX}
+                                    marOPEX={marOPEX}
+                                    aprOPEX={aprOPEX}
+                                    mayOPEX={mayOPEX}
+                                    junOPEX={junOPEX}
+                                    julOPEX={julOPEX}
+                                    augOPEX={augOPEX}
+                                    sepOPEX={sepOPEX}
+                                    octOPEX={octOPEX}
+                                    novOPEX={novOPEX}
+                                    decOPEX={decOPEX}
+                                />
                             </div>
                             <div className="bg-white sm:col-span-1 rounded-lg">
                                 {/* <h1>Expense Donut (All Expenses)</h1> */}
@@ -571,7 +610,20 @@ function DashboardPage() {
                             <div className="min-h-[25px] rounded-lg shadow font-semibold text-center sm:text-2xl sm:col-span-3">
                                 <h1>COGS Monthly Bar Chart</h1>
                             </div>
-                            <COGSMonthChart />
+                            <COGSMonthChart
+                                janCOGS={janCOGS}
+                                febCOGS={febCOGS}
+                                marCOGS={marCOGS}
+                                aprCOGS={aprCOGS}
+                                mayCOGS={mayCOGS}
+                                junCOGS={junCOGS}
+                                julCOGS={julCOGS}
+                                augCOGS={augCOGS}
+                                sepCOGS={sepCOGS}
+                                octCOGS={octCOGS}
+                                novCOGS={novCOGS}
+                                decCOGS={decCOGS}
+                            />
                         </div>
 
                     </div>

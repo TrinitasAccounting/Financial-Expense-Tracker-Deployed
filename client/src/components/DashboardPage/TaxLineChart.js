@@ -56,12 +56,69 @@ import { LineChart } from '@mui/x-charts/LineChart';
 //     43413, 43922, 44293, 44689, 45619.785, 46177.617,
 // ];
 
-export default function TaxLineChart() {
+export default function TaxLineChart({
+    janRevenue,
+    febRevenue,
+    marRevenue,
+    aprRevenue,
+    mayRevenue,
+    junRevenue,
+    julRevenue,
+    augRevenue,
+    sepRevenue,
+    octRevenue,
+    novRevenue,
+    decRevenue,
+
+    janCOGS,
+    febCOGS,
+    marCOGS,
+    aprCOGS,
+    mayCOGS,
+    junCOGS,
+    julCOGS,
+    augCOGS,
+    sepCOGS,
+    octCOGS,
+    novCOGS,
+    decCOGS,
+
+    janOPEX,
+    febOPEX,
+    marOPEX,
+    aprOPEX,
+    mayOPEX,
+    junOPEX,
+    julOPEX,
+    augOPEX,
+    sepOPEX,
+    octOPEX,
+    novOPEX,
+    decOPEX,
+}) {
 
 
     let dataX = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     let dataCoporateTax = [40, 50, 65]
     // let dataPersonalTax = [120, 300, 435]
+
+    let taxesLiabilityByMonth = [
+        (janRevenue - janCOGS - janOPEX) * 0.3,
+        ((janRevenue - janCOGS - janOPEX) + (febRevenue - febCOGS - febOPEX)) * 0.3,
+        ((janRevenue - janCOGS - janOPEX) + (febRevenue - febCOGS - febOPEX) + (marRevenue - marCOGS - marOPEX)) * 0.3,
+        ((janRevenue - janCOGS - janOPEX) + (febRevenue - febCOGS - febOPEX) + (marRevenue - marCOGS - marOPEX) + (aprRevenue - aprCOGS - aprOPEX)) * 0.3,
+        ((janRevenue - janCOGS - janOPEX) + (febRevenue - febCOGS - febOPEX) + (marRevenue - marCOGS - marOPEX) + (aprRevenue - aprCOGS - aprOPEX) + (mayRevenue - mayCOGS - mayOPEX)) * 0.3,
+        ((janRevenue - janCOGS - janOPEX) + (febRevenue - febCOGS - febOPEX) + (marRevenue - marCOGS - marOPEX) + (aprRevenue - aprCOGS - aprOPEX) + (mayRevenue - mayCOGS - mayOPEX) + (junRevenue - junCOGS - junOPEX)) * 0.3,
+        ((janRevenue - janCOGS - janOPEX) + (febRevenue - febCOGS - febOPEX) + (marRevenue - marCOGS - marOPEX) + (aprRevenue - aprCOGS - aprOPEX) + (mayRevenue - mayCOGS - mayOPEX) + (junRevenue - junCOGS - junOPEX) + (julRevenue - julCOGS - julOPEX)) * 0.3,
+        ((janRevenue - janCOGS - janOPEX) + (febRevenue - febCOGS - febOPEX) + (marRevenue - marCOGS - marOPEX) + (aprRevenue - aprCOGS - aprOPEX) + (mayRevenue - mayCOGS - mayOPEX) + (junRevenue - junCOGS - junOPEX) + (julRevenue - julCOGS - julOPEX) + (augRevenue - augCOGS - augOPEX)) * 0.3,
+        ((janRevenue - janCOGS - janOPEX) + (febRevenue - febCOGS - febOPEX) + (marRevenue - marCOGS - marOPEX) + (aprRevenue - aprCOGS - aprOPEX) + (mayRevenue - mayCOGS - mayOPEX) + (junRevenue - junCOGS - junOPEX) + (julRevenue - julCOGS - julOPEX) + (augRevenue - augCOGS - augOPEX) + (sepRevenue - sepCOGS - sepOPEX)) * 0.3,
+        ((janRevenue - janCOGS - janOPEX) + (febRevenue - febCOGS - febOPEX) + (marRevenue - marCOGS - marOPEX) + (aprRevenue - aprCOGS - aprOPEX) + (mayRevenue - mayCOGS - mayOPEX) + (junRevenue - junCOGS - junOPEX) + (julRevenue - julCOGS - julOPEX) + (augRevenue - augCOGS - augOPEX) + (sepRevenue - sepCOGS - sepOPEX) + (octRevenue - octCOGS - octOPEX)) * 0.3,
+        ((janRevenue - janCOGS - janOPEX) + (febRevenue - febCOGS - febOPEX) + (marRevenue - marCOGS - marOPEX) + (aprRevenue - aprCOGS - aprOPEX) + (mayRevenue - mayCOGS - mayOPEX) + (junRevenue - junCOGS - junOPEX) + (julRevenue - julCOGS - julOPEX) + (augRevenue - augCOGS - augOPEX) + (sepRevenue - sepCOGS - sepOPEX) + (octRevenue - octCOGS - octOPEX) + (novRevenue - novCOGS - novOPEX)) * 0.3,
+        ((janRevenue - janCOGS - janOPEX) + (febRevenue - febCOGS - febOPEX) + (marRevenue - marCOGS - marOPEX) + (aprRevenue - aprCOGS - aprOPEX) + (mayRevenue - mayCOGS - mayOPEX) + (junRevenue - junCOGS - junOPEX) + (julRevenue - julCOGS - julOPEX) + (augRevenue - augCOGS - augOPEX) + (sepRevenue - sepCOGS - sepOPEX) + (octRevenue - octCOGS - octOPEX) + (novRevenue - novCOGS - novOPEX) + (decRevenue - decCOGS - decOPEX)) * 0.3
+    ];
+
+
+
 
 
 
@@ -80,7 +137,7 @@ export default function TaxLineChart() {
                 {
                     id: 'tax',
                     label: 'Corporate + Personal Tax',
-                    data: dataCoporateTax,
+                    data: taxesLiabilityByMonth,
                     stack: 'total',
                     area: true,
                     showMark: false,
@@ -104,7 +161,7 @@ export default function TaxLineChart() {
             ]}
             // width={600}
             height={360}
-            margin={{ left: 70 }}
+            margin={{ left: 70, }}
         />
     );
 }

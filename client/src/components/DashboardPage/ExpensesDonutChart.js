@@ -7,16 +7,21 @@ export default function ExpensesDonutChart({
     allExpensesSummedByCategoriesObject
 }) {
 
-    let dataArray = [
-        { value: 200, label: 'Meals & Entertainment' },
-        { value: 50, label: 'Job Supplies' },
-        { value: 125, label: 'Office Expenses' },
-        { value: 400, label: 'Insurance' },
-    ]
+    // let dataArray = [
+    //     { value: 200, label: 'Meals & Entertainment' },
+    //     { value: 50, label: 'Job Supplies' },
+    //     { value: 125, label: 'Office Expenses' },
+    //     { value: 400, label: 'Insurance' },
+    // ]
 
     // console.log(allExpensesSummedByCategoriesObject);
 
-    // let dataTest = 
+    let dataArray = []
+    Object.keys(allExpensesSummedByCategoriesObject).forEach((key, index) => {
+        dataArray.push({ value: allExpensesSummedByCategoriesObject[key], label: key })
+    })
+
+
 
 
 

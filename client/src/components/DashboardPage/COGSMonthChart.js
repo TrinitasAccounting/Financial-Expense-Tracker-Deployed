@@ -3,11 +3,24 @@
 import * as React from 'react';
 import { BarChart } from '@mui/x-charts/BarChart';
 
-export default function COGSMonthChart() {
+export default function COGSMonthChart({
+    janCOGS,
+    febCOGS,
+    marCOGS,
+    aprCOGS,
+    mayCOGS,
+    junCOGS,
+    julCOGS,
+    augCOGS,
+    sepCOGS,
+    octCOGS,
+    novCOGS,
+    decCOGS,
+}) {
 
     let dataX = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
-    let dataY = [200, 100, 50, 92, 65, 75, 25, 175, 48, 115, 200, 37]
+    let dataY = [janCOGS, febCOGS, marCOGS, aprCOGS, mayCOGS, junCOGS, julCOGS, augCOGS, sepCOGS, octCOGS, novCOGS, decCOGS]
 
 
 

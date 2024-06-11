@@ -6,7 +6,7 @@ import { BarChart } from '@mui/x-charts/BarChart';
 const chartSetting = {
     xAxis: [
         {
-            label: 'rainfall (mm)',
+            label: 'Total Expense Cost ($)',
         },
     ],
     // width: 500,
@@ -150,7 +150,7 @@ export default function ExpensesBarChart({ sortedOperatingExpensesObject }) {
                 left: 150,
                 // right: 80,
                 // top: 80,
-                // bottom: 80,
+                // bottom: 50,
             }}
             grid={{ vertical: true }}
             {...chartSetting}
