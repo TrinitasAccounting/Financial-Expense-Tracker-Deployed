@@ -162,6 +162,72 @@ api.add_resource(AllChartOfAccounts, '/server/chartofaccounts')
 
 
 
+class ProfileDetails(Resource):
+
+    def get(self):
+
+        profileAttributes = Profile.query.all()
+
+        response_body = [profile.to_dict() for profile in profileAttributes]
+        return make_response(response_body, 200)
+
+    # def post(self):
+    #     try: 
+    #         new_account = Chart_Of_Accounts(name=request.json.get('name'), account_type=request.json.get('account_type'))
+    #         db.session.add(new_account)
+    #         db.session.commit()
+
+    #         response_body = new_account.to_dict()
+    #         return make_response(response_body, 201)
+
+    #     except:
+    #         response_body = {
+    #             'error': 'Accounts must have a name and an account type'
+    #         }
+    #         return make_response(response_body, 400)
+
+
+
+
+api.add_resource(ProfileDetails, '/server/profile_details')
+
+
+
+
+class ProfileDetailsByID(Resource):
+
+    def patch(self, id):
+
+        profile = db.session.get(Profile, id)
+
+        if profile:
+            try:
+                for attr in request.json:
+                    setattr(profile, attr, request.json[attr])
+
+                db.session.commit()
+                response_body = profile.to_dict()
+                return make_response(response_body, 200)
+
+            except:
+                response_body = {
+                    'error': "Profile detail must be a string"
+                }
+                return make_response(response_body, 400)
+
+        else:
+            response_body = {
+                'error': "Profile Not Found"
+            }
+            return make_response(response_body, 404)
+
+
+api.add_resource(ProfileDetailsByID, '/server/profile_details/<int:id>')
+
+
+
+
+
 
 
 

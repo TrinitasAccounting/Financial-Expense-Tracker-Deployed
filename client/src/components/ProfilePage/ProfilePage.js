@@ -1,6 +1,10 @@
 
 
-// import { useState } from 'react'
+import { useOutletContext } from "react-router-dom";
+
+import EditProfilePopUp from "./EditProfilePopUp";
+
+import { useState } from 'react'
 // import { Dialog, DialogPanel, Field, Label, Switch } from '@headlessui/react'
 // import { Bars3Icon } from '@heroicons/react/20/solid'
 // import {
@@ -36,8 +40,30 @@ export default function ProfilePage() {
     // const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
     // const [automaticTimezoneEnabled, setAutomaticTimezoneEnabled] = useState(true)
 
+    const [currentlyOpenEditProfilePopUp, setCurrentlyOpenEditProfilePopUp] = useState(false)
+
+    const { profileDetails } = useOutletContext()
+
+
+    function openCloseEditProfilePopUp() {
+        setCurrentlyOpenEditProfilePopUp((currentlyOpenEditProfilePopUp) => !currentlyOpenEditProfilePopUp)
+    }
+
+
+
     return (
         <>
+
+            {currentlyOpenEditProfilePopUp ?
+
+                <EditProfilePopUp currentlyOpenEditProfilePopUp={currentlyOpenEditProfilePopUp} openCloseEditProfilePopUp={openCloseEditProfilePopUp} />
+
+                :
+
+                <></>
+
+            }
+
 
 
             <div className="mx-auto max-w-7xl pt-16 lg:flex lg:gap-x-16 lg:px-8">
@@ -55,8 +81,10 @@ export default function ProfilePage() {
                                 <div className="pt-6 sm:flex">
                                     <dt className="font-medium text-gray-900 sm:w-64 sm:flex-none sm:pr-6">Full name</dt>
                                     <dd className="mt-1 flex justify-between gap-x-6 sm:mt-0 sm:flex-auto">
-                                        <div className="text-gray-900">Clay Mangum</div>
-                                        <button type="button" className="font-semibold text-indigo-600 hover:text-indigo-500">
+                                        {profileDetails.length === 0 ? <div className="text-gray-900">Loading...</div> : <div className="text-gray-900">{profileDetails[0].name}</div>}
+                                        <button
+                                            onClick={openCloseEditProfilePopUp}
+                                            type="button" className="font-semibold text-indigo-600 hover:text-indigo-500">
                                             Update
                                         </button>
                                     </dd>
@@ -64,8 +92,10 @@ export default function ProfilePage() {
                                 <div className="pt-6 sm:flex">
                                     <dt className="font-medium text-gray-900 sm:w-64 sm:flex-none sm:pr-6">Email address</dt>
                                     <dd className="mt-1 flex justify-between gap-x-6 sm:mt-0 sm:flex-auto">
-                                        <div className="text-gray-900">tom.cook@example.com</div>
-                                        <button type="button" className="font-semibold text-indigo-600 hover:text-indigo-500">
+                                        {profileDetails.length === 0 ? <div className="text-gray-900">Loading...</div> : <div className="text-gray-900">{profileDetails[0].email}</div>}
+                                        <button
+                                            onClick={openCloseEditProfilePopUp}
+                                            type="button" className="font-semibold text-indigo-600 hover:text-indigo-500">
                                             Update
                                         </button>
                                     </dd>
@@ -73,40 +103,42 @@ export default function ProfilePage() {
                                 <div className="pt-6 sm:flex">
                                     <dt className="font-medium text-gray-900 sm:w-64 sm:flex-none sm:pr-6">Title</dt>
                                     <dd className="mt-1 flex justify-between gap-x-6 sm:mt-0 sm:flex-auto">
-                                        <div className="text-gray-900">Human Resources Manager</div>
-                                        <button type="button" className="font-semibold text-indigo-600 hover:text-indigo-500">
+                                        {profileDetails.length === 0 ? <div className="text-gray-900">Loading...</div> : <div className="text-gray-900">{profileDetails[0].job_type}</div>}
+                                        <button
+                                            onClick={openCloseEditProfilePopUp}
+                                            type="button" className="font-semibold text-indigo-600 hover:text-indigo-500">
                                             Update
                                         </button>
                                     </dd>
                                 </div>
+                                <div className="pt-6 sm:flex">
+                                    <dt className="font-medium text-gray-900 sm:w-64 sm:flex-none sm:pr-6">Age</dt>
+                                    <dd className="mt-1 flex justify-between gap-x-6 sm:mt-0 sm:flex-auto">
+                                        {profileDetails.length === 0 ? <div className="text-gray-900">Loading...</div> : <div className="text-gray-900">{profileDetails[0].age}</div>}
+                                        <button
+                                            onClick={openCloseEditProfilePopUp}
+                                            type="button" className="font-semibold text-indigo-600 hover:text-indigo-500">
+                                            Update
+                                        </button>
+                                    </dd>
+                                </div>
+                                <div className="pt-6 sm:flex">
+                                    <dt className="font-medium text-gray-900 sm:w-64 sm:flex-none sm:pr-6">State</dt>
+                                    <dd className="mt-1 flex justify-between gap-x-6 sm:mt-0 sm:flex-auto">
+                                        {profileDetails.length === 0 ? <div className="text-gray-900">Loading...</div> : <div className="text-gray-900">{profileDetails[0].state}</div>}
+                                        <button
+                                            onClick={openCloseEditProfilePopUp}
+                                            type="button" className="font-semibold text-indigo-600 hover:text-indigo-500">
+                                            Update
+                                        </button>
+                                    </dd>
+                                </div>
+
+
                             </dl>
                         </div>
 
-                        {/* <div>
-                            <h2 className="text-base font-semibold leading-7 text-gray-900">Bank accounts</h2>
-                            <p className="mt-1 text-sm leading-6 text-gray-500">Connect bank accounts to your account.</p>
 
-                            <ul role="list" className="mt-6 divide-y divide-gray-100 border-t border-gray-200 text-sm leading-6">
-                                <li className="flex justify-between gap-x-6 py-6">
-                                    <div className="font-medium text-gray-900">TD Canada Trust</div>
-                                    <button type="button" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                                        Update
-                                    </button>
-                                </li>
-                                <li className="flex justify-between gap-x-6 py-6">
-                                    <div className="font-medium text-gray-900">Royal Bank of Canada</div>
-                                    <button type="button" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                                        Update
-                                    </button>
-                                </li>
-                            </ul>
-
-                            <div className="flex border-t border-gray-100 pt-6">
-                                <button type="button" className="text-sm font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
-                                    <span aria-hidden="true">+</span> Add another bank
-                                </button>
-                            </div>
-                        </div> */}
 
                         <div>
                             <h2 className="text-base font-semibold leading-7 text-gray-900">Integrations</h2>

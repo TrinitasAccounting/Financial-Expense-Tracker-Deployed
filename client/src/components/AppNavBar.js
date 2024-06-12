@@ -58,6 +58,8 @@ export default function AppNavBar() {
 
     const [chartOfAccountsList, setChartOfAccountsList] = useState([]);
 
+    const [profileDetails, setProfileDetails] = useState([])
+
 
 
     let categoryOptions = ['Gas & Fuel', 'Meal & Entertainment', 'Sales']
@@ -155,7 +157,7 @@ export default function AppNavBar() {
 
 
 
-    // All fetches for the Chart of Accounts_______
+    // All fetches for the Chart of Accounts_______________________
     useEffect(() => {
         fetch('/server/chartofaccounts')
             .then(res => {
@@ -164,6 +166,64 @@ export default function AppNavBar() {
                 }
             })
     }, [])
+
+    // POST for new transaction
+    function addNewChartOfAccount(newAccount) {
+        fetch('/server/chartofaccounts', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(newAccount)
+        })
+            .then(res => {
+                if (res.ok) {
+                    res.json().then(newAccountData => {
+                        setChartOfAccountsList([...chartOfAccountsList, newAccountData])
+                        console.log(newAccountData)
+
+                    })
+                }
+                else if (res.status === 400) {
+                    res.json().then(errorData => alert(`Error: ${errorData.error}`))
+                }
+                else if (res.status === 401) {
+                    res.json().then(errorData => alert(`Error: ${errorData.error}`))
+                }
+                else {
+                    res.json().then(() => alert("Error: Something went wrong"))
+                }
+            })
+    }
+
+    // _____________________________________________________________________________________
+
+
+    // All fetches for the Profiles_________________________________________________________
+    useEffect(() => {
+        fetch('/server/profile_details')
+            .then(res => {
+                if (res.ok) {
+                    res.json().then(data => setProfileDetails(data))
+                }
+            })
+    }, [])
+
+    // Updating the Profile in the state
+    function onUpdateProfile(updatedProfile) {
+        const updatedProfileArray = profileDetails.map(
+            user => {
+                if (user.id === updatedProfile.id) {
+                    return updatedProfile
+                }
+                else { return user }
+            }
+        )
+        setProfileDetails(updatedProfileArray)
+    }
+
+    // _____________________________________________________________________________________
 
 
 
@@ -533,7 +593,9 @@ export default function AppNavBar() {
                             setChartOfAccountsList: setChartOfAccountsList,
                             revenueCategories: revenueCategories,
                             COGSCategories: COGSCategories,
-                            opexCategories: opexCategories
+                            opexCategories: opexCategories,
+                            addNewChartOfAccount: addNewChartOfAccount,
+                            profileDetails: profileDetails
                         }}
                         />
 

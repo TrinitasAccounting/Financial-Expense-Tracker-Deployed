@@ -16,26 +16,26 @@ if __name__ == '__main__':
         print("Starting seed...")
 
         # Delete data from the tables first
-        Transactions.query.delete()
-        Profile.query.delete()
+        # Transactions.query.delete()
+        # Profile.query.delete()
         Chart_Of_Accounts.query.delete()
         db.session.commit()
 
-        profile1 = Profile(name="Clay Mangum", job_type="Software Engineer", state="New Jersey", age='30', email='clay@software.com')
-        db.session.add_all([profile1])
-        db.session.commit()
+        # profile1 = Profile(name="Clay Mangum", job_type="Software Engineer", state="New Jersey", age='30', email='clay@software.com')
+        # db.session.add_all([profile1])
+        # db.session.commit()
 
 
 
 
         # Adding initial transactions
-        t1 = Transactions(date='1/2/2024', description='Exxon Mobile', amount='32.77', category='Gas & Fuel')
-        t2 = Transactions(date='2/28/2024', description='Taco Bell', amount='12.49', category='Meals & Entertainment')
-        t3 = Transactions(date='1/10/2024', description='BP Gas', amount='54.00', category='Gas & Fuel')
-        t4 = Transactions(date='2/4/2024', description='Shell', amount='210.33', category='Gas & Fuel')
+        # t1 = Transactions(date='1/2/2024', description='Exxon Mobile', amount='32.77', category='Gas & Fuel')
+        # t2 = Transactions(date='2/28/2024', description='Taco Bell', amount='12.49', category='Meals & Entertainment')
+        # t3 = Transactions(date='1/10/2024', description='BP Gas', amount='54.00', category='Gas & Fuel')
+        # t4 = Transactions(date='2/4/2024', description='Shell', amount='210.33', category='Gas & Fuel')
 
-        db.session.add_all([t1, t2, t3, t4])
-        db.session.commit()
+        # db.session.add_all([t1, t2, t3, t4])
+        # db.session.commit()
 
 
         a1 = Chart_Of_Accounts(name='Sales', account_type='Income')
