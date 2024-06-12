@@ -43,18 +43,18 @@ export default function AddTransactionSlideOver({ transactionSlideOverOpen, open
 
     }
 
-    console.log(transactionFormData);
-    // function handleAddOnlyTransactionSubmit(event) {
-    //     event.preventDefault()
-    //     addNewTransaction(transactionFormData)
 
-    //     setTransactionFormData({
-    //         date: "",
-    //         description: "",
-    //         amount: "",
-    //         category: ""
-    //     })
-    // }
+    function handleAddOnlyTransactionSubmit(event) {
+        event.preventDefault()
+        addNewTransaction(transactionFormData)
+
+        setTransactionFormData({
+            date: "",
+            description: "",
+            amount: "",
+            category: ""
+        })
+    }
 
     function handleAddAndCloseTransactionSubmit(event) {
         event.preventDefault()
@@ -71,7 +71,7 @@ export default function AddTransactionSlideOver({ transactionSlideOverOpen, open
     }
 
 
-    console.log(categoryAccountsList);
+
 
 
 
@@ -100,7 +100,9 @@ export default function AddTransactionSlideOver({ transactionSlideOverOpen, open
                                 leaveTo="translate-x-full"
                             >
                                 <DialogPanel className="pointer-events-auto w-screen max-w-2xl">
-                                    <form onSubmit={handleAddAndCloseTransactionSubmit} className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
+                                    <form
+                                        // onSubmit={handleAddAndCloseTransactionSubmit}
+                                        className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
                                         <div className="flex-1">
                                             {/* Header */}
                                             <div className="min-h-[50px]">
@@ -242,18 +244,19 @@ export default function AddTransactionSlideOver({ transactionSlideOverOpen, open
                                                     Cancel
                                                 </button>
                                                 <button
-                                                    // onClick={handleAddAndCloseTransactionSubmit}
+                                                    onClick={handleAddAndCloseTransactionSubmit}
                                                     type="submit"
                                                     className="inline-flex justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                                                 >
                                                     Add and Close
                                                 </button>
-                                                {/* <button
+                                                <button
+                                                    onClick={handleAddOnlyTransactionSubmit}
                                                     type="submit"
                                                     className="inline-flex justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                                                 >
                                                     Add
-                                                </button> */}
+                                                </button>
                                             </div>
                                         </div>
                                     </form>

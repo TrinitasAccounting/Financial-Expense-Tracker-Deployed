@@ -5,36 +5,9 @@ import { useOutletContext } from "react-router-dom";
 import EditProfilePopUp from "./EditProfilePopUp";
 
 import { useState } from 'react'
-// import { Dialog, DialogPanel, Field, Label, Switch } from '@headlessui/react'
-// import { Bars3Icon } from '@heroicons/react/20/solid'
-// import {
-//     BellIcon,
-//     CreditCardIcon,
-//     CubeIcon,
-//     FingerPrintIcon,
-//     UserCircleIcon,
-//     UsersIcon,
-//     XMarkIcon,
-// } from '@heroicons/react/24/outline'
 
-// const navigation = [
-//     { name: 'Home', href: '#' },
-//     { name: 'Invoices', href: '#' },
-//     { name: 'Clients', href: '#' },
-//     { name: 'Expenses', href: '#' },
-// ]
-// const secondaryNavigation = [
-//     { name: 'General', href: '#', icon: UserCircleIcon, current: true },
-//     { name: 'Security', href: '#', icon: FingerPrintIcon, current: false },
-//     { name: 'Notifications', href: '#', icon: BellIcon, current: false },
-//     { name: 'Plan', href: '#', icon: CubeIcon, current: false },
-//     { name: 'Billing', href: '#', icon: CreditCardIcon, current: false },
-//     { name: 'Team members', href: '#', icon: UsersIcon, current: false },
-// ]
 
-// function classNames(...classes) {
-//     return classes.filter(Boolean).join(' ')
-// }
+
 
 export default function ProfilePage() {
     // const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -44,7 +17,6 @@ export default function ProfilePage() {
 
     const { profileDetails, onUpdateProfile } = useOutletContext()
 
-    console.log(profileDetails[0]);
 
     const [editForm, setEditForm] = useState({
         id: "",
@@ -55,6 +27,47 @@ export default function ProfilePage() {
         email: ""
 
     })
+
+    // Integrations Section____________________________________________________
+    const [addNewIntegrationPopUp, setAddNewIntegrationPopUp] = useState(false)
+
+    const [editIntegrationForm, setEditIntegrationForm] = useState({
+        name: ""
+    })
+
+
+    const [integrationsList, setIntegrationsList] = useState(['Quickbooks', 'ADP Payroll', 'Microsoft PowerBI', 'SOS Inventory'])
+
+    function openCloseNewIntegration() {
+        return (setAddNewIntegrationPopUp((addNewIntegrationPopUp) => !addNewIntegrationPopUp))
+    }
+
+    function deleteIntegration(integrationName) {
+        let filtered = integrationsList.filter((int) => {
+            return (int !== integrationName.name)
+        })
+
+        setIntegrationsList(filtered)
+    }
+
+    function addNewIntegration(integrationName) {
+        let addNewIntegrations = [...integrationsList, integrationName]
+
+        setIntegrationsList(addNewIntegration)
+    };
+
+    function handleIntegrationChange(event) {
+        setEditIntegrationForm({
+            ...editIntegrationForm, [event.target.name]: event.target.value
+        })
+    }
+
+    console.log(editIntegrationForm);
+
+    // ________________________________________________________________________
+
+
+
 
 
     function openCloseEditProfilePopUp() {
@@ -196,6 +209,8 @@ export default function ProfilePage() {
 
 
 
+                        {/* Integrations Section */}
+
                         <div>
                             <h2 className="text-base font-semibold leading-7 text-gray-900">Integrations</h2>
                             <p className="mt-1 text-sm leading-6 text-gray-500">Connect applications to your account.</p>
@@ -203,35 +218,101 @@ export default function ProfilePage() {
                             <ul className="mt-6 divide-y divide-gray-100 border-t border-gray-200 text-sm leading-6">
                                 <li className="flex justify-between gap-x-6 py-6">
                                     <div className="font-medium text-gray-900">QuickBooks</div>
-                                    <button type="button" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                                        Update
+                                    <button
+                                        // onClick={deleteIntegration}
+                                        // onClick={() => {
+                                        //     deleteIntegration(profileDetails[0])
+
+                                        // }}
+                                        type="button" className="font-semibold text-indigo-600 hover:text-indigo-500">
+                                        Delete
                                     </button>
                                 </li>
                                 <li className="flex justify-between gap-x-6 py-6">
                                     <div className="font-medium text-gray-900">ADP Payroll</div>
-                                    <button type="button" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                                        Update
+                                    <button
+                                        onClick={deleteIntegration}
+                                        type="button" className="font-semibold text-indigo-600 hover:text-indigo-500">
+                                        Delete
                                     </button>
                                 </li>
                                 <li className="flex justify-between gap-x-6 py-6">
                                     <div className="font-medium text-gray-900">Microsoft PowerBI</div>
-                                    <button type="button" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                                        Update
+                                    <button
+                                        onClick={deleteIntegration}
+                                        type="button" className="font-semibold text-indigo-600 hover:text-indigo-500">
+                                        Delete
                                     </button>
                                 </li>
                                 <li className="flex justify-between gap-x-6 py-6">
                                     <div className="font-medium text-gray-900">SOS Inventory</div>
-                                    <button type="button" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                                        Update
+                                    <button
+                                        onClick={deleteIntegration}
+                                        type="button" className="font-semibold text-red-600 hover:text-indigo-500">
+                                        Delete
                                     </button>
                                 </li>
                             </ul>
 
-                            <div className="flex border-t border-gray-100 pt-6">
-                                <button type="button" className="text-sm font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+                            {/* <div className="flex border-t border-gray-100 pt-6">
+                                <button
+                                    onClick={openCloseNewIntegration}
+                                    type="button" className="text-sm font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
                                     <span aria-hidden="true">+</span> Add another application
                                 </button>
-                            </div>
+                            </div> */}
+
+                            {addNewIntegrationPopUp ?
+                                <>
+
+                                    <div className="flex border-t border-gray-100 pt-6">
+                                        <button
+                                            onClick={openCloseNewIntegration}
+                                            type="button" className="text-sm font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+                                            <span aria-hidden="true">+</span> Confirm Integration
+                                        </button>
+                                    </div>
+                                    <div className="space-y-2 px-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:space-y-0 sm:px-6 sm:py-5">
+                                        <div>
+                                            <label
+                                                htmlFor="name"
+                                                className="block text-sm font-medium leading-6 text-gray-900 sm:mt-1.5"
+                                            >
+                                                App Name
+                                            </label>
+                                        </div>
+                                        <div className="sm:col-span-2">
+                                            <textarea
+                                                value={editIntegrationForm.name}
+                                                onChange={handleIntegrationChange}
+                                                // onClick={() => {
+                                                //     captureEdit(profileDetails[0])
+                                                //     openCloseEditProfilePopUp()
+                                                // }}
+                                                onClick={addNewIntegration(editIntegrationForm.name)}
+
+                                                id="name"
+                                                name="name"
+                                                rows={1}
+                                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+
+                                            />
+                                        </div>
+                                    </div>
+                                </>
+
+                                :
+
+                                <div className="flex border-t border-gray-100 pt-6">
+                                    <button
+                                        onClick={openCloseNewIntegration}
+                                        type="button" className="text-sm font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+                                        <span aria-hidden="true">+</span> Add another app integration
+                                    </button>
+                                </div>
+
+
+                            }
                         </div>
 
                         {/* <div>
