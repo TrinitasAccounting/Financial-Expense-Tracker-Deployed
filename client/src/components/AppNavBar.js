@@ -595,7 +595,8 @@ export default function AppNavBar() {
                             COGSCategories: COGSCategories,
                             opexCategories: opexCategories,
                             addNewChartOfAccount: addNewChartOfAccount,
-                            profileDetails: profileDetails
+                            profileDetails: profileDetails,
+                            onUpdateProfile: onUpdateProfile
                         }}
                         />
 

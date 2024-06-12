@@ -42,12 +42,51 @@ export default function ProfilePage() {
 
     const [currentlyOpenEditProfilePopUp, setCurrentlyOpenEditProfilePopUp] = useState(false)
 
-    const { profileDetails } = useOutletContext()
+    const { profileDetails, onUpdateProfile } = useOutletContext()
+
+    console.log(profileDetails[0]);
+
+    const [editForm, setEditForm] = useState({
+        id: "",
+        name: "",
+        job_type: "",
+        state: "",
+        age: "",
+        email: ""
+
+    })
 
 
     function openCloseEditProfilePopUp() {
         setCurrentlyOpenEditProfilePopUp((currentlyOpenEditProfilePopUp) => !currentlyOpenEditProfilePopUp)
     }
+
+    // handles the changes on the front end only
+    function handleProfileUpdate(updatedProfile) {
+        setCurrentlyOpenEditProfilePopUp(false)
+        onUpdateProfile(updatedProfile)
+    }
+
+    // capture user input in edit form inputs
+    function handleChange(event) {
+        setEditForm({
+            ...editForm, [event.target.name]: event.target.value
+        })
+    }
+
+    // Capturing the profile to edit when update button is clicked
+    function captureEdit(clickedProfile) {
+        let filtered = profileDetails.filter(profile => profile.id === clickedProfile.id)
+        setEditForm(filtered[0])
+    }
+
+    // console.log(editForm);
+
+    // This is setting the initial values when the edit profile box pops up
+    // function clickOfEditSelected(editFormData) {
+
+    //     setSelected({ id: editFormData.id, date: editFormData.date, description: editFormData.description, category: editFormData.category, amount: editFormData.amount })
+    // }
 
 
 
@@ -56,7 +95,7 @@ export default function ProfilePage() {
 
             {currentlyOpenEditProfilePopUp ?
 
-                <EditProfilePopUp currentlyOpenEditProfilePopUp={currentlyOpenEditProfilePopUp} openCloseEditProfilePopUp={openCloseEditProfilePopUp} />
+                <EditProfilePopUp currentlyOpenEditProfilePopUp={currentlyOpenEditProfilePopUp} openCloseEditProfilePopUp={openCloseEditProfilePopUp} editForm={editForm} handleProfileUpdate={handleProfileUpdate} handleChange={handleChange} captureEdit={captureEdit} />
 
                 :
 
@@ -83,7 +122,11 @@ export default function ProfilePage() {
                                     <dd className="mt-1 flex justify-between gap-x-6 sm:mt-0 sm:flex-auto">
                                         {profileDetails.length === 0 ? <div className="text-gray-900">Loading...</div> : <div className="text-gray-900">{profileDetails[0].name}</div>}
                                         <button
-                                            onClick={openCloseEditProfilePopUp}
+                                            // onClick={openCloseEditProfilePopUp}
+                                            onClick={() => {
+                                                captureEdit(profileDetails[0])
+                                                openCloseEditProfilePopUp()
+                                            }}
                                             type="button" className="font-semibold text-indigo-600 hover:text-indigo-500">
                                             Update
                                         </button>
@@ -94,7 +137,11 @@ export default function ProfilePage() {
                                     <dd className="mt-1 flex justify-between gap-x-6 sm:mt-0 sm:flex-auto">
                                         {profileDetails.length === 0 ? <div className="text-gray-900">Loading...</div> : <div className="text-gray-900">{profileDetails[0].email}</div>}
                                         <button
-                                            onClick={openCloseEditProfilePopUp}
+
+                                            onClick={() => {
+                                                captureEdit(profileDetails[0])
+                                                openCloseEditProfilePopUp()
+                                            }}
                                             type="button" className="font-semibold text-indigo-600 hover:text-indigo-500">
                                             Update
                                         </button>
@@ -105,7 +152,10 @@ export default function ProfilePage() {
                                     <dd className="mt-1 flex justify-between gap-x-6 sm:mt-0 sm:flex-auto">
                                         {profileDetails.length === 0 ? <div className="text-gray-900">Loading...</div> : <div className="text-gray-900">{profileDetails[0].job_type}</div>}
                                         <button
-                                            onClick={openCloseEditProfilePopUp}
+                                            onClick={() => {
+                                                captureEdit(profileDetails[0])
+                                                openCloseEditProfilePopUp()
+                                            }}
                                             type="button" className="font-semibold text-indigo-600 hover:text-indigo-500">
                                             Update
                                         </button>
@@ -116,7 +166,10 @@ export default function ProfilePage() {
                                     <dd className="mt-1 flex justify-between gap-x-6 sm:mt-0 sm:flex-auto">
                                         {profileDetails.length === 0 ? <div className="text-gray-900">Loading...</div> : <div className="text-gray-900">{profileDetails[0].age}</div>}
                                         <button
-                                            onClick={openCloseEditProfilePopUp}
+                                            onClick={() => {
+                                                captureEdit(profileDetails[0])
+                                                openCloseEditProfilePopUp()
+                                            }}
                                             type="button" className="font-semibold text-indigo-600 hover:text-indigo-500">
                                             Update
                                         </button>
@@ -127,7 +180,10 @@ export default function ProfilePage() {
                                     <dd className="mt-1 flex justify-between gap-x-6 sm:mt-0 sm:flex-auto">
                                         {profileDetails.length === 0 ? <div className="text-gray-900">Loading...</div> : <div className="text-gray-900">{profileDetails[0].state}</div>}
                                         <button
-                                            onClick={openCloseEditProfilePopUp}
+                                            onClick={() => {
+                                                captureEdit(profileDetails[0])
+                                                openCloseEditProfilePopUp()
+                                            }}
                                             type="button" className="font-semibold text-indigo-600 hover:text-indigo-500">
                                             Update
                                         </button>

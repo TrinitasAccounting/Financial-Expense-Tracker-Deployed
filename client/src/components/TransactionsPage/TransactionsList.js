@@ -264,8 +264,9 @@ export default function TransactionsList({ transactionsList, categoryOptions }) 
                                                     onClick={() => {
                                                         captureEdit(trans)
                                                         openCloseEditTransaction(trans)
-                                                        clickOfEditSelected(trans)
-                                                    }}>
+                                                        // clickOfEditSelected(trans)
+                                                    }}
+                                                >
                                                     Edit<span className="sr-only">, {trans.id}</span>
                                                 </button>
                                             </td>
