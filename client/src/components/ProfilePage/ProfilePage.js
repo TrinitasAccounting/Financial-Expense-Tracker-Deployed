@@ -38,13 +38,15 @@ export default function ProfilePage() {
 
     const [integrationsList, setIntegrationsList] = useState(['Quickbooks', 'ADP Payroll', 'Microsoft PowerBI', 'SOS Inventory'])
 
+    console.log(integrationsList);
+
     function openCloseNewIntegration() {
         return (setAddNewIntegrationPopUp((addNewIntegrationPopUp) => !addNewIntegrationPopUp))
     }
 
     function deleteIntegration(integrationName) {
         let filtered = integrationsList.filter((int) => {
-            return (int !== integrationName.name)
+            return (int !== integrationName)
         })
 
         setIntegrationsList(filtered)
@@ -53,7 +55,10 @@ export default function ProfilePage() {
     function addNewIntegration(integrationName) {
         let addNewIntegrations = [...integrationsList, integrationName]
 
-        setIntegrationsList(addNewIntegration)
+        setIntegrationsList(addNewIntegrations)
+        setEditIntegrationForm({
+            name: ""
+        })
     };
 
     function handleIntegrationChange(event) {
@@ -62,7 +67,26 @@ export default function ProfilePage() {
         })
     }
 
-    console.log(editIntegrationForm);
+    // console.log(editIntegrationForm);
+
+    let iteratingThruIntegrationsList = integrationsList.map((int) => {
+        return (
+            <li key={int} className="flex justify-between gap-x-6 py-6">
+                <div className="font-medium text-gray-900">{int}</div>
+                <button
+                    // onClick={deleteIntegration}
+                    onClick={() => {
+                        deleteIntegration(int)
+                    }}
+                    type="button" className="font-semibold text-red-600 hover:text-indigo-500">
+                    Delete
+                </button>
+            </li>
+
+        )
+    })
+
+
 
     // ________________________________________________________________________
 
@@ -100,6 +124,8 @@ export default function ProfilePage() {
 
     //     setSelected({ id: editFormData.id, date: editFormData.date, description: editFormData.description, category: editFormData.category, amount: editFormData.amount })
     // }
+
+
 
 
 
@@ -216,7 +242,8 @@ export default function ProfilePage() {
                             <p className="mt-1 text-sm leading-6 text-gray-500">Connect applications to your account.</p>
 
                             <ul className="mt-6 divide-y divide-gray-100 border-t border-gray-200 text-sm leading-6">
-                                <li className="flex justify-between gap-x-6 py-6">
+                                {iteratingThruIntegrationsList}
+                                {/* <li className="flex justify-between gap-x-6 py-6">
                                     <div className="font-medium text-gray-900">QuickBooks</div>
                                     <button
                                         // onClick={deleteIntegration}
@@ -251,7 +278,7 @@ export default function ProfilePage() {
                                         type="button" className="font-semibold text-red-600 hover:text-indigo-500">
                                         Delete
                                     </button>
-                                </li>
+                                </li> */}
                             </ul>
 
                             {/* <div className="flex border-t border-gray-100 pt-6">
@@ -267,7 +294,11 @@ export default function ProfilePage() {
 
                                     <div className="flex border-t border-gray-100 pt-6">
                                         <button
-                                            onClick={openCloseNewIntegration}
+                                            // onClick={openCloseNewIntegration}
+                                            onClick={() => {
+                                                addNewIntegration(editIntegrationForm.name)
+                                                openCloseNewIntegration()
+                                            }}
                                             type="button" className="text-sm font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
                                             <span aria-hidden="true">+</span> Confirm Integration
                                         </button>
@@ -289,7 +320,7 @@ export default function ProfilePage() {
                                                 //     captureEdit(profileDetails[0])
                                                 //     openCloseEditProfilePopUp()
                                                 // }}
-                                                onClick={addNewIntegration(editIntegrationForm.name)}
+                                                // onClick={() => addNewIntegration(editIntegrationForm.name)}
 
                                                 id="name"
                                                 name="name"
