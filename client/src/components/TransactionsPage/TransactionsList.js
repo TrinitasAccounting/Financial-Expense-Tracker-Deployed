@@ -11,17 +11,6 @@ import EditTransactionPopUp from "./EditTransactionPopUp";
 
 
 const people = [
-    // { id: 1, name: 'Sales' },
-    // { id: 2, name: 'Advertising & Marketing' },
-    // { id: 3, name: 'Office Expenses' },
-    // { id: 4, name: 'Meals & Entertainment' },
-    // { id: 5, name: 'Job Supplies' },
-    // { id: 6, name: 'Travel Expenses' },
-    // { id: 7, name: 'Labor Expense' },
-    // { id: 8, name: 'Rent & Lease' },
-    // { id: 9, name: 'Insurance' },
-    // { id: 10, name: 'Software & Subscriptions' },
-    // { id: 11, name: 'Gas & Fuel' },
     { id: 1, category: 'Gas & Fuel' },
     { id: 2, category: 'Sales' },
     { id: 3, category: 'Meals & Entertainment' },
@@ -98,23 +87,6 @@ export default function TransactionsList({ transactionsList, categoryOptions }) 
 
 
 
-    // handling the dropdown menu change
-    // let newSelectedCategory = { ...editForm }
-    // function handleDropDownChange() {
-    //     // newSelectedCategory.category = selected.category
-    //     // setEditForm(newSelectedCategory)
-    // }
-
-    // ______________________________________________________________________________________
-
-
-    // Setting the dropdown menu initial state on click of edit
-    function clickOfEditSelected(editFormData) {
-
-        setSelected({ id: editFormData.id, date: editFormData.date, description: editFormData.description, category: editFormData.category, amount: editFormData.amount })
-    }
-
-
     // const dromo = new DromoUploader("3badce43-0fc9-4440-8f9d-840f2de07713", "2205df5e-4fde-41d1-8fb7-5401be84b7a6");
 
 
@@ -127,9 +99,6 @@ export default function TransactionsList({ transactionsList, categoryOptions }) 
 
     // Sorting TransactionList but have it commented out as to save memory space on the computer. It is run at the same time that the map function is iterating
     // let sortedTransactionList = transactionsList.sort((a, b) => new Date(a.date.slice(0, 10)) - new Date(b.date.slice(0, 10)))
-
-
-
 
 
 

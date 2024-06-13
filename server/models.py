@@ -1,5 +1,6 @@
 from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.ext.associationproxy import association_proxy
+from sqlalchemy.orm import validates;
 
 from config import db
 
@@ -25,6 +26,12 @@ class Transactions(db.Model, SerializerMixin):
 
     # serialize_rules = ('-user.transactions')
 
+    @validates('amount')
+    def validate_columns(self, attr, value):
+        if (not isinstance(value, float)) or (not isinstance(value, int)) or len(value) < 1:
+            raise ValueError(f"{attr} must be a number that is at least 1 numeric character long!")
+        return value
+
     
 
 
@@ -42,6 +49,20 @@ class Profile(db.Model, SerializerMixin):
     # transactions = db.relationship('Transactions', back_populates="user")
 
     # serialize_rules = ('-transactions.user')
+
+    @validates('age')
+    def validate_columns(self, attr, value):
+        if (not isinstance(value, int)) or len(value) < 2:
+            raise ValueError(f"{attr} must be a number that is at least 2 numeric character long!")
+        return value
+
+    @validates('email')
+    def validate_email(self, key, address):
+        if '@' not in address:
+            raise ValueError("Email is not valid")
+        return address
+
+
 
 
 class Chart_Of_Accounts(db.Model, SerializerMixin):

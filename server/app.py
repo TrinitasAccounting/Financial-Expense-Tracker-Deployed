@@ -63,7 +63,7 @@ class AllTransactions(Resource):
 
         except:
             response_body = {
-                'error': 'Transaction must have a date, description, and amount'
+                'error': 'Transaction must have a date, description, and amount. Amount must be a number.'
             }
             return make_response(response_body, 400)
 
@@ -211,7 +211,7 @@ class ProfileDetailsByID(Resource):
 
             except:
                 response_body = {
-                    'error': "Profile detail must be a string"
+                    'error': "Email must contain and @ symbole and Age must be at least 2 digits"
                 }
                 return make_response(response_body, 400)
 

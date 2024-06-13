@@ -30,8 +30,22 @@ export default function EditProfilePopUp({ currentlyOpenEditProfilePopUp, openCl
             },
             body: JSON.stringify(editForm)
         })
-            .then(res => res.json())
-            .then(updatedProfile => handleProfileUpdate(updatedProfile))
+            // .then(res => res.json())
+            // .then(updatedProfile => handleProfileUpdate(updatedProfile))
+            .then(res => {
+                if (res.ok) {
+                    res.json().then(updatedProfile => handleProfileUpdate(updatedProfile))
+                }
+                else if (res.status === 400) {
+                    res.json().then(errorData => alert(`Error: ${errorData.error}`))
+                }
+                else if (res.status === 401) {
+                    res.json().then(errorData => alert(`Error: ${errorData.error}`))
+                }
+                else {
+                    res.json().then(() => alert("Error: Something went wrong"))
+                }
+            })
     }
 
 
