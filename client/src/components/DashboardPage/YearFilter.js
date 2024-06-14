@@ -2,7 +2,7 @@
 
 
 // import { Fragment, useState } from 'react'
-import { Label, Listbox, ListboxButton, ListboxOption, ListboxOptions, Transition } from '@headlessui/react'
+import { Listbox, ListboxButton, ListboxOption, ListboxOptions, Transition } from '@headlessui/react'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
 
 // const people = [

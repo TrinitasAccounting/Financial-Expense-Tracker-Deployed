@@ -22,15 +22,6 @@ import {
 } from '@heroicons/react/24/outline'
 // import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 
-const navigation = [
-    { name: 'Dashboard', href: '/', icon: HomeIcon, current: true },
-    { name: 'Transaction Ledger', href: '/transactions', icon: UsersIcon, current: false },
-    { name: 'Profile', href: '/profile', icon: FolderIcon, current: false },
-    { name: 'Chart of Accounts', href: '/chartofaccounts', icon: FolderIcon, current: false },
-    // { name: 'Calendar', href: '#', icon: CalendarIcon, current: false },
-    // { name: 'Documents', href: '#', icon: DocumentDuplicateIcon, current: false },
-    // { name: 'Reports', href: '#', icon: ChartPieIcon, current: false },
-]
 // const teams = [
 //     // { id: 1, name: 'Heroicons', href: '#', initial: 'H', current: false },
 //     // { id: 2, name: 'Tailwind Labs', href: '#', initial: 'T', current: false },
@@ -55,6 +46,76 @@ export default function AppNavBar() {
 
     const [profileDetails, setProfileDetails] = useState([])
 
+    // const [dashboardSelected, setDashboardSelected] = useState(true)
+    // const [transactionLedgerSelected, setTransactionLedgerSelected] = useState(false)
+    // const [profileSelected, setProfileSelected] = useState(false)
+    // const [chartOfAccountsSelected, setChartOfAccountsSelected] = useState(false)
+
+    // function handlePageSelected(selected) {
+    //     if (selected === 'Dashboard') {
+    //         setDashboardSelected(true)
+    //         setTransactionLedgerSelected(false)
+    //         setProfileSelected(false)
+    //         setChartOfAccountsSelected(false)
+    //     }
+    //     else if (selected === 'Transaction Ledger') {
+    //         setDashboardSelected(false)
+    //         setTransactionLedgerSelected(true)
+    //         setProfileSelected(false)
+    //         setChartOfAccountsSelected(false)
+    //     }
+    //     else if (selected === 'Profile') {
+    //         setDashboardSelected(false)
+    //         setTransactionLedgerSelected(false)
+    //         setProfileSelected(true)
+    //         setChartOfAccountsSelected(false)
+    //     }
+    //     else if (selected === 'Chart of Accounts') {
+    //         setDashboardSelected(false)
+    //         setTransactionLedgerSelected(false)
+    //         setProfileSelected(false)
+    //         setChartOfAccountsSelected(true)
+    //     }
+    // }
+
+    // function handleDashboardClicked() {
+    //     setDashboardSelected(true)
+    //     setTransactionLedgerSelected(false)
+    //     setProfileSelected(false)
+    //     setChartOfAccountsSelected(false)
+    // }
+
+    // function handleTransactionLedgerClicked() {
+    //     setDashboardSelected(false)
+    //     setTransactionLedgerSelected(true)
+    //     setProfileSelected(false)
+    //     setChartOfAccountsSelected(false)
+    // }
+
+    // function handleProfileClicked() {
+    //     setDashboardSelected(false)
+    //     setTransactionLedgerSelected(false)
+    //     setProfileSelected(true)
+    //     setChartOfAccountsSelected(false)
+    // }
+
+    // function handleChartOfAccountsClicked() {
+    //     setDashboardSelected(false)
+    //     setTransactionLedgerSelected(false)
+    //     setProfileSelected(false)
+    //     setChartOfAccountsSelected(true)
+    // }
+
+
+    const navigation = [
+        { name: 'Dashboard', href: '/', icon: HomeIcon, current: false },
+        { name: 'Transaction Ledger', href: '/transactions', icon: UsersIcon, current: false },
+        { name: 'Profile', href: '/profile', icon: FolderIcon, current: false },
+        { name: 'Chart of Accounts', href: '/chartofaccounts', icon: FolderIcon, current: false },
+        // { name: 'Calendar', href: '#', icon: CalendarIcon, current: false },
+        // { name: 'Documents', href: '#', icon: DocumentDuplicateIcon, current: false },
+        // { name: 'Reports', href: '#', icon: ChartPieIcon, current: false },
+    ]
 
 
     let categoryOptions = ['Gas & Fuel', 'Meal & Entertainment', 'Sales']
@@ -399,7 +460,7 @@ export default function AppNavBar() {
                                             <li key={item.name} >
                                                 <a
                                                     href={item.href}
-
+                                                    // onClick={() => handlePageSelected(item.name)}
                                                     className={classNames(
                                                         item.current
                                                             ? 'bg-violet-700 text-white'
@@ -473,15 +534,19 @@ export default function AppNavBar() {
 
                         <div className="flex flex-1 gap-x-4 self-stretch lg:gap-x-6">
                             {/* I changed this from form to "div" */}
+                            <div className="sm:mt-2 sm:text-4xl sm:font-semibold sm:text-[#2c3d4c]">
+                                <h1>Financial Expense Tracker</h1>
+
+                            </div>
                             <div className="relative flex flex-1">
                                 {/* <label htmlFor="search-field" className="sr-only">
                                     Search
-                                </label>
-                                <MagnifyingGlassIcon
+                                </label> */}
+                                {/* <MagnifyingGlassIcon
                                     className="pointer-events-none absolute inset-y-0 left-0 h-full w-5 text-gray-400"
                                     aria-hidden="true"
-                                />
-                                <input
+                                /> */}
+                                {/* <input
                                     id="search-field"
                                     className="block h-full w-full border-0 py-0 pl-8 pr-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm"
                                     placeholder="Search..."
