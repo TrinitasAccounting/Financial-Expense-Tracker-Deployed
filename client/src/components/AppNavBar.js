@@ -621,6 +621,8 @@ export default function AppNavBar() {
 
 
 
+
+
                         <Outlet context={{
                             transactionsList: transactionsList,
                             categoryOptions: categoryOptions,
