@@ -424,8 +424,17 @@ function DashboardPage() {
 
     return (
         <div>
-            <div className="w-[200px]" >
-                <YearFilter selected={selected} setSelected={setSelected} yearsList={yearsList} />
+            <div className=" grid grid-cols-1 gap-5 sm:grid-cols-10">
+                <div className=" sm:col-span-8">
+
+                </div>
+                <div className=" sm:col-span-1 block text-md font-medium pt-3 text-gray-900">
+                    <h4>Filter Transactions by Year </h4>
+                </div>
+                <div className="w-[180px] pr-2" >
+                    <YearFilter selected={selected} setSelected={setSelected} yearsList={yearsList} />
+                </div>
+
             </div>
             <div className="m-4 grid grid-cols-1 gap-5 sm:grid-cols-12">
 
@@ -539,7 +548,7 @@ function DashboardPage() {
                     <ExpensesBarChart sortedOperatingExpensesObject={sortedOperatingExpensesObject} />
                 </div>
                 {/* <div className="min-h-[150px] rounded-lg shadow bg-red-700 col-span-1"></div> */}
-                <div className="min-h-[500px] rounded-lg  bg-gray-100 sm:col-span-8 ">
+                <div className="min-h-[600px] rounded-lg  bg-gray-100 sm:col-span-8 ">
                     <div className="m-1 grid grid-cols-1 gap-5 sm:grid-cols-1">
                         <div className="min-h-[300px] rounded-lg grid grid-cols-2 gap-5 shadow sm:col-span-8">
                             <div className="bg-white sm:col-span-1 rounded-lg">

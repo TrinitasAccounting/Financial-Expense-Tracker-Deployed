@@ -31,14 +31,16 @@ export default function AddTransactionSlideOver({ transactionSlideOverOpen, open
     const [transactionFormData, setTransactionFormData] = useState({
         date: "",
         description: "",
-        amount: "",
+        amount: 0,
         category: categoryAccountsList[0].category
     })
 
     // updating form state function
     function updateTransactionFormData(event) {
         // console.log(event.target.name)
-        // console.log(event.target.value)
+        // console.log(typeof (parseInt(event.target.value)))
+
+
         setTransactionFormData({ ...transactionFormData, date: startDate, [event.target.name]: event.target.value })
 
     }
@@ -51,8 +53,8 @@ export default function AddTransactionSlideOver({ transactionSlideOverOpen, open
         setTransactionFormData({
             date: "",
             description: "",
-            amount: "",
-            category: ""
+            amount: 0,
+            category: categoryAccountsList[0].category
         })
     }
 
@@ -64,12 +66,23 @@ export default function AddTransactionSlideOver({ transactionSlideOverOpen, open
         setTransactionFormData({
             date: "",
             description: "",
-            amount: "",
+            amount: 0,
             category: ""
         })
         openCloseTransactionSlideOver()
     }
 
+
+
+    // This is controlling what goes in the amount box. They can only type numbers in there
+    function onlyInputAnIntegerChange(e) {
+        // const re = /^[0-9\b]+$/;
+        const re = /^[1-9]\d*(\.\d+)?$/;
+
+        if (e.target.value === '' || re.test(e.target.value)) {
+            updateTransactionFormData(e)
+        }
+    }
 
 
 
@@ -219,8 +232,9 @@ export default function AddTransactionSlideOver({ transactionSlideOverOpen, open
                                                         </label>
                                                     </div>
                                                     <div className="sm:col-span-2">
-                                                        <textarea
-                                                            onChange={updateTransactionFormData}
+                                                        <input
+                                                            type="number"
+                                                            onChange={onlyInputAnIntegerChange}
                                                             value={transactionFormData.amount}
                                                             id="amount"
                                                             name="amount"

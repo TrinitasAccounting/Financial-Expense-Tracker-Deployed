@@ -7,7 +7,7 @@ import { XMarkIcon } from '@heroicons/react/24/outline'
 
 // import DropdownMenu from './DropDownMenuForEditTransaction'
 
-export default function EditProfilePopUp({ currentlyOpenEditProfilePopUp, openCloseEditProfilePopUp, editForm, handleChange, handleProfileUpdate, captureEdit }) {
+export default function EditProfilePopUp({ currentlyOpenEditProfilePopUp, openCloseEditProfilePopUp, editForm, handleChange, handleProfileUpdate, captureEdit, onlyInputAnIntegerChange }) {
 
 
 
@@ -173,10 +173,10 @@ export default function EditProfilePopUp({ currentlyOpenEditProfilePopUp, openCl
                                                 </label>
                                             </div>
                                             <div className="sm:col-span-2">
-                                                <textarea
+                                                <input
                                                     value={editForm.age}
-                                                    onChange={handleChange}
-
+                                                    onChange={onlyInputAnIntegerChange}
+                                                    type='number'
                                                     id="age"
                                                     name="age"
                                                     rows={1}

@@ -92,13 +92,15 @@ export default function ProfitByMonth({
                 colorMap: {
                     type: 'piecewise',
                     thresholds: [0],
-                    colors: ['red', 'green'],
+                    colors: ['#e15759', '#4e79a7'],
+                    // colors: ['#e15759', '#4067b9'],
                 }
             }]}
             grid={{ horizontal: true }}
             series={[
                 {
                     data: dataY,
+
                 },
             ]}
             // width={2090}

@@ -28,8 +28,8 @@ export default function YearFilter({ selected, setSelected, yearsList }) {
     return (
         <Listbox value={selected} onChange={setSelected}>
             {({ open }) => (
-                <>
-                    <Label className="block text-sm font-medium leading-6 text-gray-900">Assigned to</Label>
+                <div>
+                    {/* <Label className="block text-md font-medium  text-gray-900">FIlter Transactions by Year</Label> */}
                     <div className="relative mt-2">
                         <ListboxButton className="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             <span className="block truncate">{selected.year}</span>
@@ -76,7 +76,7 @@ export default function YearFilter({ selected, setSelected, yearsList }) {
                             </ListboxOptions>
                         </Transition>
                     </div>
-                </>
+                </div>
             )}
         </Listbox>
     )

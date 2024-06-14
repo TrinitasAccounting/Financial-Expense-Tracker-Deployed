@@ -85,6 +85,16 @@ export default function TransactionsList({ transactionsList, categoryOptions }) 
         })
     }
 
+    // Handles the amount input box to restrict to only numbers and decimals
+    function onlyInputAnIntegerChange(e) {
+        // const re = /^[0-9\b]+$/;
+        const re = /^[1-9]\d*(\.\d+)?$/;
+
+        if (e.target.value === '' || re.test(e.target.value)) {
+            handleChange(e)
+        }
+    }
+
 
 
     // const dromo = new DromoUploader("3badce43-0fc9-4440-8f9d-840f2de07713", "2205df5e-4fde-41d1-8fb7-5401be84b7a6");
@@ -172,7 +182,7 @@ export default function TransactionsList({ transactionsList, categoryOptions }) 
             {
                 openCloseEditTransaction ?
                     <div>
-                        <EditTransactionPopUp editTransaction={editTransaction} openCloseEditTransaction={openCloseEditTransaction} editForm={editForm} handleTransactionUpdate={handleTransactionUpdate} handleChange={handleChange} selected={selected} setSelected={setSelected} categoryAccountsList={categoryAccountsList} people={people} />
+                        <EditTransactionPopUp editTransaction={editTransaction} openCloseEditTransaction={openCloseEditTransaction} editForm={editForm} handleTransactionUpdate={handleTransactionUpdate} handleChange={handleChange} selected={selected} setSelected={setSelected} categoryAccountsList={categoryAccountsList} people={people} onlyInputAnIntegerChange={onlyInputAnIntegerChange} />
                     </div>
                     :
 

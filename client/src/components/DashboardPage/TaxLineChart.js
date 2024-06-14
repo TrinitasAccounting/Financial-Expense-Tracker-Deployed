@@ -88,6 +88,8 @@ export default function TaxLineChart({
                     stack: 'total',
                     area: true,
                     showMark: false,
+                    // color: '#009bff'
+                    color: '#598dfa'
                 },
                 // {
                 //     id: 'Germany',

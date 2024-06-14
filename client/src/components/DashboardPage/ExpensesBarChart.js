@@ -143,11 +143,12 @@ export default function ExpensesBarChart({ sortedOperatingExpensesObject }) {
             series={[
                 {
                     data: dataY,
+                    color: '#808080'
                 },
             ]}
             layout="horizontal"
             margin={{
-                left: 150,
+                left: 155,
                 // right: 80,
                 // top: 80,
                 // bottom: 50,

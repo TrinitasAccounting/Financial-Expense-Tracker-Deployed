@@ -26,11 +26,13 @@ class Transactions(db.Model, SerializerMixin):
 
     # serialize_rules = ('-user.transactions')
 
-    @validates('amount')
-    def validate_columns(self, attr, value):
-        if (not isinstance(value, float)) or (not isinstance(value, int)) or len(value) < 1:
-            raise ValueError(f"{attr} must be a number that is at least 1 numeric character long!")
-        return value
+
+    # ****I have the validation on the front end, where they can only type number values into the "amount" box on the add transaction slide over
+    # @validates('amount')
+    # def validate_columns(self, attr, value):
+    #     if (not isinstance(value, float)) or (not isinstance(value, int)) or len(value) < 1:
+    #         raise ValueError(f"{attr} must be a number that is at least 1 numeric character long!")
+    #     return value
 
     
 
@@ -50,11 +52,13 @@ class Profile(db.Model, SerializerMixin):
 
     # serialize_rules = ('-transactions.user')
 
-    @validates('age')
-    def validate_columns(self, attr, value):
-        if (not isinstance(value, int)) or len(value) < 2:
-            raise ValueError(f"{attr} must be a number that is at least 2 numeric character long!")
-        return value
+
+    # ****I have the validation on the front end, where they can only type number values into the "age" box on the edit profile pop up
+    # @validates('age')
+    # def validate_columns(self, attr, value):
+    #     if (value < 121):
+    #         raise ValueError(f"{attr} must be a number that is less than 120!")
+    #     return value
 
     @validates('email')
     def validate_email(self, key, address):

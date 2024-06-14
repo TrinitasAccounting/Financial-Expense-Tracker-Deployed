@@ -1,6 +1,7 @@
 
+import HeadshotZoomed from '../images/HeadshotZoomed.png';
 
-// import { Fragment, useState } from 'react'
+
 import { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import {
@@ -8,18 +9,12 @@ import {
     DialogPanel,
     Menu,
     MenuButton,
-    // MenuItem,
-    // MenuItems,
     Transition,
     TransitionChild,
 } from '@headlessui/react'
 import {
     Bars3Icon,
     BellIcon,
-    // CalendarIcon,
-    // ChartPieIcon,
-    // Cog6ToothIcon,
-    // DocumentDuplicateIcon,
     FolderIcon,
     HomeIcon,
     UsersIcon,
@@ -28,7 +23,7 @@ import {
 // import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 
 const navigation = [
-    { name: 'Dashboard', href: '/', icon: HomeIcon, current: false },
+    { name: 'Dashboard', href: '/', icon: HomeIcon, current: true },
     { name: 'Transaction Ledger', href: '/transactions', icon: UsersIcon, current: false },
     { name: 'Profile', href: '/profile', icon: FolderIcon, current: false },
     { name: 'Chart of Accounts', href: '/chartofaccounts', icon: FolderIcon, current: false },
@@ -63,20 +58,6 @@ export default function AppNavBar() {
 
 
     let categoryOptions = ['Gas & Fuel', 'Meal & Entertainment', 'Sales']
-
-
-    // changing the current in the navigation object function
-    // function changeCurrent(trans) {
-    //     console.log('asdf')
-    //     console.log(trans)
-    //     // let now = trans['current']
-    //     trans['current'] = !trans['current']
-    // }
-
-    // function output(item) {
-    //     item.current = !item.current
-
-    // }
 
 
 
@@ -227,9 +208,6 @@ export default function AppNavBar() {
 
 
 
-
-
-
     // Defining the category arrays that are dynamic
     // REVENUE CATEGORIES
     let notUsedCategories = []
@@ -264,11 +242,6 @@ export default function AppNavBar() {
             return (notUsedCategories.push(account.account_type))
         }
     })
-
-
-
-
-
 
 
 
@@ -531,7 +504,7 @@ export default function AppNavBar() {
                                         <span className="sr-only">Open user menu</span>
                                         <img
                                             className="h-8 w-8 rounded-full bg-gray-50"
-                                            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                            src={HeadshotZoomed}
                                             alt=""
                                         />
                                         <span className="hidden lg:flex lg:items-center">

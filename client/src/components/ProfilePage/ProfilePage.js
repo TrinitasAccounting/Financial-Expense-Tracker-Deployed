@@ -106,6 +106,8 @@ export default function ProfilePage() {
 
     // capture user input in edit form inputs
     function handleChange(event) {
+
+
         setEditForm({
             ...editForm, [event.target.name]: event.target.value
         })
@@ -126,6 +128,16 @@ export default function ProfilePage() {
     // }
 
 
+    // This is controlling what goes in the age box. They can only type numbers in there
+    function onlyInputAnIntegerChange(e) {
+        const re = /^[0-9\b]+$/;
+
+        if (e.target.value === '' || re.test(e.target.value)) {
+            handleChange(e)
+        }
+    }
+
+
 
 
 
@@ -134,7 +146,7 @@ export default function ProfilePage() {
 
             {currentlyOpenEditProfilePopUp ?
 
-                <EditProfilePopUp currentlyOpenEditProfilePopUp={currentlyOpenEditProfilePopUp} openCloseEditProfilePopUp={openCloseEditProfilePopUp} editForm={editForm} handleProfileUpdate={handleProfileUpdate} handleChange={handleChange} captureEdit={captureEdit} />
+                <EditProfilePopUp currentlyOpenEditProfilePopUp={currentlyOpenEditProfilePopUp} openCloseEditProfilePopUp={openCloseEditProfilePopUp} editForm={editForm} handleProfileUpdate={handleProfileUpdate} handleChange={handleChange} captureEdit={captureEdit} onlyInputAnIntegerChange={onlyInputAnIntegerChange} />
 
                 :
 

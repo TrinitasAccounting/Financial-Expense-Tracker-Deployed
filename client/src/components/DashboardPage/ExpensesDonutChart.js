@@ -22,11 +22,16 @@ export default function ExpensesDonutChart({
     })
 
 
+    const palette = ['#8BC1F7', '#38812F', '#F9E0A2', '#F4B678', '#009596', '#06C', '#38812F', '#EF9234', '#A30000'];
+
+
+
 
 
 
     return (
         <PieChart
+            colors={palette}
             series={[
                 {
                     data: dataArray,

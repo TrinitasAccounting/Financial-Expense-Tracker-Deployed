@@ -28,7 +28,7 @@ export default function COGSMonthChart({
     return (
         <BarChart
             xAxis={[{ scaleType: 'band', data: dataX }]}
-            series={[{ data: dataY }]}
+            series={[{ data: dataY, color: '#2e48a7' }]}
             // width={500}
             height={400}
         />

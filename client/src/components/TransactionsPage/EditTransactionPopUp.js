@@ -7,7 +7,7 @@ import { XMarkIcon } from '@heroicons/react/24/outline'
 
 // import DropdownMenu from './DropDownMenuForEditTransaction'
 
-export default function EditTransactionPopUp({ editTransaction, openCloseEditTransaction, editForm, handleTransactionUpdate, handleChange, selected, setSelected, categoryAccountsList, people }) {
+export default function EditTransactionPopUp({ editTransaction, openCloseEditTransaction, editForm, handleTransactionUpdate, handleChange, selected, setSelected, categoryAccountsList, people, onlyInputAnIntegerChange }) {
 
 
     // State is being initially set in when the edit button is clicked on the "TransactionsList" page
@@ -168,10 +168,10 @@ export default function EditTransactionPopUp({ editTransaction, openCloseEditTra
                                                 </label>
                                             </div>
                                             <div className="sm:col-span-2">
-                                                <textarea
+                                                <input
                                                     value={editForm.amount}
-                                                    onChange={handleChange}
-
+                                                    onChange={onlyInputAnIntegerChange}
+                                                    type='number'
                                                     id="amount"
                                                     name="amount"
                                                     rows={1}
