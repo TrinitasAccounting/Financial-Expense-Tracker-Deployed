@@ -15,7 +15,7 @@ import TaxLineChart from "./TaxLineChart";
 let currentDate = new Date()
 
 let currentYear = currentDate.getFullYear()
-// let currentMonth = currentDate.getMonth() + 1
+let currentMonth = currentDate.getMonth() + 1
 
 // console.log(currentMonth)
 
@@ -554,9 +554,10 @@ function DashboardPage() {
                             <div className="bg-white sm:col-span-1 rounded-lg">
                                 {/* <h1>Estimated Tax Liabiltiy Across the Year</h1> */}
                                 <div className="min-h-[25px] rounded-lg shadow font-semibold text-center sm:text-2xl sm:col-span-3">
-                                    <h1>Estimated Tax Liabiltiy Across the Year</h1>
+                                    <h1>Estimated Tax Liability Across the Year</h1>
                                 </div>
                                 <TaxLineChart
+                                    currentMonth={currentMonth}
                                     janRevenue={janRevenue}
                                     febRevenue={febRevenue}
                                     marRevenue={marRevenue}

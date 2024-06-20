@@ -5,6 +5,7 @@ import { LineChart } from '@mui/x-charts/LineChart';
 
 
 export default function TaxLineChart({
+    currentMonth,
     janRevenue,
     febRevenue,
     marRevenue,
