@@ -417,7 +417,7 @@ function DashboardPage() {
 
 
 
-
+    console.log(totalRevenue.toFixed(2).length)
 
 
 
@@ -444,7 +444,11 @@ function DashboardPage() {
                     </div>
                     <div className="h-[115px] rounded-lg shadow  sm:col-span-1 ">
                         <div className="min-h-[20px] rounded-lg sm:col-span-1"></div>
-                        <h1 className="flex lg:text-6xl md:text-4xl text-5xl justify-center">$ {totalRevenue.toFixed(2)}</h1>
+                        {totalRevenue.toFixed(2).length < 8 ?
+                            <h1 className="flex lg:text-6xl md:text-4xl text-5xl justify-center">$ {totalRevenue.toFixed(2)}</h1>
+                            :
+                            <h1 className="flex lg:text-5xl md:text-4xl text-5xl justify-center">$ {totalRevenue.toFixed(2)}</h1>
+                        }
                     </div>
                 </div>
 
@@ -454,7 +458,11 @@ function DashboardPage() {
                     </div>
                     <div className="h-[115px] rounded-lg shadow  sm:col-span-1 ">
                         <div className="min-h-[20px] rounded-lg sm:col-span-1"></div>
-                        <h1 className="flex lg:text-6xl md:text-4xl text-5xl justify-center">$ {totalCOGS.toFixed(2)}</h1>
+                        {totalRevenue.toFixed(2).length < 8 ?
+                            <h1 className="flex lg:text-6xl md:text-4xl text-5xl justify-center">$ {totalCOGS.toFixed(2)}</h1>
+                            :
+                            <h1 className="flex lg:text-5xl md:text-4xl text-5xl justify-center">$ {totalCOGS.toFixed(2)}</h1>
+                        }
                     </div>
                 </div>
 
@@ -464,7 +472,11 @@ function DashboardPage() {
                     </div>
                     <div className="h-[115px] rounded-lg shadow  sm:col-span-1 ">
                         <div className="min-h-[20px] rounded-lg sm:col-span-1"></div>
-                        <h1 className="flex lg:text-6xl md:text-4xl text-5xl justify-center">$ {totalOPEX.toFixed(2)}</h1>
+                        {totalRevenue.toFixed(2).length < 8 ?
+                            <h1 className="flex lg:text-6xl md:text-4xl text-5xl justify-center">$ {totalOPEX.toFixed(2)}</h1>
+                            :
+                            <h1 className="flex lg:text-5xl md:text-4xl text-5xl justify-center">$ {totalOPEX.toFixed(2)}</h1>
+                        }
                     </div>
                 </div>
 
@@ -474,7 +486,11 @@ function DashboardPage() {
                     </div>
                     <div className="h-[115px] rounded-lg shadow  sm:col-span-1 ">
                         <div className="min-h-[20px] rounded-lg sm:col-span-1"></div>
-                        <h1 className="flex lg:text-6xl md:text-4xl text-5xl justify-center">$ {totalEBITDA.toFixed(2)}</h1>
+                        {totalRevenue.toFixed(2).length < 8 ?
+                            <h1 className="flex lg:text-6xl md:text-4xl text-5xl justify-center">$ {totalEBITDA.toFixed(2)}</h1>
+                            :
+                            <h1 className="flex lg:text-5xl md:text-4xl text-5xl justify-center">$ {totalEBITDA.toFixed(2)}</h1>
+                        }
                     </div>
                 </div>
 
