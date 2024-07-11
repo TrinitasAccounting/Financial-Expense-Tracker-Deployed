@@ -357,7 +357,7 @@ export default function AppNavBar() {
 
 
                                     {/* Color____________________________________________________________________________ */}
-                                    <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-indigo-100 px-6 pb-4">
+                                    <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-white px-6 pb-4">
                                         <div className="flex h-16 shrink-0 items-center">
                                             {/* <img
                                                 className="h-8 w-auto"
@@ -395,41 +395,8 @@ export default function AppNavBar() {
                                                         ))}
                                                     </ul>
                                                 </li>
-                                                {/* <li>
-                                                    <div className="text-xs font-semibold leading-6 text-indigo-200">Your teams</div>
-                                                    <ul role="list" className="-mx-2 mt-2 space-y-1">
-                                                        {teams.map((team) => (
-                                                            <li key={team.name}>
-                                                                <a
-                                                                    href={team.href}
-                                                                    className={classNames(
-                                                                        team.current
-                                                                            ? 'bg-indigo-700 text-white'
-                                                                            : 'text-indigo-200 hover:text-white hover:bg-indigo-700',
-                                                                        'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
-                                                                    )}
-                                                                >
-                                                                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-indigo-400 bg-indigo-500 text-[0.625rem] font-medium text-white">
-                                                                        {team.initial}
-                                                                    </span>
-                                                                    <span className="truncate">{team.name}</span>
-                                                                </a>
-                                                            </li>
-                                                        ))}
-                                                    </ul>
-                                                </li> */}
-                                                {/* <li className="mt-auto">
-                                                    <a
-                                                        href="#"
-                                                        className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-indigo-200 hover:bg-indigo-700 hover:text-white"
-                                                    >
-                                                        <Cog6ToothIcon
-                                                            className="h-6 w-6 shrink-0 text-indigo-200 group-hover:text-white"
-                                                            aria-hidden="true"
-                                                        />
-                                                        Settings
-                                                    </a>
-                                                </li> */}
+
+
                                             </ul>
                                         </nav>
                                     </div>
@@ -482,41 +449,8 @@ export default function AppNavBar() {
                                         ))}
                                     </ul>
                                 </li>
-                                {/* <li>
-                                    <div className="text-xs font-semibold leading-6 text-indigo-200">Your teams</div>
-                                    <ul role="list" className="-mx-2 mt-2 space-y-1">
-                                        {teams.map((team) => (
-                                            <li key={team.name}>
-                                                <a
-                                                    href={team.href}
-                                                    className={classNames(
-                                                        team.current
-                                                            ? 'bg-indigo-700 text-white'
-                                                            : 'text-indigo-200 hover:text-white hover:bg-indigo-700',
-                                                        'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
-                                                    )}
-                                                >
-                                                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-indigo-400 bg-indigo-500 text-[0.625rem] font-medium text-white">
-                                                        {team.initial}
-                                                    </span>
-                                                    <span className="truncate">{team.name}</span>
-                                                </a>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </li> */}
-                                {/* <li className="mt-auto">
-                                    <a
-                                        href="#"
-                                        className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-indigo-200 hover:bg-indigo-700 hover:text-white"
-                                    >
-                                        <Cog6ToothIcon
-                                            className="h-6 w-6 shrink-0 text-indigo-200 group-hover:text-white"
-                                            aria-hidden="true"
-                                        />
-                                        Settings
-                                    </a>
-                                </li> */}
+
+
                             </ul>
                         </nav>
                     </div>
@@ -536,7 +470,6 @@ export default function AppNavBar() {
                             {/* I changed this from form to "div" */}
                             <div className="sm:mt-2 sm:text-4xl sm:font-semibold sm:text-[#2c3d4c]">
                                 <h1>Financial Expense Tracker</h1>
-
                             </div>
                             <div className="relative flex flex-1">
                                 {/* <label htmlFor="search-field" className="sr-only">
